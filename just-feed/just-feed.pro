@@ -1,4 +1,4 @@
-QT       += core gui widgets
+QT       += core gui widgets sql
 #QT       += mqtt
 
 CONFIG += c++11
@@ -6,10 +6,12 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
+    basededonnees.cpp \
     main.cpp \
     ihmjustfeed.cpp
 
 HEADERS += \
+    basededonnees.h \
     ihmjustfeed.h
 
 FORMS += \
@@ -17,5 +19,10 @@ FORMS += \
 
 RESOURCES += \
         ressources.qrc
+
+COPIES += bd
+bd.files = just-feed.sqlite
+bd.path = $$OUT_PWD/
+bd.base = $$PWD/
 
 CONFIG(release, debug|release):DEFINES+=QT_NO_DEBUG_OUTPUT
