@@ -1,0 +1,95 @@
+format 224
+
+classinstance 128023 class_ref 129047 // Opérateur
+  name ""   xyz 41 4 2000 life_line_z 2000
+classinstance 128151 class_ref 129175 // Système
+  name ""   xyz 587 4 2005 life_line_z 2000
+fragment 129175 "loop"
+  xyzwh 517 176 2000 455 121
+end
+fragment 130455 "alt"
+  xyzwh 19 342 1995 1006 605
+  separator 4211
+  separator 6852
+end
+durationcanvas 128279 classinstance_ref 128023 // :Opérateur
+  xyzwh 107 109 2010 11 40
+end
+durationcanvas 128407 classinstance_ref 128151 // :Système
+  xyzwh 648 110 2010 11 195
+  overlappingdurationcanvas 128663
+    xyzwh 654 136 2020 11 25
+  end
+  overlappingdurationcanvas 128919
+    xyzwh 654 236 2020 11 25
+  end
+end
+durationcanvas 129303 classinstance_ref 128023 // :Opérateur
+  xyzwh 107 401 2010 11 41
+end
+durationcanvas 129431 classinstance_ref 128151 // :Système
+  xyzwh 648 401 2010 11 166
+  overlappingdurationcanvas 130583
+    xyzwh 654 461 2020 11 25
+  end
+  overlappingdurationcanvas 130839
+    xyzwh 654 526 2020 11 25
+  end
+end
+durationcanvas 129687 classinstance_ref 128023 // :Opérateur
+  xyzwh 107 646 2010 11 39
+end
+durationcanvas 129815 classinstance_ref 128151 // :Système
+  xyzwh 648 646 2010 11 25
+end
+durationcanvas 130071 classinstance_ref 128023 // :Opérateur
+  xyzwh 107 828 2010 11 40
+end
+durationcanvas 130199 classinstance_ref 128151 // :Système
+  xyzwh 648 828 2010 11 25
+end
+msg 128535 asynchronous
+  from durationcanvas_ref 128279
+  to durationcanvas_ref 128407
+  yz 110 2015 explicitmsg "listerDistributeurs()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 260 80
+reflexivemsg 128791 synchronous
+  to durationcanvas_ref 128663
+  yz 136 2025 explicitmsg "chargerDistributeurs()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 667 107
+reflexivemsg 129047 synchronous
+  to durationcanvas_ref 128919
+  yz 236 2025 explicitmsg "afficherDistributeur()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 666 206
+msg 129559 asynchronous
+  from durationcanvas_ref 129303
+  to durationcanvas_ref 129431
+  yz 401 2015 explicitmsg "visualiserEtatDistributeur()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 212 371
+msg 129943 asynchronous
+  from durationcanvas_ref 129687
+  to durationcanvas_ref 129815
+  yz 646 2015 explicitmsg "planifierIntervention()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 245 616
+msg 130327 asynchronous
+  from durationcanvas_ref 130071
+  to durationcanvas_ref 130199
+  yz 828 2015 explicitmsg "géolocaliserDistributeurs()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 213 798
+reflexivemsg 130711 synchronous
+  to durationcanvas_ref 130583
+  yz 461 2025 explicitmsg "recupererEtatDistributeur()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 665 430
+reflexivemsg 130967 synchronous
+  to durationcanvas_ref 130839
+  yz 526 2025 explicitmsg "afficherEtatDistributeur()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 666 498
+end

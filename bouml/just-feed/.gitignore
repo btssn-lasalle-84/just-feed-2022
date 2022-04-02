@@ -1,0 +1,8 @@
+*.swp
+
+# BOUML
+*.d
+*.b
+*.lock
+*.session
+idl_includes
