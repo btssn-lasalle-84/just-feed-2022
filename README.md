@@ -1,6 +1,38 @@
-# just-feed 2022
+# Le projet just-feed 2022
 
-TOTO
+Le système doit permettre de surveiller à distance des distributeurs automatiques (fruits secs, pâtes, riz,...) afin d’optimiser le processus de réapprovisionnement.
+
+## Expression du besoin
+
+Système de surveillance à distance de distributeurs automatiques permettant de :
+
+- Envoyer des alertes lorsque le distributeur doit être réapprovisionné
+- Signaler la nécessité de mettre en oeuvre des opérations de maintenance prédictive
+- Superviser l’ensemble des distributeurs à partir d’une application
+
+## Fonctionnalités
+
+- [ ] Lister les distributeurs
+- [ ] Visualiser l’état d’un distributeur
+- [ ] Sélectionner un distributeur pour une intervention
+- [ ] Définir une intervention (type d’intervention, nombre de  distributeurs à visiter, type de produits à réapprovisionner)
+- [ ] Géolocaliser sur une carte un distributeur, afficher ses coordonnées et adresse
+
+## Resources logicielles
+
+| Désignation  | Caractéristiques |
+| ------------ |:----------------:|
+| OS Poste de développement | PC sous GNU/Linux Ubuntu 20.04       |
+| EDI                       | Qt Creator 4.11.0                    |
+| Développement             | Qt 5.12.8 / C++ (GCC 9.3.0, 64 bits) |
+
+## Auteur
+
+- Laura MORELLO <<lauramorello1604@gmail.com>>
+
+## Historique des versions
+
+- Version 0.1 : 02/04/2022
 
 ## Kanban
 

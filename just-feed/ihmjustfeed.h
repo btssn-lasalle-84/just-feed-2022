@@ -12,12 +12,12 @@
 
 #include <QtWidgets>
 
-QT_BEGIN_NAMESPACE
+// QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class IHMJustFeed;
 }
-QT_END_NAMESPACE
+// QT_END_NAMESPACE
 
 /**
  * @class IHMJustFeed
