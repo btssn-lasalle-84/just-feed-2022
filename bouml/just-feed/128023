@@ -1,0 +1,631 @@
+format 224
+"just-feed" // just-feed
+  revision 1
+  modified_by 23 "tv"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "./just-feed"
+  cpp_src_dir "./just-feed/"
+  classview 128023 "just-feed"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 128279 "BaseDeDonnees"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "@brief
+Class permettant de s'interfacer avec la base de données
+@class BaseDeDonnees basededonnees.h \"basededonnees.h\"
+"
+      classrelation 128279 // <generalisation>
+	relation 128279 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128279 // <generalisation>
+	  b parent class_ref 128407 // typedef1
+      end
+
+      extra_member 128407 "Q_OBJECT"
+	
+	cpp "  Q_OBJECT" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      classrelation 128407 // baseDeDonnees (<unidirectional association>)
+	relation 128407 --->
+	  a role_name "baseDeDonnees" init_value "= nullptr" class_relation private
+	    comment "!< Objet de type BaseDeDonnees accessible uniquement"
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128407 // baseDeDonnees (<unidirectional association>)
+	  b parent class_ref 128279 // BaseDeDonnees
+      end
+
+      attribute 128535 "typeBase"
+	class_attribute private explicit_type "QString"
+	init_value "= \"QSQLITE\""
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< depuis une méthode static
+!< Attribut de type QString contenant le type de"
+      end
+
+      attribute 128663 "nbAcces"
+	class_attribute private explicit_type "int"
+	init_value "= 0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< la base de données (MySQL, SQLite, ...)
+!< Attribut de type int contenant le nombre d'accès en"
+      end
+
+      attribute 128791 "db"
+	private explicit_type "QSqlDatabase"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< cours à la base de données
+!< Objet de type QSqlDatabase permettant la connexion"
+      end
+
+      attribute 128919 "mutex"
+	private explicit_type "QMutex"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< avec la base de données
+!< Objet de type QMutex permettant de protéger l'objet db,"
+      end
+
+      operation 129431 "BaseDeDonnees"
+	preserve_cpp_body_indent private explicit_return_type ""
+	nparams 1
+	  param in name "type" explicit_type "QString"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${t0} ${p0}${)}${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment "!< en autorisant son accès par un seul thread à la fois
+
+@brief
+Constructeur de la classe BaseDeDonnees en privé afin de controller ses
+appels
+@param type
+"
+      end
+
+      operation 129559 "~BaseDeDonnees"
+	preserve_cpp_body_indent private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Destructeur de la classe BaseDeDonnees
+"
+      end
+
+      operation 129687 "getInstance"
+	class_operation preserve_cpp_body_indent public return_type class_ref 128279 // BaseDeDonnees
+	nparams 1
+	  param in name "type" explicit_type "QString"
+	    defaultvalue "\"QSQLITE\""
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} * ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet de créer une instance de BDD ou de récuperer celle deja en cours,
+cette méthode controle l'instanciation des objet BaseDeDonnees. Static
+elle est accessible depuis n'importe où
+@param type
+@return Instance de la BDD
+"
+      end
+
+      operation 129815 "detruireInstance"
+	class_operation preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet de detruire l'instance en cours, Static elle est accessible depuis
+n'importe où
+"
+      end
+
+      operation 129943 "ouvrir"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "fichierBase" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet d'ouvrir le fichier de base de données passé en paramètre
+@param fichierBase
+@return booleen définissant si l'accès BDD s'est réalisé correctement
+"
+      end
+
+      operation 130071 "estOuvert"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet de savoir si la base de données est ouverte ou non
+@return un booleen correspondant à l'état d'ouverture de la base de
+données
+"
+      end
+
+      operation 130199 "executer"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "requete" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet d'executer la requete passé en paramètre au format SQL
+@param requete
+@return un booleen correspondant à l'état de retour de la requête
+"
+      end
+
+      operation 130327 "recuperer"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 2
+	  param in name "requete" explicit_type "QString"
+	  param inout name "donnees" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} & ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet d'executer la requete passé en paramètre au format SQL, et remplit
+le QString de sa réponse. Cette requête permet de récuperer un champs
+d'un enregistrement
+@param requete
+@param donnees
+@return un booleen correspondant à l'état de retour de la requête
+"
+      end
+
+      operation 130455 "recuperer"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 2
+	  param in name "requete" explicit_type "QString"
+	  param inout name "donnees" explicit_type "QStringList"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} & ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet d'executer la requete passé en paramètre au format SQL, et remplit
+le QStringListe de sa réponse. Cette requête permet de récuperer
+plusieurs champs d'un enregistrement
+@param requete
+@param donnees
+@return un booleen correspondant à l'état de retour de la requête
+"
+      end
+
+      operation 130583 "recuperer"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 2
+	  param in name "requete" explicit_type "QString"
+	  param inout name "donnees" explicit_type "QVector<QString>"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} & ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet d'executer la requete passé en paramètre au format SQL, et remplit
+le QVector<QString> de sa réponse. Cette requête permet de récuperer un
+champs de plusieurs enregistrements
+@param requete
+@param donnees
+@return un booleen correspondant à l'état de retour de la requête
+"
+      end
+
+      operation 130711 "recuperer"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 2
+	  param in name "requete" explicit_type "QString"
+	  param inout name "donnees" explicit_type "QVector<QStringList>"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} & ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} & ${p1}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+	comment "@brief
+Permet d'executer la requete passé en paramètre au format SQL, et remplit
+le QVector<QStringList> de sa réponse. Cette requête permet de récuperer
+plusieurs champs de plusieurs enregistrements
+@param requete
+@param donnees
+@return un booleen correspondant à l'état de retour de la requête
+"
+      end
+
+      extra_member 128535 "signals"
+	
+	cpp "  signals:" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      extra_member 128663 "slots"
+	
+	cpp "  public slots:" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+    end
+
+    class 128407 "typedef1"
+      visibility package stereotype "typedef" explicit_base_type "QObject"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 128791 "IHMJustFeed"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment " QT_END_NAMESPACE
+
+@class IHMJustFeed
+@brief Déclaration de la classe IHMJustFeed
+@details Cette classe s'occupe de l'affichage
+"
+      classrelation 128791 // <generalisation>
+	relation 128791 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128791 // <generalisation>
+	  b parent class_ref 128919 // typedef2
+      end
+
+      extra_member 129175 "Q_OBJECT"
+	
+	cpp "  Q_OBJECT" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      operation 132247 "IHMJustFeed"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 1
+	  param inout name "parent" explicit_type "QWidget"
+	    defaultvalue "nullptr"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}${v0}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "//@file ihmjustfeed.cpp
+//
+//@brief Définition de la classe IHMJustFeed
+//@author
+//@version 1.0
+//
+//
+//
+//@brief Constructeur de la classe IHMJustFeed
+//
+//@fn IHMJustFeed::IHMJustFeed
+//@param parent L'adresse de l'objet parent, si nullptr IHMJustFeed sera la
+//fenêtre principale de l'application
+//
+
+${inline}${typeprefix}${class}::${name}${(}${t0} * ${p0}${)} :
+    QMainWindow(parent), ui(new Ui::IHMJustFeed)
+${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 132375 "~IHMJustFeed"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Destructeur de la classe IHMJustFeed
+//
+//@fn IHMJustFeed::~IHMJustFeed
+//@details Libère les ressources de l'application
+//
+
+${inline}${typeprefix}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      attribute 129559 "ui"
+	private explicit_type "Ui::IHMJustFeed"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< la fenêtre graphique associée à cette classe"
+      end
+    end
+
+    class 128919 "typedef2"
+      visibility package stereotype "typedef" explicit_base_type "QMainWindow"
+      cpp_decl "${comment}typedef ${type} ${name};
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    classdiagram 128023 "classes"
+      classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 end
+      size A0
+    end
+  end
+
+  deploymentview 128023 "just-feed"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128279 "basededonnees"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128279 // BaseDeDonnees
+      end
+    end
+
+    artifact 128663 "main"
+      stereotype "source"
+      cpp_src "//
+//@file main.cpp
+//@brief Programme principal
+//@details Crée et affiche la fenêtre principale de l'application JustFeed
+//@author
+//@version 1.0
+//
+//@param argc
+//@param argv[]
+//@return int
+//
+//
+
+int main(int argc, char* argv[])
+{
+    QApplication a(argc, argv);
+    IHMJustFeed  w;
+
+    w.show();
+
+    return a.exec();
+}
+"
+      associated_elems
+      end
+    end
+
+    artifact 128791 "ihmjustfeed"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 128919 // typedef2
+	class_ref 128791 // IHMJustFeed
+      end
+    end
+  end
+
+end

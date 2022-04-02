@@ -1,0 +1,7 @@
+class IHMJustFeed
+!!!132247.cpp!!!	IHMJustFeed(inout parent : QWidget = nullptr)
+    ui->setupUi(this);
+    qDebug() << Q_FUNC_INFO;
+!!!132375.cpp!!!	~IHMJustFeed()
+    delete ui;
+    qDebug() << Q_FUNC_INFO;
