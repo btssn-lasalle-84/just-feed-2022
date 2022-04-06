@@ -14,8 +14,8 @@
  * @def DISTRIBUTEUR_1
  * @brief Définit le distributeur n°1
  */
-#define DISTRIBUTEUR_1
-//#define DISTRIBUTEUR_2
+//#define DISTRIBUTEUR_1
+#define DISTRIBUTEUR_2
 
 // 2022
 // AppId : just-feed
@@ -23,13 +23,13 @@
 #ifdef DISTRIBUTEUR_1
 // DevicesId : distributeur-1-sim
 const char *appEui = "70B3D57ED003FFB5";
-const char *appKey = "130048A2229D9342D4FB5CF7F91322E9"; //
+const char *appKey = "6CB9F3E06DD4F5151F8486E06FE41275"; //
 #endif
 
 #ifdef DISTRIBUTEUR_2
 // DevicesId : distributeur-2-sim
 const char *appEui = "70B3D57ED003FFB5";
-const char *appKey = "CB217855A6EB5DB53F022AC82B91A0AD";
+const char *appKey = "ED66BC2C532875FFF2174BB11BB20DAC";
 #endif
 
 /*
@@ -78,19 +78,6 @@ const char *appKey = "CB217855A6EB5DB53F022AC82B91A0AD";
  */
 #define NB_BACS     4
 
-#define LEDPIN      4
-#define DHTPIN      7
-#define DHTTYPE     DHT22
-//#define VBATPIN     A0
-#endif
-
-#ifdef DISTRIBUTEUR_2
-/**
- * @def NB_BACS
- * @brief Définit le nombre de bacs du distributeur
- */
-#define NB_BACS     3
-
 #define LEDPIN      13
 #define LEDROUGE    12
 #define DHTPIN      4
@@ -98,6 +85,19 @@ const char *appKey = "CB217855A6EB5DB53F022AC82B91A0AD";
 //#define VBATPIN     A0
 //#define LUMINOSITE  A1
 //#define LM35        A2
+#endif
+
+#ifdef DISTRIBUTEUR_2
+/**
+ * @def NB_BACS
+ * @brief Définit le nombre de bacs du distributeur
+ */
+#define NB_BACS     4
+
+#define LEDPIN      4
+#define DHTPIN      7
+#define DHTTYPE     DHT22
+//#define VBATPIN     A0
 #endif
 
 
@@ -150,8 +150,9 @@ void setup()
 
   #ifdef DISTRIBUTEUR_1
   //pinMode(VBATPIN, INPUT);
-  digitalWrite(LEDPIN, LOW);
-  digitalWrite(LED_BUILTIN, LOW);
+  //pinMode(LUMINOSITE, INPUT);
+  //pinMode(LM35, INPUT);
+  digitalWrite(LEDPIN, LOW);  
   #endif
 
   #ifdef DISTRIBUTEUR_2
@@ -159,11 +160,10 @@ void setup()
   #endif
 
   #ifdef DISTRIBUTEUR_2
+  //digitalWrite(LEDROUGE, LOW);
   //pinMode(VBATPIN, INPUT);
-  //pinMode(LUMINOSITE, INPUT);
-  //pinMode(LM35, INPUT);
   digitalWrite(LEDPIN, LOW);
-  digitalWrite(LEDROUGE, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   #endif
   dht.begin();
 
@@ -198,11 +198,11 @@ void loop()
   debugSerial.println("-- SEND");
 
   #ifdef DISTRIBUTEUR_1
-  digitalWrite(LED_BUILTIN, HIGH);
+  digitalWrite(LEDROUGE, HIGH);  
   #endif
 
   #ifdef DISTRIBUTEUR_2
-  digitalWrite(LEDROUGE, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   #endif
 
   // PORT_BACS :
@@ -291,12 +291,12 @@ void loop()
   debugSerial.print(" / ");
   debugSerial.println(totalTrames);
 
-  #ifdef DISTRIBUTEUR_1
-  digitalWrite(LED_BUILTIN, LOW);
+  #ifdef DISTRIBUTEUR_1  
+  digitalWrite(LEDROUGE, LOW);
   #endif
 
   #ifdef DISTRIBUTEUR_2
-  digitalWrite(LEDROUGE, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   #endif
 
   delay(PERIODE);
