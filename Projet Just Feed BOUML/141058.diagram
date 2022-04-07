@@ -1,0 +1,55 @@
+format 224
+
+classinstance 128258 class_ref 128002 // Opérateur
+  name ""   xyz 107 62 2000 life_line_z 2000
+classinstance 133122 class_ref 134530 // Distributeur
+  name ""   xyz 413 61 2000 life_line_z 2000
+durationcanvas 133250 classinstance_ref 128258 // :Opérateur
+  xyzwh 138 133 2010 11 40
+end
+durationcanvas 133378 classinstance_ref 133122 // :Distributeur
+  xyzwh 453 133 2010 11 25
+end
+durationcanvas 133634 classinstance_ref 128258 // :Opérateur
+  xyzwh 138 194 2010 11 40
+end
+durationcanvas 133762 classinstance_ref 133122 // :Distributeur
+  xyzwh 453 194 2010 11 25
+end
+durationcanvas 134018 classinstance_ref 128258 // :Opérateur
+  xyzwh 138 258 2010 11 40
+end
+durationcanvas 134146 classinstance_ref 133122 // :Distributeur
+  xyzwh 453 258 2010 11 25
+end
+durationcanvas 134402 classinstance_ref 128258 // :Opérateur
+  xyzwh 138 323 2010 11 40
+end
+durationcanvas 134530 classinstance_ref 133122 // :Distributeur
+  xyzwh 453 323 2010 11 25
+end
+msg 133506 synchronous
+  from durationcanvas_ref 133250
+  to durationcanvas_ref 133378
+  yz 133 2015 explicitmsg "listerDistributeurs()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 240 118
+msg 133890 asynchronous
+  from durationcanvas_ref 133634
+  to durationcanvas_ref 133762
+  yz 194 2015 explicitmsg "géolocaliserDistributeurs()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 216 179
+msg 134274 asynchronous
+  from durationcanvas_ref 134018
+  to durationcanvas_ref 134146
+  yz 258 2015 explicitmsg "etatDistributeurs()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 247 244
+msg 134658 asynchronous
+  from durationcanvas_ref 134402
+  to durationcanvas_ref 134530
+  yz 323 2015 explicitmsg "planifierIntervention()"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 232 308
+end

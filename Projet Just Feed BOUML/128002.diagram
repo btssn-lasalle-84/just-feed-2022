@@ -1,0 +1,30 @@
+format 224
+
+classcanvas 128002 class_ref 128002 // Opérateur
+  simpleclassdiagramsettings end
+  xyz 136 234 2000
+end
+usecasecanvas 131330 usecase_ref 128258 // Lister les distributeurs
+  xyzwh 352 248 3005 64 32 label_xy 313 280
+end
+usecasecanvas 131458 usecase_ref 128002 // Planifier une intervention
+  xyzwh 603 249 3005 64 32 label_xy 555 281
+end
+usecasecanvas 131586 usecase_ref 128130 // Géolocaliser les distributeurs
+  xyzwh 603 386 3005 64 32 label_xy 541 418
+end
+usecasecanvas 131714 usecase_ref 128386 // Visualiser l'état d'un distributeur
+  xyzwh 602 111 3005 64 32 label_xy 531 143
+end
+simplerelationcanvas 135426 simplerelation_ref 135810
+  from ref 131714 z 3006 stereotype "<<extend>>" xyz 465 194 3000 to ref 131330
+end
+simplerelationcanvas 135938 simplerelation_ref 136066
+  from ref 131586 z 3006 stereotype "<<extend>>" xyz 472 332 3000 to ref 131330
+end
+simplerelationcanvas 136066 simplerelation_ref 142594
+  from ref 131458 z 3006 stereotype "<<extend>>" xyz 469 263 3000 to ref 131330
+end
+line 136322 ----
+  from ref 128002 z 3006 to ref 131330
+end

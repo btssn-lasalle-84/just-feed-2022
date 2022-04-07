@@ -1,0 +1,52 @@
+format 224
+
+classcanvas 128002 class_ref 134530 // Distributeur
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 end
+  xyz 148 261 2000
+end
+classcanvas 128130 class_ref 141058 // StockBac
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 end
+  xyz 458 337 2000
+end
+classcanvas 128258 class_ref 141186 // Produit
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 end
+  xyz 743 335 2000
+end
+classcanvas 128386 class_ref 141314 // Opérateur
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 end
+  xyz 768 589 2000
+end
+classcanvas 128514 class_ref 141442 // Approvisionnement
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 end
+  xyz 415 481 2000
+end
+classcanvas 128642 class_ref 141570 // Intervention
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 end
+  xyz 439 612 2000
+end
+relationcanvas 128770 relation_ref 128002 // <association>
+  from ref 128130 z 2001 to ref 128002
+  no_role_a no_role_b
+  multiplicity_a_pos 352 377 3000 multiplicity_b_pos 426 377 3000
+end
+relationcanvas 128898 relation_ref 128130 // <association>
+  from ref 128130 z 2001 to ref 128258
+  no_role_a no_role_b
+  multiplicity_a_pos 724 375 3000 multiplicity_b_pos 604 376 3000
+end
+relationcanvas 129026 relation_ref 128258 // <association>
+  from ref 128130 z 2001 to ref 128514
+  no_role_a no_role_b
+  multiplicity_a_pos 508 460 3000 multiplicity_b_pos 508 410 3000
+end
+relationcanvas 129154 relation_ref 128386 // <association>
+  from ref 128514 z 2001 to ref 128642
+  no_role_a no_role_b
+  multiplicity_a_pos 508 591 3000 multiplicity_b_pos 508 538 3000
+end
+relationcanvas 129282 relation_ref 128514 // <association>
+  from ref 128642 z 2001 to ref 128386
+  no_role_a no_role_b
+  multiplicity_a_pos 749 645 3000 multiplicity_b_pos 623 644 3000
+end
+end
