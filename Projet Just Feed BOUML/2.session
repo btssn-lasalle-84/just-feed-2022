@@ -1,0 +1,11 @@
+window_sizes 1848 1016 449 1393 843 120
+cleanlooks_style
+show_stereotypes
+open
+  attribute_ref 151042 // quantite
+  class_ref 141186 // Produit
+  class_ref 141314 // Opérateur
+  class_ref 141442 // Approvisionnement
+  class_ref 141570 // Intervention
+end
+end
