@@ -2,5 +2,7 @@ window_sizes 1848 1016 433 1409 843 120
 cleanlooks_style
 show_stereotypes
 selected 
-  package_ref 129 // just-feed.db
+package_ref 129 // just-feed.db
+open
+end
 end

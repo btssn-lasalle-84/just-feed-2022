@@ -7,11 +7,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     basededonnees.cpp \
+    distributeur.cpp \
     main.cpp \
     ihmjustfeed.cpp
 
 HEADERS += \
     basededonnees.h \
+    distributeur.h \
     ihmjustfeed.h
 
 FORMS += \

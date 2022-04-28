@@ -1,7 +1,9 @@
 window_sizes 1848 1016 449 1393 843 120
 cleanlooks_style
 show_stereotypes
+selected classdiagram_ref 134530 // Diagramme de Classes
 open
+  usecaseview_ref 128002 // Vue des Cas d'utilisation
   attribute_ref 151042 // quantite
   class_ref 141186 // Produit
   class_ref 141314 // Opérateur
