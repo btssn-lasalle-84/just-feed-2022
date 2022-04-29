@@ -50,7 +50,7 @@ class IHMJustFeed : public QMainWindow
 
   private:
     Ui::IHMJustFeed* ui; //!< la fenêtre graphique associée à cette classe
-    BaseDeDonnees* BaseDeDonnees; //!< Instance d'un objet BaseDeDonnees
+    BaseDeDonnees* baseDeDonnees; //!< Instance d'un objet BaseDeDonnees
     QStringList nomColonnes; //!< Liste de nom des colonnes
     int nbLignesDistributeurs; //!< nombre de lignes
     QVector<QStringList> distributeurs; //!< Les distributeurs
@@ -58,13 +58,15 @@ class IHMJustFeed : public QMainWindow
 
     /**
      * @enum Page
-     * @brief Définit les différentes fenêtres de l'IHM
+     * @brief Définit les différentes pages de l'IHM
      *
      */
     enum Page
     {
-        Page1 = 0,
-        Page2,
+        Accueil = 0,
+        Distributeur,
+        Intervention,
+        Geolocalisation,
         NbPages
     };
 
@@ -74,22 +76,23 @@ class IHMJustFeed : public QMainWindow
      */
     enum ColonneDistributeur
     {
-        COLONNE_DISTRIBUTEUR_NOM //!< Emplacement du nom
+        COLONNE_DISTRIBUTEUR_NOM, //!< Emplacement du nom
         NB_COLONNES
     };
 
     void initialiser();
     void gererEvenements();
-    void ajouterMenuAide();
 
   public slots:
     void chargerDistributeurs();
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
     void selectionner(QModelIndex index);
-    void afficherPage(IHMJUSTFEED_H::Page page);
-    void afficherPagePrincipale();
-    void afficherAPropos();
+    void afficherPage(Page page);
+    void afficherPageAccueil();
+    void afficherPageEtatDistributeur();
+    void afficherPageInterventionDistributeur();
+    void afficherPageGeolocalisationDistributeur();
 };
 
 #endif // IHMJUSTFEED_H

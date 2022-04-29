@@ -14,6 +14,9 @@
    <string>JustFeed 2022</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(233, 185, 110);</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>0</number>
@@ -83,9 +86,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>211</red>
-              <green>215</green>
-              <blue>207</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
@@ -155,18 +158,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>211</red>
-              <green>215</green>
-              <blue>207</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
@@ -229,9 +232,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>211</red>
-              <green>215</green>
-              <blue>207</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
@@ -301,18 +304,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>211</red>
-              <green>215</green>
-              <blue>207</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
@@ -375,9 +378,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>211</red>
-              <green>215</green>
-              <blue>207</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
@@ -447,18 +450,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>211</red>
-              <green>215</green>
-              <blue>207</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>211</red>
-              <green>215</green>
-              <blue>207</blue>
+              <red>239</red>
+              <green>41</green>
+              <blue>41</blue>
              </color>
             </brush>
            </colorrole>
@@ -521,7 +524,7 @@
      </layout>
     </item>
     <item>
-     <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="QStackedWidget" name="pages">
       <property name="palette">
        <palette>
         <active>
@@ -537,9 +540,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>143</red>
-            <green>89</green>
-            <blue>2</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
@@ -609,18 +612,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>143</red>
-            <green>89</green>
-            <blue>2</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
@@ -683,9 +686,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>143</red>
-            <green>89</green>
-            <blue>2</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
@@ -755,18 +758,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>143</red>
-            <green>89</green>
-            <blue>2</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
@@ -829,9 +832,9 @@
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>143</red>
-            <green>89</green>
-            <blue>2</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
@@ -901,18 +904,18 @@
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>143</red>
-            <green>89</green>
-            <blue>2</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>143</red>
-            <green>89</green>
-            <blue>2</blue>
+            <red>233</red>
+            <green>185</green>
+            <blue>110</blue>
            </color>
           </brush>
          </colorrole>
@@ -964,8 +967,13 @@
         </disabled>
        </palette>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(143, 89, 2);</string>
+       <string notr="true">background-color: rgb(233, 185, 110);</string>
       </property>
       <property name="currentIndex">
        <number>0</number>
@@ -988,13 +996,114 @@
          </widget>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayoutTitrePage_1">
+          <property name="bottomMargin">
+           <number>50</number>
+          </property>
+          <item>
+           <widget class="QComboBox" name="comboBoxDistributeurs"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonEtat">
+            <property name="text">
+             <string>État</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonIntervention">
+            <property name="text">
+             <string>Intervention</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonGeolocalisation">
+            <property name="text">
+             <string>Géolocalisation</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
          <widget class="QTableView" name="tableViewDistributeurs"/>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pageDistributeur"/>
-      <widget class="QWidget" name="pageIntervention"/>
-      <widget class="QWidget" name="pageGeolocalisation"/>
+      <widget class="QWidget" name="pageDistributeur">
+       <widget class="QLabel" name="labelEtatDistributeur">
+        <property name="geometry">
+         <rect>
+          <x>411</x>
+          <y>9</y>
+          <width>192</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>État du distributeur</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageIntervention">
+       <widget class="QLabel" name="labelPlanificationIntervention">
+        <property name="geometry">
+         <rect>
+          <x>371</x>
+          <y>9</y>
+          <width>272</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Planification des interventions</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageGeolocalisation">
+       <widget class="QLabel" name="labelGeolocalisationDistributeur">
+        <property name="geometry">
+         <rect>
+          <x>363</x>
+          <y>9</y>
+          <width>290</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Géolocalisation</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
