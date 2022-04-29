@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS Approvisionnement(
     idIntervention INTEGER NOT NULL,
     idStockDistributeur INTEGER NOT NULL,
     dateApprovisionnement DATE NOT NULL,
-    effetue INTEGER DEFAULT 0,
+    effectue INTEGER DEFAULT 0,
     CONSTRAINT Approvisionnement_fk_1 FOREIGN KEY (idIntervention) REFERENCES Intervention(idIntervention) ON DELETE CASCADE,
     CONSTRAINT Approvisionnement_fk_2 FOREIGN KEY (idStockDistributeur) REFERENCES StockDistributeur(idStockDistributeur) ON DELETE CASCADE
 );

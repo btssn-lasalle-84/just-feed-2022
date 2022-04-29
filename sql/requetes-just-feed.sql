@@ -66,17 +66,30 @@ SELECT COUNT(*) AS NbDistributeurs FROM Distributeur;
 
 -- Contenu détaillé d'un distributeur
 
-SELECT Distributeur.libelle,Distributeur.ville,Distributeur.deviceID,ServeurTTN.applicationID,Produit.designation,NiveauApprovisionnement.libelle FROM StockDistributeur
+SELECT Distributeur.libelle,Distributeur.ville,Distributeur.deviceID,ServeurTTN.applicationID,Produit.designation,NiveauApprovisionnement.libelle,StockDistributeur.rangee,StockDistributeur.quantiteMax FROM StockDistributeur
 INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur
 INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit
 INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement
 INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN
 WHERE StockDistributeur.idDistributeur='1';
 
-|libelle|ville|deviceID|applicationID|designation|libelle|
-|---|---|---|---|---|---|
-|CAFE_LASALLE_1|Avignon|distributeur_1|just_feed|Lavazza Qualita Oro|plein|
-|CAFE_LASALLE_1|Avignon|distributeur_1|just_feed|Lucaffé Classic|presque vide|
+SELECT Distributeur.libelle,Distributeur.description,Distributeur.ville,Distributeur.deviceID,Produit.designation,NiveauApprovisionnement.libelle,StockDistributeur.rangee,StockDistributeur.quantiteMax FROM StockDistributeur
+INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur
+INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit
+INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement
+INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN
+WHERE StockDistributeur.idDistributeur='3';
+
+Résultats :
+
+Place Centrale	Distributeur de riz	Orange	distributeur_3	Riz Long Parfumé Dragon	presque vide	1	2500
+Place Centrale	Distributeur de riz	Orange	distributeur_3	Riz Long Basmati		presque vide	2	2500
+
+SELECT StockDistributeur.quantiteMax, StockDistributeur.rangee, Distributeur.libelle, Distributeur.nbRangees, Produit.designation, NiveauApprovisionnement.libelle FROM StockDistributeur
+INNER JOIN Distributeur ON Distributeur.idDistributeur = StockDistributeur.idDistributeur
+INNER JOIN Produit ON Produit.idProduit = StockDistributeur.idProduit
+INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement = StockDistributeur.idNiveauApprovisionnement
+WHERE idStockDistributeur=3;
 
 -- Une intervention
 
