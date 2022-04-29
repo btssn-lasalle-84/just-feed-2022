@@ -21,7 +21,8 @@
  * fenêtre principale de l'application
  */
 IHMJustFeed::IHMJustFeed(QWidget* parent) :
-    QMainWindow(parent), ui(new Ui::IHMJustFeed), nbLignesDistributeurs(0)
+    QMainWindow(parent), ui(new Ui::IHMJustFeed), nbLignesDistributeurs(0),
+    numeroDistributeurSelectionne(-1)
 {
     ui->setupUi(this);
     qDebug() << Q_FUNC_INFO;
@@ -56,23 +57,23 @@ IHMJustFeed::~IHMJustFeed()
  */
 void IHMJustFeed::initialiser()
 {
-    ui->statusbar->showMessage(QString::fromUtf8(NOM_APPLICATION) + " " +
-                               QString::fromUtf8(VERSION_APPLICATION));
+    ui->labelTitreProjet->setText(QString::fromUtf8(NOM_APPLICATION) + " v" +
+                                  QString::fromUtf8(VERSION_APPLICATION));
 
-    //Initialise le QTableView
+    // Initialise le QTableView
     nomColonnes << "Nom";
     modeleDistributeur = new QStandardItemModel(0, nomColonnes.size());
     modeleDistributeur->setHorizontalHeaderLabels(nomColonnes);
     ui->tableViewDistributeurs->setEditTriggers(
-                QAbstractItemView::NoEditTriggers);
+      QAbstractItemView::NoEditTriggers);
 
     // Redimensionner automatiquement la colonne pour occuper l'espace
     // disponible
     ui->tableViewDistributeurs->horizontalHeader()->setSectionResizeMode(
-                QHeaderView::Stretch);
+      QHeaderView::Stretch);
     nbLignesDistributeurs = modeleDistributeur->rowCount();
 
-    afficherPage(Page::Accueil);
+    afficherPageAccueil();
 }
 
 /**
@@ -98,6 +99,14 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(clicked(bool)),
             this,
             SLOT(afficherPageGeolocalisationDistributeur()));
+    connect(ui->comboBoxDistributeurs,
+            SIGNAL(currentIndexChanged(int)),
+            this,
+            SLOT(selectionnerDistributeur(int)));
+    connect(ui->tableViewDistributeurs,
+            SIGNAL(clicked(QModelIndex)),
+            this,
+            SLOT(selectionner(QModelIndex)));
 }
 
 /**
@@ -109,30 +118,31 @@ void IHMJustFeed::chargerDistributeurs()
 {
     effacerTableDistributeurs();
 
-    //Exemple avec une base de donnée SQLite
+    // Exemple avec une base de donnée SQLite
     QString requete = "SELECT * FROM Distributeur";
-    bool retour;
+    bool    retour;
 
     retour = baseDeDonnees->recuperer(requete, distributeurs);
     qDebug() << Q_FUNC_INFO << retour;
     qDebug() << Q_FUNC_INFO << distributeurs;
     ui->comboBoxDistributeurs->clear();
     ui->comboBoxDistributeurs->addItem("");
-    //ui->pushButtonEtat->setEnabled(false);
-    //ui->pushButtonIntervention->setEnabled(false);
-    //ui->pushButtonGeolocalisation->setEnabled(false);
+    // ui->pushButtonEtat->setEnabled(false);
+    // ui->pushButtonIntervention->setEnabled(false);
+    // ui->pushButtonGeolocalisation->setEnabled(false);
     for(int i = 0; i < distributeurs.size(); ++i)
     {
-        ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(Distributeur::ChampDistributeur::CHAMP_libelle));
+        ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(
+          Distributeur::ChampDistributeur::CHAMP_libelle));
         afficherDistributeurTable(distributeurs.at(i));
     }
 }
 
 /**
-  * @brief Efface le QTableView
-  *
-  * @fn IHMJustFeed::effacerTableDistributeurs
-  */
+ * @brief Efface le QTableView
+ *
+ * @fn IHMJustFeed::effacerTableDistributeurs
+ */
 void IHMJustFeed::effacerTableDistributeurs()
 {
     qDebug() << Q_FUNC_INFO;
@@ -153,10 +163,10 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
     qDebug() << Q_FUNC_INFO << distributeur;
 
     // Crée les items pour les cellules d'une ligne
-    QStandardItem* nom =
-       new QStandardItem(distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    QStandardItem* nom = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
 
-    //Ajoute les items dans le modèle de données
+    // Ajoute les items dans le modèle de données
     modeleDistributeur->setItem(nbLignesDistributeurs,
                                 IHMJustFeed::COLONNE_DISTRIBUTEUR_NOM,
                                 nom);
@@ -166,7 +176,8 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
     texte.setBold(true);
     for(int i = 0; i < nomColonnes.size(); ++i)
     {
-        QStandardItem* item = modeleDistributeur->item(nbLignesDistributeurs, i);
+        QStandardItem* item =
+          modeleDistributeur->item(nbLignesDistributeurs, i);
         item->setBackground(QColor(225, 223, 0));
         item->setFont(texte);
     }
@@ -175,13 +186,13 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
 
     nbLignesDistributeurs += 1;
 
-    //Configure l'affichage du QTableView
+    // Configure l'affichage du QTableView
     ui->tableViewDistributeurs->setSizePolicy(QSizePolicy::Minimum,
                                               QSizePolicy::Minimum);
     ui->tableViewDistributeurs->setVerticalScrollBarPolicy(
-                Qt::ScrollBarAlwaysOff);
+      Qt::ScrollBarAlwaysOff);
     ui->tableViewDistributeurs->setHorizontalScrollBarPolicy(
-                Qt::ScrollBarAlwaysOff);
+      Qt::ScrollBarAlwaysOff);
     // ui->tableViewDistributeurs->resizeColumnsToContents();
 
     ui->tableViewDistributeurs->setMinimumWidth(ui->centralwidget->width());
@@ -204,19 +215,31 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
  */
 void IHMJustFeed::selectionner(QModelIndex index)
 {
-    qDebug() << Q_FUNC_INFO << index.row(); // le numéro de ligne
-       qDebug() << Q_FUNC_INFO
-                << index.data().toString(); // le contenu de la cellule
-       qDebug() << Q_FUNC_INFO
-                << modeleDistributeur->item(index.row(), 0)->text(); //
-       qDebug() << Q_FUNC_INFO << distributeurs.at(index.row());
+    qDebug() << Q_FUNC_INFO << "numéro de distributeur"
+             << index.row(); // le numéro de ligne dans la table
+    qDebug() << Q_FUNC_INFO << "distributeur" << distributeurs.at(index.row());
 
-       //Insère les données d'un distributeur à afficher
-       /*ui->nomDistributeur->setText(
-             distributeurs.at(index.row()).at(Distributeur::TABLE_DISTRIBUTEUR_NOM));*/
+    ui->comboBoxDistributeurs->setCurrentIndex(index.row() + 1);
+}
 
-       //Affiche la page associé
-       afficherPage(Page::Distributeur);
+void IHMJustFeed::selectionnerDistributeur(int index)
+{
+    qDebug() << Q_FUNC_INFO << "numéro de distributeur"
+             << index; // le numéro dans la liste déroulante
+    if(index == 0)
+    {
+        numeroDistributeurSelectionne = -1;
+        ui->pushButtonEtat->setEnabled(false);
+        ui->pushButtonIntervention->setEnabled(false);
+        ui->pushButtonGeolocalisation->setEnabled(false);
+    }
+    else
+    {
+        numeroDistributeurSelectionne = index - 1;
+        ui->pushButtonEtat->setEnabled(true);
+        ui->pushButtonIntervention->setEnabled(true);
+        ui->pushButtonGeolocalisation->setEnabled(true);
+    }
 }
 
 /**
@@ -229,7 +252,7 @@ void IHMJustFeed::selectionner(QModelIndex index)
 void IHMJustFeed::afficherPage(Page page)
 {
     qDebug() << Q_FUNC_INFO << "page" << page;
-       ui->pages->setCurrentIndex(page);
+    ui->pages->setCurrentIndex(page);
 }
 
 /**
@@ -239,20 +262,30 @@ void IHMJustFeed::afficherPage(Page page)
  */
 void IHMJustFeed::afficherPageAccueil()
 {
+    ui->pushButtonRetour->hide();
     afficherPage(Page::Accueil);
 }
 
 void IHMJustFeed::afficherPageEtatDistributeur()
 {
+    qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
+             << numeroDistributeurSelectionne;
+    // Insère les données du distributeur sélectionné
+    ui->labelNomDistributeur->setText(
+      distributeurs.at(numeroDistributeurSelectionne)
+        .at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    ui->pushButtonRetour->show();
     afficherPage(Page::Distributeur);
 }
 
 void IHMJustFeed::afficherPageInterventionDistributeur()
 {
+    ui->pushButtonRetour->show();
     afficherPage(Page::Intervention);
 }
 
 void IHMJustFeed::afficherPageGeolocalisationDistributeur()
 {
+    ui->pushButtonRetour->show();
     afficherPage(Page::Geolocalisation);
 }

@@ -50,11 +50,12 @@ class IHMJustFeed : public QMainWindow
 
   private:
     Ui::IHMJustFeed* ui; //!< la fenêtre graphique associée à cette classe
-    BaseDeDonnees* baseDeDonnees; //!< Instance d'un objet BaseDeDonnees
-    QStringList nomColonnes; //!< Liste de nom des colonnes
-    int nbLignesDistributeurs; //!< nombre de lignes
-    QVector<QStringList> distributeurs; //!< Les distributeurs
-    QStandardItemModel* modeleDistributeur; //!< Modèle pourle QTableView
+    BaseDeDonnees*   baseDeDonnees; //!< Instance d'un objet BaseDeDonnees
+    QStringList      nomColonnes;   //!< Liste de nom des colonnes
+    int              nbLignesDistributeurs;  //!< nombre de lignes
+    QVector<QStringList> distributeurs;      //!< Les distributeurs
+    QStandardItemModel*  modeleDistributeur; //!< Modèle pourle QTableView
+    int                  numeroDistributeurSelectionne; //!<
 
     /**
      * @enum Page
@@ -88,6 +89,7 @@ class IHMJustFeed : public QMainWindow
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
     void selectionner(QModelIndex index);
+    void selectionnerDistributeur(int index);
     void afficherPage(Page page);
     void afficherPageAccueil();
     void afficherPageEtatDistributeur();
