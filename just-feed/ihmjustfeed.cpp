@@ -60,7 +60,9 @@ void IHMJustFeed::initialiser()
                                QString::fromUtf8(VERSION_APPLICATION));
 
     //Initialise le QTableView
-    nomColonnes << "Nom";
+    nomColonnes << "Nom"
+                << "Ville"
+                << "Code Postal";
     modeleDistributeur = new QStandardItemModel(0, nomColonnes.size());
     modeleDistributeur->setHorizontalHeaderLabels(nomColonnes);
     ui->tableViewDistributeurs->setEditTriggers(
@@ -110,7 +112,12 @@ void IHMJustFeed::chargerDistributeurs()
     effacerTableDistributeurs();
 
     //Exemple avec une base de donnée SQLite
-    QString requete = "SELECT * FROM Distributeur";
+    //QString requete = "SELECT * FROM Distributeur";
+    QString requete = "SELECT Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur.quantite,StockDistributeur.quantiteMax FROM StockDistributeur "
+            "INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur "
+            "INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit "
+            "INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement "
+            "INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
     bool retour;
 
     retour = baseDeDonnees->recuperer(requete, distributeurs);
@@ -125,6 +132,7 @@ void IHMJustFeed::chargerDistributeurs()
     {
         ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(Distributeur::ChampDistributeur::CHAMP_libelle));
         afficherDistributeurTable(distributeurs.at(i));
+        afficherEtatDistributeur(distributeurs.at(i));
     }
 }
 
@@ -143,7 +151,7 @@ void IHMJustFeed::effacerTableDistributeurs()
 }
 
 /**
- * @brief Affiche un utilisateur dans le QTableView
+ * @brief Affiche un distributeur dans le QTableView
  *
  * @fn IHMJustFeed::afficherDistributeurTable
  * @param distributeur Lesinformations sur un utilisateur
@@ -155,11 +163,21 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
     // Crée les items pour les cellules d'une ligne
     QStandardItem* nom =
        new QStandardItem(distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    QStandardItem* ville =
+       new QStandardItem(distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
+    QStandardItem* codePostal =
+       new QStandardItem(distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal));
 
     //Ajoute les items dans le modèle de données
     modeleDistributeur->setItem(nbLignesDistributeurs,
                                 IHMJustFeed::COLONNE_DISTRIBUTEUR_NOM,
                                 nom);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_VILLE,
+                                ville);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_CODEPOSTAL,
+                                codePostal);
     // Exemple de personnalisation de l'affichage d'une ligne
     QFont texte;
     // texte.setPointSize(12);
@@ -194,6 +212,28 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
     ui->tableViewDistributeurs->setFixedHeight(
       ui->tableViewDistributeurs->verticalHeader()->length() +
       ui->tableViewDistributeurs->horizontalHeader()->height());
+}
+
+void IHMJustFeed::afficherEtatDistributeur(QStringList distributeur)
+{
+    qDebug() << Q_FUNC_INFO << distributeur;
+    // ("1",                  "1",                  "LASALLE",      "Distributeur de céréales", "9 Rue Notre Dame des 7 douleurs",
+    //  "Avignon",  "84000",            "2022-01-08",           "4.8139952",    "43.9484858",   "distributeur_1", "2")
+    //  CHAMP_idDistributeur, CHAMP_idServeurTTN,   CHAMP_libelle,  CHAMP_description,          CHAMP_adresse,
+    //  CHAMP_ville,CHAMP_codepostal,   CHAMP_dateMiseEnService,CHAMP_longitude,CHAMP_latitude, CHAMP_deviceID,   CHAMP_nbRangees,
+    ui->labelNom->setText(distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    ui->labelAdresse->setText(distributeur.at(Distributeur::ChampDistributeur::CHAMP_adresse));
+    ui->labelVille->setText(distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal) + QString(" ") + distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
+    if(distributeur.at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
+    {
+        ui->progressBarRemplissageBac1->setValue((distributeur.at(Distributeur::ChampDistributeur::CHAMP_quantite).toDouble()/distributeur.at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
+        ui->labelNomProduitBac1->setText(QString("Bac 1 : ") + distributeur.at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+    }
+    else if(distributeur.at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
+    {
+        //ui->progressBarRemplissageBac2->setValue();
+        //ui->labelNomProduitBac2->setText();
+    }
 }
 
 /**

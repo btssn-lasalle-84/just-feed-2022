@@ -77,6 +77,8 @@ class IHMJustFeed : public QMainWindow
     enum ColonneDistributeur
     {
         COLONNE_DISTRIBUTEUR_NOM, //!< Emplacement du nom
+        COLONNE_DISTRIBUTEUR_VILLE, //!< Emplacement de la ville
+        COLONNE_DISTRIBUTEUR_CODEPOSTAL, //!< Emplacement du code postal
         NB_COLONNES
     };
 
@@ -87,6 +89,7 @@ class IHMJustFeed : public QMainWindow
     void chargerDistributeurs();
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
+    void afficherEtatDistributeur(QStringList distributeur);
     void selectionner(QModelIndex index);
     void afficherPage(Page page);
     void afficherPageAccueil();

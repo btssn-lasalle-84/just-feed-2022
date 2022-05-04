@@ -86,9 +86,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
@@ -158,18 +158,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
@@ -232,9 +232,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
@@ -304,18 +304,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
@@ -378,9 +378,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
@@ -450,18 +450,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>239</red>
-              <green>41</green>
-              <blue>41</blue>
+              <red>186</red>
+              <green>189</green>
+              <blue>182</blue>
              </color>
             </brush>
            </colorrole>
@@ -514,7 +514,7 @@
          </palette>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(239, 41, 41);</string>
+         <string notr="true">background-color: rgb(186, 189, 182)</string>
         </property>
         <property name="text">
          <string>Retour</string>
@@ -976,7 +976,7 @@
        <string notr="true">background-color: rgb(233, 185, 110);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageAccueil">
        <property name="styleSheet">
@@ -988,6 +988,8 @@
           <property name="font">
            <font>
             <pointsize>14</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
            </font>
           </property>
           <property name="text">
@@ -1045,24 +1047,416 @@
        </layout>
       </widget>
       <widget class="QWidget" name="pageDistributeur">
-       <widget class="QLabel" name="labelEtatDistributeur">
-        <property name="geometry">
-         <rect>
-          <x>411</x>
-          <y>9</y>
-          <width>192</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>État du distributeur</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayoutInformationsDistributeur">
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelEtatDistributeur">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>État du distributeur</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="lineTitre">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelNom">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>CARREFOUR</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelAdresse">
+            <property name="text">
+             <string>23 Rue de la République</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelVille">
+            <property name="text">
+             <string>84000 AVIGNON</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="lineDistributeur">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayoutRemplissage">
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="labelTitreRemplissage">
+                <property name="font">
+                 <font>
+                  <pointsize>-1</pointsize>
+                  <weight>11</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 90 &quot;Ubuntu Condensed&quot;;
+font-size: 20px;</string>
+                </property>
+                <property name="text">
+                 <string>Remplissage</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayoutNiveauxRemplissage">
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayoutRemplissageBac1">
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QProgressBar" name="progressBarRemplissageBac1">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>50</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::LeftToRight</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QProgressBar::chunk:horizontal {
+
+};</string>
+                    </property>
+                    <property name="maximum">
+                     <number>100</number>
+                    </property>
+                    <property name="value">
+                     <number>40</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="invertedAppearance">
+                     <bool>false</bool>
+                    </property>
+                    <property name="textDirection">
+                     <enum>QProgressBar::TopToBottom</enum>
+                    </property>
+                    <property name="format">
+                     <string>%p%</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelNomProduitBac1">
+                    <property name="text">
+                     <string>Bac 1 : Riz</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayoutRemplissageBac2">
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QProgressBar" name="progressBarRemplissageBac2">
+                    <property name="minimumSize">
+                     <size>
+                      <width>50</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QProgressBar::chunk:horizontal {
+
+};</string>
+                    </property>
+                    <property name="value">
+                     <number>80</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                    </property>
+                    <property name="textVisible">
+                     <bool>true</bool>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelNomProduitBac2">
+                    <property name="text">
+                     <string>Bac 2 : Pâtes</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="Line" name="lineNiveaux">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayoutHygrometrie">
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="labelTitreHygrometrie">
+                <property name="styleSheet">
+                 <string notr="true">font: 90 &quot;Ubuntu Condensed&quot;;
+font-size: 20px;</string>
+                </property>
+                <property name="text">
+                 <string>Hygrométrie</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayoutNiveauHygrometrie">
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayoutBac1" stretch="0,0">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QProgressBar" name="progressBarBac1_2">
+                    <property name="minimumSize">
+                     <size>
+                      <width>50</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QProgressBar::chunk:horizontal {
+
+};</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelNomProduitBac1_2">
+                    <property name="text">
+                     <string>Bac 1 : Riz</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayoutBac2">
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QProgressBar" name="progressBarBac2_2">
+                    <property name="minimumSize">
+                     <size>
+                      <width>50</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QProgressBar::chunk:horizontal {
+
+};</string>
+                    </property>
+                    <property name="value">
+                     <number>95</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelNomProduitBac2_2">
+                    <property name="text">
+                     <string>Bac 2 : Pâtes</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="pageIntervention">
        <widget class="QLabel" name="labelPlanificationIntervention">
@@ -1070,13 +1464,15 @@
          <rect>
           <x>371</x>
           <y>9</y>
-          <width>272</width>
+          <width>291</width>
           <height>22</height>
          </rect>
         </property>
         <property name="font">
          <font>
           <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -1090,13 +1486,15 @@
          <rect>
           <x>363</x>
           <y>9</y>
-          <width>290</width>
+          <width>151</width>
           <height>22</height>
          </rect>
         </property>
         <property name="font">
          <font>
           <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="text">

@@ -29,7 +29,12 @@ class Distributeur
             CHAMP_longitude,
             CHAMP_latitude,
             CHAMP_deviceID,
-            CHAMP_nbRangees,
+            CHAMP_nbBacs,
+            CHAMP_designationProduit,
+            CHAMP_niveauApprovisionnement,
+            CHAMP_numeroBac,
+            CHAMP_quantite,
+            CHAMP_quantiteMax,
             NB_CHAMPS_DISTRIBUTEUR
         };
 };
