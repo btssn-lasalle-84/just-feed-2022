@@ -20,7 +20,7 @@ WHERE idNiveauApprovisionnement >= '0';
 
 
 
-|idDistributeur|idServeurTTN|libelle|description|adresse|ville|codepostal|dateMiseEnService|longitude|latitude|deviceID|nbRangees|
+|idDistributeur|idServeurTTN|libelle|description|adresse|ville|codepostal|dateMiseEnService|longitude|latitude|deviceID|nbBacs|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |1|1|CAFE_LASALLE_1|Distributeur de cafés en grains|9 Rue Notre Dame des 7 douleurs|Avignon|84000|2022-01-08|4.8139952|43.9484858|distributeur_1|2|
 |2|1|CAFE_STJO_1|Distributeur de cafés en grains|105 Rue Duplessis|Carpentras|84200|2022-01-09|5.0452813|44.0521754|distributeur_2|2|
@@ -66,14 +66,14 @@ SELECT COUNT(*) AS NbDistributeurs FROM Distributeur;
 
 -- Contenu détaillé d'un distributeur
 
-SELECT Distributeur.libelle,Distributeur.ville,Distributeur.deviceID,ServeurTTN.applicationID,Produit.designation,NiveauApprovisionnement.libelle,StockDistributeur.rangee,StockDistributeur.quantiteMax FROM StockDistributeur
+SELECT Distributeur.libelle,Distributeur.ville,Distributeur.deviceID,ServeurTTN.applicationID,Produit.designation,NiveauApprovisionnement.libelle,StockDistributeur.numeroBac,StockDistributeur.quantiteMax FROM StockDistributeur
 INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur
 INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit
 INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement
 INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN
 WHERE StockDistributeur.idDistributeur='1';
 
-SELECT Distributeur.libelle,Distributeur.description,Distributeur.ville,Distributeur.deviceID,Produit.designation,NiveauApprovisionnement.libelle,StockDistributeur.rangee,StockDistributeur.quantiteMax FROM StockDistributeur
+SELECT Distributeur.libelle,Distributeur.description,Distributeur.ville,Distributeur.deviceID,Produit.designation,NiveauApprovisionnement.libelle,StockDistributeur.numeroBac,StockDistributeur.quantiteMax FROM StockDistributeur
 INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur
 INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit
 INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement
@@ -85,7 +85,24 @@ Résultats :
 Place Centrale	Distributeur de riz	Orange	distributeur_3	Riz Long Parfumé Dragon	presque vide	1	2500
 Place Centrale	Distributeur de riz	Orange	distributeur_3	Riz Long Basmati		presque vide	2	2500
 
-SELECT StockDistributeur.quantiteMax, StockDistributeur.rangee, Distributeur.libelle, Distributeur.nbRangees, Produit.designation, NiveauApprovisionnement.libelle FROM StockDistributeur
+--------------------------------
+
+SELECT Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur.quantite,StockDistributeur.quantiteMax FROM StockDistributeur
+INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur
+INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit
+INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement
+INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;
+
+1	1	Grand Frais Orange	Distributeur de céréales	Zone du Coudoulet Rond point du Péage Sud	Orange	84100	2022-01-08	4.86741	44.12331	distributeur_1	2	Lion	plein	1	2000	2000
+1	1	Grand Frais Orange	Distributeur de céréales	Zone du Coudoulet Rond point du Péage Sud	Orange	84100	2022-01-08	4.86741	44.12331	distributeur_1	2	Cookie Crisp	presque vide	2	200	2000
+2	1	Carrefour	Distributeur de pâtes	390 Rue Jean Marie Tjibaou	Avignon	84000	2022-01-09	4.79247	43.92844	distributeur_2	2	Panzani Farfalle	plein	1	2900	3000
+2	1	Carrefour	Distributeur de pâtes	390 Rue Jean Marie Tjibaou	Avignon	84000	2022-01-09	4.79247	43.92844	distributeur_2	2	Panzani Marcaroni	plein	2	2500	3000
+3	1	Cosy Primers	Distributeur de riz	292 Route de Boulbon	Barbentane	13570	2022-01-10	4.75279	43.90265	distributeur_3	2	Riz Long Parfumé Dragon	presque vide	1	100	2500
+3	1	Cosy Primers	Distributeur de riz	292 Route de Boulbon	Barbentane	13570	2022-01-10	4.75279	43.90265	distributeur_3	2	Riz Long Basmati	presque vide	2	500	2500
+
+--------------------------------
+
+SELECT StockDistributeur.quantiteMax, StockDistributeur.numeroBac, Distributeur.libelle, Distributeur.nbBacs, Produit.designation, NiveauApprovisionnement.libelle FROM StockDistributeur
 INNER JOIN Distributeur ON Distributeur.idDistributeur = StockDistributeur.idDistributeur
 INNER JOIN Produit ON Produit.idProduit = StockDistributeur.idProduit
 INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement = StockDistributeur.idNiveauApprovisionnement

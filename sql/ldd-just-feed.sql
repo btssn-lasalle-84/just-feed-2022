@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS Distributeur(
     longitude VARCHAR,
     latitude VARCHAR,
     deviceID VARCHAR NOT NULL,
-    nbRangees INTEGER NOT NULL DEFAULT 2,
+    nbBacs INTEGER NOT NULL DEFAULT 2,
     UNIQUE (deviceID),
     CONSTRAINT Distributeur_fk_1 FOREIGN KEY (idServeurTTN) REFERENCES ServeurTTN(idServeurTTN) ON DELETE CASCADE
 );
@@ -74,9 +74,10 @@ CREATE TABLE IF NOT EXISTS StockDistributeur (
   idDistributeur INTEGER NOT NULL,
   idProduit INTEGER NOT NULL,
   idNiveauApprovisionnement INTEGER NOT NULL,
+  quantite INTEGER DEFAULT 0,
   quantiteMax INTEGER DEFAULT 0,
-  rangee INTEGER NOT NULL,
-  CONSTRAINT Unique_Rangee UNIQUE (idDistributeur,rangee),
+  numeroBac INTEGER NOT NULL,
+  CONSTRAINT Unique_Bac UNIQUE (idDistributeur,numeroBac),
   CONSTRAINT Stock_fk_1 FOREIGN KEY (idDistributeur) REFERENCES Distributeur(idDistributeur) ON DELETE CASCADE,
   CONSTRAINT Stock_fk_2 FOREIGN KEY (idProduit) REFERENCES Produit(idProduit) ON DELETE CASCADE
 );

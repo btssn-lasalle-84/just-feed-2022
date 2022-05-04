@@ -13,9 +13,9 @@ INSERT INTO Technicien(nom,prenom,identifiant,email) VALUES('BEAUMONT','Jérôme
 
 -- Table Distributeur
 
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,nbRangees) VALUES(1,'Grand Frais Orange','Distributeur de céréales','Zone du Coudoulet Rond point du Péage Sud','Orange', '84100','2022-01-08','4.8489084','44.1116183','distributeur_1',2);
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,nbRangees) VALUES(1,'Carrefour Avignon','Distributeur de pâtes','390 Rue Jean Marie Tjibaou','Avignon', '84000','2022-01-09','2.172825','45.8838011','distributeur_2',2);
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,nbRangees) VALUES(1,'Place Centrale','Distributeur de riz','Rue du Charles Pascal','Orange', '84100','2022-01-10','4.810775','44.128586','distributeur_3',2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,nbBacs) VALUES(1,'Grand Frais Orange','Distributeur de céréales','Zone du Coudoulet Rond point du Péage Sud','Orange', '84100','2022-01-08','4.86741','44.12331','distributeur_1',2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,nbBacs) VALUES(1,'Carrefour','Distributeur de pâtes','390 Rue Jean Marie Tjibaou','Avignon', '84000','2022-01-09','4.79247','43.92844','distributeur_2',2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,nbBacs) VALUES(1,'Cosy Primers','Distributeur de riz','292 Route de Boulbon','Barbentane', '13570','2022-01-10','4.75279','43.90265','distributeur_3',2);
 
 -- Table Produit
 
@@ -39,12 +39,12 @@ INSERT INTO NiveauApprovisionnement(idNiveauApprovisionnement,libelle) VALUES
 
 -- Table StockDistributeur
 
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantiteMax,rangee) VALUES(1,8,2,2000,1);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantiteMax,rangee) VALUES(1,7,1,2000,2);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantiteMax,rangee) VALUES(2,1,2,3000,1);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantiteMax,rangee) VALUES(2,2,2,3000,2);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantiteMax,rangee) VALUES(3,4,1,2500,1);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantiteMax,rangee) VALUES(3,6,1,2500,2);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(1,8,2,2000,2000,1);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(1,7,1,200,2000,2);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(2,1,2,2900,3000,1);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(2,2,2,2500,3000,2);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(3,4,1,100,2500,1);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(3,6,1,500,2500,2);
 
 -- Table Intervention
 
