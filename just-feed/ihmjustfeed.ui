@@ -1228,7 +1228,19 @@ font-size: 20px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelNomProduitBac1">
+                   <widget class="QLabel" name="labelNomProduitRemplissageBac1">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
                     <property name="text">
                      <string>Bac 1 : Riz</string>
                     </property>
@@ -1275,7 +1287,7 @@ font-size: 20px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelNomProduitBac2">
+                   <widget class="QLabel" name="labelNomProduitRemplissageBac2">
                     <property name="text">
                      <string>Bac 2 : Pâtes</string>
                     </property>
@@ -1362,7 +1374,7 @@ font-size: 20px;</string>
                    <number>0</number>
                   </property>
                   <item alignment="Qt::AlignHCenter">
-                   <widget class="QProgressBar" name="progressBarBac1_2">
+                   <widget class="QProgressBar" name="progressBarHygrometrieBac1">
                     <property name="minimumSize">
                      <size>
                       <width>50</width>
@@ -1386,7 +1398,7 @@ font-size: 20px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelNomProduitBac1_2">
+                   <widget class="QLabel" name="labelNomProduitHygrometrieBac1">
                     <property name="text">
                      <string>Bac 1 : Riz</string>
                     </property>
@@ -1400,7 +1412,7 @@ font-size: 20px;</string>
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayoutBac2">
                   <item alignment="Qt::AlignHCenter">
-                   <widget class="QProgressBar" name="progressBarBac2_2">
+                   <widget class="QProgressBar" name="progressBarHygrometrieBac2">
                     <property name="minimumSize">
                      <size>
                       <width>50</width>
@@ -1424,7 +1436,7 @@ font-size: 20px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="labelNomProduitBac2_2">
+                   <widget class="QLabel" name="labelNomProduitHygrometrieBac2">
                     <property name="text">
                      <string>Bac 2 : Pâtes</string>
                     </property>

@@ -111,6 +111,16 @@ void IHMJustFeed::gererEvenements()
             SLOT(selectionner(QModelIndex)));
 }
 
+int IHMJustFeed::recupererIndexEtatsDistributeur(QString idDistibuteur)
+{
+    for(int index = 0; index < etatsDistributeurs.size(); ++index)
+    {
+        if(etatsDistributeurs.at(index).at(Distributeur::ChampDistributeur::CHAMP_idDistributeur) == idDistibuteur)
+            return index;
+    }
+    return -1; // pas trouvé
+}
+
 /**
  * @brief Charge des données dans le QTableView
  *
@@ -121,29 +131,30 @@ void IHMJustFeed::chargerDistributeurs()
     effacerTableDistributeurs();
 
     //Exemple avec une base de donnée SQLite
-    //QString requete = "SELECT * FROM Distributeur";
-    QString requete = "SELECT Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur.quantite,StockDistributeur.quantiteMax FROM StockDistributeur "
-            "INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur "
-            "INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit "
-            "INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement "
-            "INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
+    QString requete = "SELECT * FROM Distributeur";
     bool retour;
 
     retour = baseDeDonnees->recuperer(requete, distributeurs);
-    qDebug() << Q_FUNC_INFO << retour;
     qDebug() << Q_FUNC_INFO << distributeurs;
     ui->comboBoxDistributeurs->clear();
     ui->comboBoxDistributeurs->addItem("");
-    // ui->pushButtonEtat->setEnabled(false);
-    // ui->pushButtonIntervention->setEnabled(false);
-    // ui->pushButtonGeolocalisation->setEnabled(false);
+    ui->pushButtonEtat->setEnabled(false);
+    ui->pushButtonIntervention->setEnabled(false);
+    ui->pushButtonGeolocalisation->setEnabled(false);
     for(int i = 0; i < distributeurs.size(); ++i)
     {
         ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(
           Distributeur::ChampDistributeur::CHAMP_libelle));
         afficherDistributeurTable(distributeurs.at(i));
-        afficherEtatDistributeur(distributeurs.at(i));
     }
+
+    requete = "SELECT Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur.quantite,StockDistributeur.quantiteMax FROM StockDistributeur "
+            "INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur "
+            "INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit "
+            "INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement "
+            "INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
+    retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
+    qDebug() << Q_FUNC_INFO << etatsDistributeurs;
 }
 
 /**
@@ -225,25 +236,54 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
       ui->tableViewDistributeurs->horizontalHeader()->height());
 }
 
-void IHMJustFeed::afficherEtatDistributeur(QStringList distributeur)
+void IHMJustFeed::afficherEtatDistributeur(int indexDistributeur)
 {
-    qDebug() << Q_FUNC_INFO << distributeur;
+    QString idDistributeur = distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
+    qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
+    int index = recupererIndexEtatsDistributeur(idDistributeur);
+    qDebug() << Q_FUNC_INFO << index;
+    if(index == -1)
+        return;
     // ("1",                  "1",                  "LASALLE",      "Distributeur de céréales", "9 Rue Notre Dame des 7 douleurs",
     //  "Avignon",  "84000",            "2022-01-08",           "4.8139952",    "43.9484858",   "distributeur_1", "2")
     //  CHAMP_idDistributeur, CHAMP_idServeurTTN,   CHAMP_libelle,  CHAMP_description,          CHAMP_adresse,
     //  CHAMP_ville,CHAMP_codepostal,   CHAMP_dateMiseEnService,CHAMP_longitude,CHAMP_latitude, CHAMP_deviceID,   CHAMP_nbRangees,
-    ui->labelNom->setText(distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
-    ui->labelAdresse->setText(distributeur.at(Distributeur::ChampDistributeur::CHAMP_adresse));
-    ui->labelVille->setText(distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal) + QString(" ") + distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
-    if(distributeur.at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
+    ui->labelNom->setText(distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    ui->labelAdresse->setText(distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_adresse));
+    ui->labelVille->setText(distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_codepostal) + QString(" ") + distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_ville));
+
+    for(int i = 0; i < distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_nbBacs).toInt(); ++i)
     {
-        ui->progressBarRemplissageBac1->setValue((distributeur.at(Distributeur::ChampDistributeur::CHAMP_quantite).toDouble()/distributeur.at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
-        ui->labelNomProduitBac1->setText(QString("Bac 1 : ") + distributeur.at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+        if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
+        {
+            ui->progressBarRemplissageBac1->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantite).toDouble()/etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
+            ui->labelNomProduitRemplissageBac1->setText(QString("Bac 1 : ") + etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+        }
+        else if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
+        {
+            ui->progressBarRemplissageBac2->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantite).toDouble()/
+etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
+            ui->labelNomProduitRemplissageBac2->setText(QString("Bac 2 : ") +
+etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+        }
     }
-    else if(distributeur.at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
+
+    for(int i = 0; i < distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_nbBacs).toInt(); ++i)
     {
-        //ui->progressBarRemplissageBac2->setValue();
-        //ui->labelNomProduitBac2->setText();
+        if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
+        {
+            ui->progressBarHygrometrieBac1->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_hygrometrie).toDouble()/
+etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
+            ui->labelNomProduitHygrometrieBac1->setText(QString("Bac 1 : ") +
+etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+        }
+        else if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
+        {
+            ui->progressBarHygrometrieBac2->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_hygrometrie).toDouble()/
+etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
+            ui->labelNomProduitHygrometrieBac2->setText(QString("Bac 2 : ") +
+etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+        }
     }
 }
 
@@ -310,6 +350,7 @@ void IHMJustFeed::afficherPageEtatDistributeur()
 {
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
+    afficherEtatDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Distributeur);
 }

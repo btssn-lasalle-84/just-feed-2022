@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS Distributeur(
     longitude VARCHAR,
     latitude VARCHAR,
     deviceID VARCHAR NOT NULL,
+    hygrometrie INTEGER DEFAULT 0,
     nbBacs INTEGER NOT NULL DEFAULT 2,
     UNIQUE (deviceID),
     CONSTRAINT Distributeur_fk_1 FOREIGN KEY (idServeurTTN) REFERENCES ServeurTTN(idServeurTTN) ON DELETE CASCADE

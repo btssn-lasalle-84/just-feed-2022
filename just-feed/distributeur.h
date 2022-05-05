@@ -29,6 +29,7 @@ class Distributeur
             CHAMP_longitude,
             CHAMP_latitude,
             CHAMP_deviceID,
+            CHAMP_hygrometrie,
             CHAMP_nbBacs,
             CHAMP_designationProduit,
             CHAMP_niveauApprovisionnement,

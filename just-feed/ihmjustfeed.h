@@ -54,6 +54,7 @@ class IHMJustFeed : public QMainWindow
     QStringList      nomColonnes;   //!< Liste de nom des colonnes
     int              nbLignesDistributeurs;  //!< nombre de lignes
     QVector<QStringList> distributeurs;      //!< Les distributeurs
+    QVector<QStringList> etatsDistributeurs;      //!< Les états des distributeurs
     QStandardItemModel*  modeleDistributeur; //!< Modèle pourle QTableView
     int                  numeroDistributeurSelectionne; //!<
 
@@ -85,12 +86,13 @@ class IHMJustFeed : public QMainWindow
 
     void initialiser();
     void gererEvenements();
+    int recupererIndexEtatsDistributeur(QString idDistibuteur);
 
   public slots:
     void chargerDistributeurs();
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
-    void afficherEtatDistributeur(QStringList distributeur);
+    void afficherEtatDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
     void selectionnerDistributeur(int index);
     void afficherPage(Page page);
