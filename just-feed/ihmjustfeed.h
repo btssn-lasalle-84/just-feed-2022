@@ -54,7 +54,7 @@ class IHMJustFeed : public QMainWindow
     QStringList      nomColonnes;   //!< Liste de nom des colonnes
     int              nbLignesDistributeurs;  //!< nombre de lignes
     QVector<QStringList> distributeurs;      //!< Les distributeurs
-    QVector<QStringList> etatsDistributeurs;      //!< Les états des distributeurs
+    QVector<QStringList> etatsDistributeurs; //!< Les états des distributeurs
     QStandardItemModel*  modeleDistributeur; //!< Modèle pourle QTableView
     int                  numeroDistributeurSelectionne; //!<
 
@@ -78,21 +78,25 @@ class IHMJustFeed : public QMainWindow
      */
     enum ColonneDistributeur
     {
-        COLONNE_DISTRIBUTEUR_NOM, //!< Emplacement du nom
-        COLONNE_DISTRIBUTEUR_VILLE, //!< Emplacement de la ville
+        COLONNE_DISTRIBUTEUR_NOM,        //!< Emplacement du nom
+        COLONNE_DISTRIBUTEUR_VILLE,      //!< Emplacement de la ville
         COLONNE_DISTRIBUTEUR_CODEPOSTAL, //!< Emplacement du code postal
         NB_COLONNES
     };
 
     void initialiser();
     void gererEvenements();
-    int recupererIndexEtatsDistributeur(QString idDistibuteur);
+    int  recupererIndexEtatsDistributeur(QString idDistibuteur);
+    int  recupererIndexInterventionDistributeur(QString idDistributeur);
+    int  recupererIndexGeolocalisationDistributeur(QString idDistributeur);
 
   public slots:
     void chargerDistributeurs();
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
     void afficherEtatDistributeur(int indexDistributeur);
+    void afficherInterventionDistributeur(int indexDistributeur);
+    void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
     void selectionnerDistributeur(int index);
     void afficherPage(Page page);

@@ -31,9 +31,7 @@ IHMJustFeed::IHMJustFeed(QWidget* parent) :
     baseDeDonnees->ouvrir("just-feed.sqlite");
 
     initialiser();
-
     gererEvenements();
-
     chargerDistributeurs();
 }
 
@@ -60,7 +58,7 @@ void IHMJustFeed::initialiser()
     ui->labelTitreProjet->setText(QString::fromUtf8(NOM_APPLICATION) + " v" +
                                   QString::fromUtf8(VERSION_APPLICATION));
 
-    //Initialise le QTableView
+    // Initialise le QTableView
     nomColonnes << "Nom"
                 << "Ville"
                 << "Code Postal";
@@ -115,7 +113,9 @@ int IHMJustFeed::recupererIndexEtatsDistributeur(QString idDistibuteur)
 {
     for(int index = 0; index < etatsDistributeurs.size(); ++index)
     {
-        if(etatsDistributeurs.at(index).at(Distributeur::ChampDistributeur::CHAMP_idDistributeur) == idDistibuteur)
+        if(etatsDistributeurs.at(index).at(
+             Distributeur::ChampDistributeur::CHAMP_idDistributeur) ==
+           idDistibuteur)
             return index;
     }
     return -1; // pas trouvé
@@ -130,11 +130,10 @@ void IHMJustFeed::chargerDistributeurs()
 {
     effacerTableDistributeurs();
 
-    //Exemple avec une base de donnée SQLite
+    // Exemple avec une base de donnée SQLite
     QString requete = "SELECT * FROM Distributeur";
-    bool retour;
 
-    retour = baseDeDonnees->recuperer(requete, distributeurs);
+    baseDeDonnees->recuperer(requete, distributeurs);
     qDebug() << Q_FUNC_INFO << distributeurs;
     ui->comboBoxDistributeurs->clear();
     ui->comboBoxDistributeurs->addItem("");
@@ -148,12 +147,20 @@ void IHMJustFeed::chargerDistributeurs()
         afficherDistributeurTable(distributeurs.at(i));
     }
 
-    requete = "SELECT Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur.quantite,StockDistributeur.quantiteMax FROM StockDistributeur "
-            "INNER JOIN Distributeur ON Distributeur.idDistributeur=StockDistributeur.idDistributeur "
-            "INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit "
-            "INNER JOIN NiveauApprovisionnement ON NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur.idNiveauApprovisionnement "
-            "INNER JOIN ServeurTTN ON ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
-    retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
+    requete =
+      "SELECT "
+      "Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS "
+      "niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur."
+      "quantite,StockDistributeur.quantiteMax FROM StockDistributeur "
+      "INNER JOIN Distributeur ON "
+      "Distributeur.idDistributeur=StockDistributeur.idDistributeur "
+      "INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit "
+      "INNER JOIN NiveauApprovisionnement ON "
+      "NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur."
+      "idNiveauApprovisionnement "
+      "INNER JOIN ServeurTTN ON "
+      "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
+    baseDeDonnees->recuperer(requete, etatsDistributeurs);
     qDebug() << Q_FUNC_INFO << etatsDistributeurs;
 }
 
@@ -182,12 +189,12 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
     qDebug() << Q_FUNC_INFO << distributeur;
 
     // Crée les items pour les cellules d'une ligne
-    QStandardItem* nom =
-       new QStandardItem(distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
-    QStandardItem* ville =
-       new QStandardItem(distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
-    QStandardItem* codePostal =
-       new QStandardItem(distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal));
+    QStandardItem* nom = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    QStandardItem* ville = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
+    QStandardItem* codePostal = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal));
 
     // Ajoute les items dans le modèle de données
     modeleDistributeur->setItem(nbLignesDistributeurs,
@@ -238,53 +245,121 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
 
 void IHMJustFeed::afficherEtatDistributeur(int indexDistributeur)
 {
-    QString idDistributeur = distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
+    QString idDistributeur =
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
     qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
     int index = recupererIndexEtatsDistributeur(idDistributeur);
     qDebug() << Q_FUNC_INFO << index;
     if(index == -1)
         return;
-    // ("1",                  "1",                  "LASALLE",      "Distributeur de céréales", "9 Rue Notre Dame des 7 douleurs",
-    //  "Avignon",  "84000",            "2022-01-08",           "4.8139952",    "43.9484858",   "distributeur_1", "2")
-    //  CHAMP_idDistributeur, CHAMP_idServeurTTN,   CHAMP_libelle,  CHAMP_description,          CHAMP_adresse,
-    //  CHAMP_ville,CHAMP_codepostal,   CHAMP_dateMiseEnService,CHAMP_longitude,CHAMP_latitude, CHAMP_deviceID,   CHAMP_nbRangees,
-    ui->labelNom->setText(distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_libelle));
-    ui->labelAdresse->setText(distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_adresse));
-    ui->labelVille->setText(distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_codepostal) + QString(" ") + distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_ville));
 
-    for(int i = 0; i < distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_nbBacs).toInt(); ++i)
-    {
-        if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
-        {
-            ui->progressBarRemplissageBac1->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantite).toDouble()/etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
-            ui->labelNomProduitRemplissageBac1->setText(QString("Bac 1 : ") + etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
-        }
-        else if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
-        {
-            ui->progressBarRemplissageBac2->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantite).toDouble()/
-etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
-            ui->labelNomProduitRemplissageBac2->setText(QString("Bac 2 : ") +
-etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
-        }
-    }
+    ui->labelNom->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    ui->labelAdresse->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_adresse));
+    ui->labelVille->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_codepostal) +
+      QString(" ") +
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_ville));
 
-    for(int i = 0; i < distributeurs.at(indexDistributeur).at(Distributeur::ChampDistributeur::CHAMP_nbBacs).toInt(); ++i)
+    for(int i = 0; i < distributeurs.at(indexDistributeur)
+                         .at(Distributeur::ChampDistributeur::CHAMP_nbBacs)
+                         .toInt();
+        ++i)
     {
-        if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
+        if(etatsDistributeurs.at(index + i).at(
+             Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
         {
-            ui->progressBarHygrometrieBac1->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_hygrometrie).toDouble()/
-etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
-            ui->labelNomProduitHygrometrieBac1->setText(QString("Bac 1 : ") +
-etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+            ui->progressBarRemplissageBac1->setValue(
+              (etatsDistributeurs.at(index + i)
+                 .at(Distributeur::ChampDistributeur::CHAMP_quantite)
+                 .toDouble() /
+               etatsDistributeurs.at(index + i)
+                 .at(Distributeur::ChampDistributeur::CHAMP_quantiteMax)
+                 .toDouble()) *
+              100);
+            ui->labelNomProduitRemplissageBac1->setText(
+              QString("Bac 1 : ") +
+              etatsDistributeurs.at(index + i).at(
+                Distributeur::ChampDistributeur::CHAMP_designationProduit));
         }
-        else if(etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
+        else if(etatsDistributeurs.at(index + i).at(
+                  Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
         {
-            ui->progressBarHygrometrieBac2->setValue((etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_hygrometrie).toDouble()/
-etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_quantiteMax).toDouble())*100);
-            ui->labelNomProduitHygrometrieBac2->setText(QString("Bac 2 : ") +
-etatsDistributeurs.at(index+i).at(Distributeur::ChampDistributeur::CHAMP_designationProduit));
+            ui->progressBarRemplissageBac2->setValue(
+              (etatsDistributeurs.at(index + i)
+                 .at(Distributeur::ChampDistributeur::CHAMP_quantite)
+                 .toDouble() /
+               etatsDistributeurs.at(index + i)
+                 .at(Distributeur::ChampDistributeur::CHAMP_quantiteMax)
+                 .toDouble()) *
+              100);
+            ui->labelNomProduitRemplissageBac2->setText(
+              QString("Bac 2 : ") +
+              etatsDistributeurs.at(index + i).at(
+                Distributeur::ChampDistributeur::CHAMP_designationProduit));
         }
+
+        ui->progressBarHygrometrieBacs->setValue(
+          etatsDistributeurs.at(indexDistributeur)
+            .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
+            .toInt());
     }
+}
+
+void IHMJustFeed::afficherInterventionDistributeur(int indexDistributeur)
+{
+    QString idDistributeur =
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
+    qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
+    int index = recupererIndexInterventionDistributeur(idDistributeur);
+    qDebug() << Q_FUNC_INFO << index;
+    if(index == -1)
+        return;
+
+    ui->labelNomIntervention->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    ui->labelAdresseIntervention->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_adresse));
+    ui->labelVilleIntervention->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_codepostal) +
+      QString(" ") +
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_ville));
+}
+
+void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
+{
+    QString idDistributeur =
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
+    qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
+    int index = recupererIndexGeolocalisationDistributeur(idDistributeur);
+    qDebug() << Q_FUNC_INFO << index;
+    if(index == -1)
+        return;
+
+    ui->labelNomGeolocalisation->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    ui->labelAdresseGeolocalisation->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_adresse));
+    ui->labelVilleGeolocalisation->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_codepostal) +
+      QString(" ") +
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_ville));
 }
 
 /**
