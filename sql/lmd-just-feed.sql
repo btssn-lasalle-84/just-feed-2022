@@ -22,11 +22,11 @@ INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepost
 INSERT INTO Produit (marque,code,designation) VALUES('Panzani','CG_10001','Panzani Farfalle');
 INSERT INTO Produit (marque,code,designation) VALUES('Panzani','CG_10002','Panzani Marcaroni');
 INSERT INTO Produit (marque,code,designation) VALUES('Panzani','CG_10003','Panzani Fusilli');
-INSERT INTO Produit (marque,code,designation) VALUES('Riz du monde','CG_25001','Riz Long Parfumé Dragon');
+INSERT INTO Produit (marque,code,designation) VALUES('Riz du monde','CG_25001','Riz Long Dragon');
 INSERT INTO Produit (marque,code,designation) VALUES('Riz du monde','CG_26001','Riz Parfumé Thai');
 INSERT INTO Produit (marque,code,designation) VALUES('Riz du monde','CG_50001','Riz Long Basmati');
 INSERT INTO Produit (marque,code,designation) VALUES('Nestle','CG_50002','Cookie Crisp');
-INSERT INTO Produit (marque,code,designation) VALUES('Nestle','CG_87001','Lion');
+INSERT INTO Produit (marque,code,designation) VALUES('Nestle','CG_87001','Lion Choco');
 INSERT INTO Produit (marque,code,designation) VALUES('Nestle','CG_87002','Chocapic');
 
 -- Table NiveauApprovisionnement
