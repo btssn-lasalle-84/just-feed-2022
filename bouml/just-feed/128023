@@ -1,6 +1,6 @@
 format 224
 "just-feed" // just-feed
-  revision 1
+  revision 2
   modified_by 23 "tv"
   // class settings
   
@@ -437,9 +437,7 @@ ${inlines}
       explicit_switch_type ""
       mysql_decl ""
       
-      comment " QT_END_NAMESPACE
-
-@class IHMJustFeed
+      comment "@class IHMJustFeed
 @brief Déclaration de la classe IHMJustFeed
 @details Cette classe s'occupe de l'affichage
 "
@@ -471,7 +469,7 @@ ${inlines}
 	cpp_def "//@file ihmjustfeed.cpp
 //
 //@brief Définition de la classe IHMJustFeed
-//@author
+//@author Laura Morello <lauramorello1604@gmail.com>
 //@version 1.0
 //
 //
@@ -484,7 +482,8 @@ ${inlines}
 //
 
 ${inline}${typeprefix}${class}::${name}${(}${t0} * ${p0}${)} :
-    QMainWindow(parent), ui(new Ui::IHMJustFeed)
+    QMainWindow(parent), ui(new Ui::IHMJustFeed), nbLignesDistributeurs(0),
+    numeroDistributeurSelectionne(-1)
 ${throw}{
 ${body}}
 "
@@ -526,6 +525,532 @@ ${body}}
 	MysqlColumn
 	comment "!< la fenêtre graphique associée à cette classe"
       end
+
+      classrelation 135319 // baseDeDonnees (<unidirectional association>)
+	relation 135319 --->
+	  a role_name "baseDeDonnees" private
+	    comment "!< Instance d'un objet BaseDeDonnees"
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 135319 // baseDeDonnees (<unidirectional association>)
+	  b parent class_ref 128279 // BaseDeDonnees
+      end
+
+      attribute 138519 "nomColonnes"
+	private explicit_type "QStringList"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< Liste de nom des colonnes"
+      end
+
+      attribute 138647 "nbLignesDistributeurs"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< nombre de lignes"
+      end
+
+      attribute 138775 "distributeurs"
+	private explicit_type "QStringList"
+	stereotype "QVector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< Les distributeurs"
+      end
+
+      attribute 138903 "etatsDistributeurs"
+	private explicit_type "QStringList"
+	stereotype "QVector"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< Les états des distributeurs"
+      end
+
+      attribute 139031 "modeleDistributeur"
+	private explicit_type "QStandardItemModel"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!< Modèle pourle QTableView"
+      end
+
+      attribute 139159 "numeroDistributeurSelectionne"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment "!<"
+      end
+
+      class 135959 "Page"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 139287 "Accueil"
+	  public type class_ref 135959 // Page
+	  init_value " 0"
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 139415 "Distributeur"
+	  public type class_ref 135959 // Page
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 139543 "Intervention"
+	  public type class_ref 135959 // Page
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 139671 "Geolocalisation"
+	  public type class_ref 135959 // Page
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 139799 "NbPages"
+	  public type class_ref 135959 // Page
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      class 136087 "ColonneDistributeur"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 139927 "COLONNE_DISTRIBUTEUR_NOM"
+	  public type class_ref 136087 // ColonneDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 140055 "COLONNE_DISTRIBUTEUR_VILLE"
+	  public type class_ref 136087 // ColonneDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 140183 "COLONNE_DISTRIBUTEUR_CODEPOSTAL"
+	  public type class_ref 136087 // ColonneDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 140311 "NB_COLONNES"
+	  public type class_ref 136087 // ColonneDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
+
+      operation 139031 "initialiser"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Initialise le contenu de la page
+//
+//@fn IHMJustFeed::initialiser()
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 139159 "gererEvenements"
+	preserve_cpp_body_indent private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Assure la connexion des signaux et slots
+//
+//@fn IHMJustFeed::gererEvenements
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 139287 "recupererIndexEtatsDistributeur"
+	preserve_cpp_body_indent private explicit_return_type "int"
+	nparams 1
+	  param in name "idDistibuteur" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 139415 "recupererIndexInterventionDistributeur"
+	private explicit_return_type "int"
+	nparams 1
+	  param in name "idDistributeur" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      operation 139543 "recupererIndexGeolocalisationDistributeur"
+	private explicit_return_type "int"
+	nparams 1
+	  param in name "idDistributeur" explicit_type "QString"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+	
+      end
+
+      extra_member 135703 "slots"
+	
+	cpp "  public slots:" ""
+	java ""
+	php ""
+	python ""
+	idl ""
+	mysql ""
+      end
+
+      operation 139671 "chargerDistributeurs"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Charge des données dans le QTableView
+//
+//@fn IHMJustFeed::chargerDistributeurs
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 139799 "effacerTableDistributeurs"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Efface le QTableView
+//
+//@fn IHMJustFeed::effacerTableDistributeurs
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 139927 "afficherDistributeurTable"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "distributeur" explicit_type "QStringList"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Affiche un distributeur dans le QTableView
+//
+//@fn IHMJustFeed::afficherDistributeurTable
+//@param distributeur Lesinformations sur un utilisateur
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140055 "afficherEtatDistributeur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "indexDistributeur" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140183 "afficherInterventionDistributeur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "indexDistributeur" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140311 "afficherGeolocalisationDistributeur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "indexDistributeur" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140439 "selectionner"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "index" explicit_type "QModelIndex"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Affiche les données du distributeur sélectionné
+//
+//@fn IHMJustFeed::selectionner
+//@param index index dans le modèle de données
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140567 "selectionnerDistributeur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "index" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140695 "afficherPage"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "page" type class_ref 135959 // Page
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Méthode qui permet d'afficher une page de la pile
+//QStackedWidget
+//
+//@fn IHMJustFeed::afficherPage
+//@param page le numéro de page à afficher
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140823 "afficherPageAccueil"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Affiche la première page
+//
+//@fn IHM::afficherPagePrincipale
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 140951 "afficherPageEtatDistributeur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141079 "afficherPageInterventionDistributeur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 141207 "afficherPageGeolocalisationDistributeur"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
     end
 
     class 128919 "typedef2"
@@ -544,6 +1069,256 @@ ${body}}
     classdiagram 128023 "classes"
       classdiagramsettings show_members_full_definition yes show_members_visibility yes member_max_width 0 end
       size A0
+    end
+
+    class 135703 "Distributeur"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 138903 "Distributeur"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      class 135831 "ChampDistributeur"
+	visibility package stereotype "enum"
+	cpp_decl "${comment}enum ${name} {
+${items}};
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	attribute 136087 "CHAMP_idDistributeur"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136215 "CHAMP_idServeurTTN"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136343 "CHAMP_libelle"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136471 "CHAMP_description"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136599 "CHAMP_adresse"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136727 "CHAMP_ville"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136855 "CHAMP_codepostal"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 136983 "CHAMP_dateMiseEnService"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137111 "CHAMP_longitude"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137239 "CHAMP_latitude"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137367 "CHAMP_deviceID"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137495 "CHAMP_hygrometrie"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137623 "CHAMP_nbBacs"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137751 "CHAMP_designationProduit"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 137879 "CHAMP_niveauApprovisionnement"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138007 "CHAMP_numeroBac"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138135 "CHAMP_quantite"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138263 "CHAMP_quantiteMax"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+
+	attribute 138391 "NB_CHAMPS_DISTRIBUTEUR"
+	  public type class_ref 135831 // ChampDistributeur
+	  cpp_decl "  ${name}${value},${comment}"
+	  java_decl ""
+	  php_decl ""
+	  python_decl ""
+	  idl_decl ""
+	  mysql_decl ""
+	  MysqlColumn
+	end
+      end
     end
   end
 
@@ -622,10 +1397,31 @@ ${namespace_start}
 ${members}
 ${namespace_end}"
       associated_elems
-	class_ref 128919 // typedef2
 	class_ref 128791 // IHMJustFeed
       end
     end
-  end
 
+    artifact 135319 "distributeur"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_elems
+	class_ref 135703 // Distributeur
+      end
+    end
+  end
 end
