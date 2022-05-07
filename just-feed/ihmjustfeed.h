@@ -26,12 +26,12 @@
 
 #define VERSION_APPLICATION "1.0"
 
-QT_BEGIN_NAMESPACE
+// QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class IHMJustFeed;
 }
-QT_END_NAMESPACE
+// QT_END_NAMESPACE
 
 class BaseDeDonnees;
 
@@ -52,11 +52,12 @@ class IHMJustFeed : public QMainWindow
     Ui::IHMJustFeed* ui; //!< la fenêtre graphique associée à cette classe
     BaseDeDonnees*   baseDeDonnees; //!< Instance d'un objet BaseDeDonnees
     QStringList      nomColonnes;   //!< Liste de nom des colonnes
-    int              nbLignesDistributeurs;  //!< nombre de lignes
-    QVector<QStringList> distributeurs;      //!< Les distributeurs
-    QVector<QStringList> etatsDistributeurs; //!< Les états des distributeurs
-    QStandardItemModel*  modeleDistributeur; //!< Modèle pourle QTableView
-    int                  numeroDistributeurSelectionne; //!<
+    int              nbLignesDistributeurs; //!< nombre de lignes
+    QVector<QStringList> distributeurs;     //!< Les distributeurs
+    QVector<QStringList>
+                        etatsDistributeurs; //!< Les états des stocks des distributeurs
+    QStandardItemModel* modeleDistributeur; //!< Modèle pourle QTableView
+    int numeroDistributeurSelectionne; //!< l'index du distributeur sélectionné
 
     /**
      * @enum Page
@@ -89,6 +90,7 @@ class IHMJustFeed : public QMainWindow
     int  recupererIndexEtatsDistributeur(QString idDistibuteur);
     int  recupererIndexInterventionDistributeur(QString idDistributeur);
     int  recupererIndexGeolocalisationDistributeur(QString idDistributeur);
+    void afficherNiveauRemplissage(int pourcentage, int numeroBac);
 
   public slots:
     void chargerDistributeurs();

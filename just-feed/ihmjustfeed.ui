@@ -86,9 +86,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
@@ -158,18 +158,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
@@ -232,9 +232,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
@@ -304,18 +304,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
@@ -378,9 +378,9 @@
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
@@ -450,18 +450,18 @@
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="255">
-              <red>186</red>
-              <green>189</green>
-              <blue>182</blue>
+              <red>233</red>
+              <green>185</green>
+              <blue>110</blue>
              </color>
             </brush>
            </colorrole>
@@ -514,7 +514,7 @@
          </palette>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(186, 189, 182)</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Retour</string>
@@ -976,7 +976,7 @@
        <string notr="true">background-color: rgb(233, 185, 110);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="pageAccueil">
        <property name="styleSheet">
@@ -1176,6 +1176,16 @@ font-size: 20px;</string>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
+                  <item>
+                   <widget class="QLabel" name="labelTitreBac1">
+                    <property name="text">
+                     <string>Bac 1</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
                   <item alignment="Qt::AlignHCenter">
                    <widget class="QProgressBar" name="progressBarRemplissageBac1">
                     <property name="sizePolicy">
@@ -1186,7 +1196,7 @@ font-size: 20px;</string>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>50</width>
+                      <width>100</width>
                       <height>0</height>
                      </size>
                     </property>
@@ -1242,7 +1252,7 @@ font-size: 20px;</string>
                      </size>
                     </property>
                     <property name="text">
-                     <string>Bac 1 : Riz</string>
+                     <string>Riz</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -1259,11 +1269,21 @@ font-size: 20px;</string>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
+                  <item>
+                   <widget class="QLabel" name="labelTitreBac2">
+                    <property name="text">
+                     <string>Bac 2</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
                   <item alignment="Qt::AlignHCenter">
                    <widget class="QProgressBar" name="progressBarRemplissageBac2">
                     <property name="minimumSize">
                      <size>
-                      <width>50</width>
+                      <width>100</width>
                       <height>0</height>
                      </size>
                     </property>
@@ -1289,7 +1309,7 @@ font-size: 20px;</string>
                   <item>
                    <widget class="QLabel" name="labelNomProduitRemplissageBac2">
                     <property name="text">
-                     <string>Bac 2 : Pâtes</string>
+                     <string>Pâtes</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
@@ -1360,7 +1380,7 @@ font-size: 20px;</string>
                  <number>0</number>
                 </property>
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayoutBac1" stretch="0">
+                 <layout class="QVBoxLayout" name="verticalLayoutBac1" stretch="0,0,0">
                   <property name="leftMargin">
                    <number>0</number>
                   </property>
@@ -1373,11 +1393,21 @@ font-size: 20px;</string>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
+                  <item>
+                   <widget class="QLabel" name="labelTitreNbBacs">
+                    <property name="text">
+                     <string>2 bacs</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
                   <item alignment="Qt::AlignHCenter">
                    <widget class="QProgressBar" name="progressBarHygrometrieBacs">
                     <property name="minimumSize">
                      <size>
-                      <width>50</width>
+                      <width>80</width>
                       <height>0</height>
                      </size>
                     </property>
@@ -1394,6 +1424,16 @@ font-size: 20px;</string>
                     </property>
                     <property name="orientation">
                      <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelHygrometrieBas">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -1423,203 +1463,233 @@ font-size: 20px;</string>
        </layout>
       </widget>
       <widget class="QWidget" name="pageIntervention">
-       <widget class="QWidget" name="verticalLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>991</width>
-          <height>581</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayoutInterventionDistributeur" stretch="0,0,0,0,0,0">
-         <item>
-          <widget class="QLabel" name="labelPlanificationIntervention">
-           <property name="font">
-            <font>
-             <family>Ubuntu</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <italic>false</italic>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Planification des Interventions</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="Line" name="lineTitreIntervention">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelNomIntervention">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>CARREFOUR</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelAdresseIntervention">
-           <property name="text">
-            <string>23 Rue de la République</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelVilleIntervention">
-           <property name="text">
-            <string>84000 AVIGNON</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="Line" name="lineDistributeurIntervention">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayoutInterventionDistributeur" stretch="0,0,0,0,0,0,0">
+          <item>
+           <widget class="QLabel" name="labelPlanificationIntervention">
+            <property name="font">
+             <font>
+              <family>Ubuntu</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Planification des Interventions</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="lineTitreIntervention">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelNomIntervention">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>CARREFOUR</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelAdresseIntervention">
+            <property name="text">
+             <string>23 Rue de la République</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelVilleIntervention">
+            <property name="text">
+             <string>84000 AVIGNON</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="lineDistributeurIntervention">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="pageGeolocalisation">
-       <widget class="QWidget" name="verticalLayoutWidget_2">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>10</y>
-          <width>991</width>
-          <height>581</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="labelGeolocalisation">
-           <property name="font">
-            <font>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Géolocalisation du distributeur</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="Line" name="lineTitreGeolocalisation">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelNomGeolocalisation">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>CARREFOUR</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelAdresseGeolocalisation">
-           <property name="text">
-            <string>23 Rue de la République</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelVilleGeolocalisation">
-           <property name="text">
-            <string>84000 AVIGNON</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="labelLatitudeLongitudeDistributeur">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="sizeIncrement">
-            <size>
-             <width>0</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignHCenter|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="Line" name="lineDistributeurGeolocalisation">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="labelGeolocalisation">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Géolocalisation du distributeur</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="lineTitreGeolocalisation">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelNomGeolocalisation">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>CARREFOUR</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelAdresseGeolocalisation">
+            <property name="text">
+             <string>23 Rue de la République</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelVilleGeolocalisation">
+            <property name="text">
+             <string>84000 AVIGNON</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelLatitudeLongitudeDistributeur">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignHCenter|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWebView" name="webViewLocalisation">
+            <property name="url">
+             <url>
+              <string>about:blank</string>
+             </url>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="Line" name="lineDistributeurGeolocalisation">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

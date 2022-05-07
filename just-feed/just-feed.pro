@@ -1,4 +1,4 @@
-QT       += core gui widgets sql
+QT       += core gui widgets sql webkitwidgets
 #QT       += mqtt
 
 CONFIG += c++11

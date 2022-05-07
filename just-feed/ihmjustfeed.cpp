@@ -121,6 +121,53 @@ int IHMJustFeed::recupererIndexEtatsDistributeur(QString idDistibuteur)
     return -1; // pas trouvé
 }
 
+int IHMJustFeed::recupererIndexInterventionDistributeur(QString idDistributeur)
+{
+    return -1; // pas trouvé
+}
+
+int IHMJustFeed::recupererIndexGeolocalisationDistributeur(
+  QString idDistributeur)
+{
+    return -1; // pas trouvé
+}
+
+void IHMJustFeed::afficherNiveauRemplissage(int pourcentage, int numeroBac)
+{
+    QPalette p = palette();
+    switch(numeroBac)
+    {
+        case 1:
+            ui->progressBarRemplissageBac1->setValue(pourcentage);
+            p.setColor(QPalette::Base, QColor(233, 185, 110)); // Background
+            if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
+            {
+                p.setColor(QPalette::Highlight, Qt::green);
+            }
+            else
+            {
+                p.setColor(QPalette::Highlight, Qt::red);
+            }
+            ui->progressBarRemplissageBac1->setPalette(p);
+            break;
+        case 2:
+            ui->progressBarRemplissageBac2->setValue(pourcentage);
+            p.setColor(QPalette::Base, QColor(233, 185, 110)); // Background
+            if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
+            {
+                p.setColor(QPalette::Highlight, Qt::green);
+            }
+            else
+            {
+                p.setColor(QPalette::Highlight, Qt::red);
+            }
+            ui->progressBarRemplissageBac2->setPalette(p);
+            break;
+        default:
+            break;
+    }
+}
+
 /**
  * @brief Charge des données dans le QTableView
  *
@@ -130,7 +177,7 @@ void IHMJustFeed::chargerDistributeurs()
 {
     effacerTableDistributeurs();
 
-    // Exemple avec une base de donnée SQLite
+    // Récupère les données des distributeurs
     QString requete = "SELECT * FROM Distributeur";
 
     baseDeDonnees->recuperer(requete, distributeurs);
@@ -147,6 +194,7 @@ void IHMJustFeed::chargerDistributeurs()
         afficherDistributeurTable(distributeurs.at(i));
     }
 
+    // Récupère les données des stocks des distributeurs
     requete =
       "SELECT "
       "Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS "
@@ -162,6 +210,10 @@ void IHMJustFeed::chargerDistributeurs()
       "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
     baseDeDonnees->recuperer(requete, etatsDistributeurs);
     qDebug() << Q_FUNC_INFO << etatsDistributeurs;
+
+    /**
+     * @todo Récupérer les données des interventions
+     */
 }
 
 /**
@@ -182,7 +234,7 @@ void IHMJustFeed::effacerTableDistributeurs()
  * @brief Affiche un distributeur dans le QTableView
  *
  * @fn IHMJustFeed::afficherDistributeurTable
- * @param distributeur Lesinformations sur un utilisateur
+ * @param distributeur Les informations sur un distributeur
  */
 void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
 {
@@ -275,32 +327,32 @@ void IHMJustFeed::afficherEtatDistributeur(int indexDistributeur)
         if(etatsDistributeurs.at(index + i).at(
              Distributeur::ChampDistributeur::CHAMP_numeroBac) == "1")
         {
-            ui->progressBarRemplissageBac1->setValue(
+            afficherNiveauRemplissage(
               (etatsDistributeurs.at(index + i)
                  .at(Distributeur::ChampDistributeur::CHAMP_quantite)
                  .toDouble() /
                etatsDistributeurs.at(index + i)
                  .at(Distributeur::ChampDistributeur::CHAMP_quantiteMax)
                  .toDouble()) *
-              100);
+                100,
+              1);
             ui->labelNomProduitRemplissageBac1->setText(
-              QString("Bac 1 : ") +
               etatsDistributeurs.at(index + i).at(
                 Distributeur::ChampDistributeur::CHAMP_designationProduit));
         }
         else if(etatsDistributeurs.at(index + i).at(
                   Distributeur::ChampDistributeur::CHAMP_numeroBac) == "2")
         {
-            ui->progressBarRemplissageBac2->setValue(
+            afficherNiveauRemplissage(
               (etatsDistributeurs.at(index + i)
                  .at(Distributeur::ChampDistributeur::CHAMP_quantite)
                  .toDouble() /
                etatsDistributeurs.at(index + i)
                  .at(Distributeur::ChampDistributeur::CHAMP_quantiteMax)
                  .toDouble()) *
-              100);
+                100,
+              2);
             ui->labelNomProduitRemplissageBac2->setText(
-              QString("Bac 2 : ") +
               etatsDistributeurs.at(index + i).at(
                 Distributeur::ChampDistributeur::CHAMP_designationProduit));
         }
@@ -323,6 +375,10 @@ void IHMJustFeed::afficherInterventionDistributeur(int indexDistributeur)
     if(index == -1)
         return;
 
+    /**
+     * @todo Afficher les données des interventions
+     */
+
     ui->labelNomIntervention->setText(
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_libelle));
@@ -343,10 +399,6 @@ void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
     qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
-    int index = recupererIndexGeolocalisationDistributeur(idDistributeur);
-    qDebug() << Q_FUNC_INFO << index;
-    if(index == -1)
-        return;
 
     ui->labelNomGeolocalisation->setText(
       distributeurs.at(indexDistributeur)
@@ -360,10 +412,27 @@ void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
       QString(" ") +
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_ville));
+
+    /**
+     * @todo Afficher la longitude et la latitude dans le QLabel
+     */
+    qDebug() << Q_FUNC_INFO << "longitude"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_longitude);
+    qDebug() << Q_FUNC_INFO << "latitude"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_latitude);
+    ui->labelLatitudeLongitudeDistributeur->setText("");
+    /**
+     * @todo Affecter à bbox et marker les valeurs de longitude et latitude
+     */
+    ui->webViewLocalisation->load(
+      QUrl("https://www.openstreetmap.org/export/embed.html?bbox="
+           "4.81696%2C43.9483,4.81696%2C43.9483&marker=43.9483,4.81696"));
 }
 
 /**
- * @brief Affiche les données du distributeur sélectionné
+ * @brief Sélectionne un distributeur dans la table
  *
  * @fn IHMJustFeed::selectionner
  * @param index index dans le modèle de données
@@ -377,6 +446,12 @@ void IHMJustFeed::selectionner(QModelIndex index)
     ui->comboBoxDistributeurs->setCurrentIndex(index.row() + 1);
 }
 
+/**
+ * @brief Sélectionne un distributeur dans la liste
+ *
+ * @fn IHMJustFeed::selectionnerDistributeur
+ * @param index index dans la liste déroulante
+ */
 void IHMJustFeed::selectionnerDistributeur(int index)
 {
     qDebug() << Q_FUNC_INFO << "numéro de distributeur"
@@ -432,12 +507,18 @@ void IHMJustFeed::afficherPageEtatDistributeur()
 
 void IHMJustFeed::afficherPageInterventionDistributeur()
 {
+    qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
+             << numeroDistributeurSelectionne;
+    afficherInterventionDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Intervention);
 }
 
 void IHMJustFeed::afficherPageGeolocalisationDistributeur()
 {
+    qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
+             << numeroDistributeurSelectionne;
+    afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Geolocalisation);
 }
