@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>640</height>
+    <height>683</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -976,7 +976,7 @@
        <string notr="true">background-color: rgb(233, 185, 110);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="pageAccueil">
        <property name="styleSheet">
@@ -1935,26 +1935,25 @@ font-size: 20px;</string>
            </layout>
           </item>
           <item>
-           <widget class="QWebView" name="webViewLocalisation">
+           <widget class="QWebEngineView" name="webEngineViewLocalisation">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="url">
              <url>
               <string>about:blank</string>
              </url>
             </property>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
           <item>
            <widget class="Line" name="lineDistributeurGeolocalisation">
@@ -1974,9 +1973,9 @@ font-size: 20px;</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QWebView</class>
+   <class>QWebEngineView</class>
    <extends>QWidget</extends>
-   <header location="global">QtWebKitWidgets/QWebView</header>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
   </customwidget>
  </customwidgets>
  <resources/>

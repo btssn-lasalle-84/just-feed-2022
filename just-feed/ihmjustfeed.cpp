@@ -457,7 +457,8 @@ void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
              distributeurs.at(indexDistributeur)
                .at(Distributeur::ChampDistributeur::CHAMP_longitude));
     qDebug() << Q_FUNC_INFO << url.toString();
-    ui->webViewLocalisation->load(url);
+    QWebEnginePage* page = ui->webEngineViewLocalisation->page();
+    page->load(url);
 }
 
 /**
