@@ -356,12 +356,12 @@ void IHMJustFeed::afficherEtatDistributeur(int indexDistributeur)
               etatsDistributeurs.at(index + i).at(
                 Distributeur::ChampDistributeur::CHAMP_designationProduit));
         }
-
-        ui->progressBarHygrometrieBacs->setValue(
-          etatsDistributeurs.at(indexDistributeur)
-            .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
-            .toInt());
     }
+
+    ui->progressBarHygrometrieBacs->setValue(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
+        .toInt());
 }
 
 void IHMJustFeed::afficherInterventionDistributeur(int indexDistributeur)
@@ -412,23 +412,52 @@ void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
       QString(" ") +
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_ville));
+    ui->labelLatitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_latitude));
+    ui->labelLongitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_longitude));
 
     /**
      * @todo Afficher la longitude et la latitude dans le QLabel
      */
-    qDebug() << Q_FUNC_INFO << "longitude"
-             << distributeurs.at(indexDistributeur)
-                  .at(Distributeur::ChampDistributeur::CHAMP_longitude);
     qDebug() << Q_FUNC_INFO << "latitude"
              << distributeurs.at(indexDistributeur)
                   .at(Distributeur::ChampDistributeur::CHAMP_latitude);
-    ui->labelLatitudeLongitudeDistributeur->setText("");
-    /**
-     * @todo Affecter à bbox et marker les valeurs de longitude et latitude
+    qDebug() << Q_FUNC_INFO << "longitude"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_longitude);
+    ui->labelLatitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_latitude));
+    ui->labelLongitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_longitude));
+    /*  Exemple :
+        "https://www.openstreetmap.org/export/embed.html?bbox="
+        "4.81696%2C43.9483,4.81696%2C43.9483&marker=43.9483,4.81696"));
      */
-    ui->webViewLocalisation->load(
-      QUrl("https://www.openstreetmap.org/export/embed.html?bbox="
-           "4.81696%2C43.9483,4.81696%2C43.9483&marker=43.9483,4.81696"));
+    QUrl url("https://www.openstreetmap.org/export/embed.html?bbox=" +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_longitude) +
+             QString("%2C") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_latitude) +
+             QString(",") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_longitude) +
+             QString("%2C") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_latitude) +
+             QString("&marker=") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_latitude) +
+             QString(",") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_longitude));
+    qDebug() << Q_FUNC_INFO << url.toString();
+    ui->webViewLocalisation->load(url);
 }
 
 /**
