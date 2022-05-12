@@ -13,14 +13,14 @@ INSERT INTO Technicien(nom,prenom,identifiant,email) VALUES('BEAUMONT','Jérôme
 
 -- Table Distributeur
 
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Grand Frais Orange','Distributeur de céréales','Zone du Coudoulet Rond point du Péage Sud','Orange', '84100','2022-01-08','4.86741','44.12331','distributeur_1',10,2);
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Carrefour','Distributeur de pâtes','390 Rue Jean Marie Tjibaou','Avignon', '84000','2022-01-09','4.79247','43.92844','distributeur_2',15,2);
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Cosy Primers','Distributeur de riz','292 Route de Boulbon','Barbentane', '13570','2022-01-10','4.75279','43.90265','distributeur_3',12,2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,latitude,longitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Grand Frais','Distributeur de céréales','Zone du Coudoulet Rond point du Péage Sud','Orange', '84100','2022-01-08','44.11161','4.84856','distributeur_1',10,2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,latitude,longitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Carrefour','Distributeur de pâtes','390 Rue Jean Marie Tjibaou','Avignon', '84000','2022-01-09','43.92844','4.79247','distributeur_2',15,2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,latitude,longitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Cosy Primeurs','Distributeur de riz','292 Route de Boulbon','Barbentane', '13570','2022-01-10','43.90252','4.75280','distributeur_3',12,2);
 
 -- Table Produit
 
 INSERT INTO Produit (marque,code,designation) VALUES('Panzani','CG_10001','Panzani Farfalle');
-INSERT INTO Produit (marque,code,designation) VALUES('Panzani','CG_10002','Panzani Marcaroni');
+INSERT INTO Produit (marque,code,designation) VALUES('Panzani','CG_10002','Panzani Macaroni');
 INSERT INTO Produit (marque,code,designation) VALUES('Panzani','CG_10003','Panzani Fusilli');
 INSERT INTO Produit (marque,code,designation) VALUES('Riz du monde','CG_25001','Riz Long Dragon');
 INSERT INTO Produit (marque,code,designation) VALUES('Riz du monde','CG_26001','Riz Parfumé Thai');
