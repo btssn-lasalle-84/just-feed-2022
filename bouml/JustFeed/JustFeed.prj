@@ -1,7 +1,8 @@
 format 224
-"Projet Just Feed"
-  revision 12
-  modified_by 2 "morello"
+"JustFeed"
+  revision 13
+  modified_by 2 "btssn2"
+  cpp_root_dir "../../just-feed/"
 
 
   
@@ -203,6 +204,11 @@ format 224
 	  stereotype "extend"
 	  on usecase_ref 128258 // Lister les distributeurs
       end
+    end
+
+    sequencediagram 141186 "ds - Lister les distributeurs"
+      sequencediagramsettings end
+      overlapping_bars size A0
     end
   end
 
@@ -589,4 +595,5 @@ format 224
     end
   end
 
+  package_ref 134530 // just-feed
 end
