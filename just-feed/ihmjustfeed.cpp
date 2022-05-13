@@ -27,9 +27,7 @@ IHMJustFeed::IHMJustFeed(QWidget* parent) :
     ui->setupUi(this);
     qDebug() << Q_FUNC_INFO;
 
-    baseDeDonnees = BaseDeDonnees::getInstance();
-    baseDeDonnees->ouvrir("just-feed.sqlite");
-
+    ouvrirBaseDeDonnees();
     initialiser();
     gererEvenements();
     chargerDistributeurs();
@@ -55,6 +53,7 @@ IHMJustFeed::~IHMJustFeed()
  */
 void IHMJustFeed::initialiser()
 {
+    pageLocalisation = ui->webEngineViewLocalisation->page();
     ui->labelTitreProjet->setText(QString::fromUtf8(NOM_APPLICATION) + " v" +
                                   QString::fromUtf8(VERSION_APPLICATION));
 
@@ -107,6 +106,12 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(clicked(QModelIndex)),
             this,
             SLOT(selectionner(QModelIndex)));
+}
+
+void IHMJustFeed::ouvrirBaseDeDonnees()
+{
+    baseDeDonnees = BaseDeDonnees::getInstance();
+    baseDeDonnees->ouvrir("just-feed.sqlite");
 }
 
 int IHMJustFeed::recupererIndexEtatsDistributeur(QString idDistibuteur)
@@ -364,33 +369,13 @@ void IHMJustFeed::afficherEtatDistributeur(int indexDistributeur)
         .toInt());
 }
 
-void IHMJustFeed::afficherInterventionDistributeur(int indexDistributeur)
+void IHMJustFeed::afficherInterventions()
 {
-    QString idDistributeur =
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
-    qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
-    int index = recupererIndexInterventionDistributeur(idDistributeur);
-    qDebug() << Q_FUNC_INFO << index;
-    if(index == -1)
-        return;
+    qDebug() << Q_FUNC_INFO;
 
     /**
      * @todo Afficher les données des interventions
      */
-
-    ui->labelNomIntervention->setText(
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_libelle));
-    ui->labelAdresseIntervention->setText(
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_adresse));
-    ui->labelVilleIntervention->setText(
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_codepostal) +
-      QString(" ") +
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_ville));
 }
 
 void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
@@ -457,8 +442,8 @@ void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
              distributeurs.at(indexDistributeur)
                .at(Distributeur::ChampDistributeur::CHAMP_longitude));
     qDebug() << Q_FUNC_INFO << url.toString();
-    QWebEnginePage* page = ui->webEngineViewLocalisation->page();
-    page->load(url);
+    if(pageLocalisation)
+        pageLocalisation->load(url);
 }
 
 /**
@@ -539,7 +524,7 @@ void IHMJustFeed::afficherPageInterventionDistributeur()
 {
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
-    afficherInterventionDistributeur(numeroDistributeurSelectionne);
+    afficherInterventions();
     ui->pushButtonRetour->show();
     afficherPage(Page::Intervention);
 }

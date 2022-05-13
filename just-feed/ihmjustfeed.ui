@@ -976,7 +976,7 @@
        <string notr="true">background-color: rgb(233, 185, 110);</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageAccueil">
        <property name="styleSheet">
@@ -1458,7 +1458,7 @@ font-size: 20px;</string>
       <widget class="QWidget" name="pageIntervention">
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayoutInterventionDistributeur" stretch="0,0,0,0,0,0,0,0,0">
+         <layout class="QVBoxLayout" name="verticalLayoutInterventionDistributeur" stretch="0,0,0,0,0">
           <item>
            <widget class="QLabel" name="labelPlanificationIntervention">
             <property name="font">
@@ -1486,51 +1486,6 @@ font-size: 20px;</string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="labelNomIntervention">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>CARREFOUR</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignHCenter|Qt::AlignTop</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="labelAdresseIntervention">
-            <property name="text">
-             <string>23 Rue de la République</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="labelVilleIntervention">
-            <property name="text">
-             <string>84000 AVIGNON</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="Line" name="lineDistributeurIntervention">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QLabel" name="labelDemandeIntervention">
             <property name="font">
              <font>
@@ -1540,7 +1495,10 @@ font-size: 20px;</string>
              </font>
             </property>
             <property name="text">
-             <string>Demande d'intervention sur le distributeur</string>
+             <string>...</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -1549,10 +1507,13 @@ font-size: 20px;</string>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>40</height>
+              <height>20</height>
              </size>
             </property>
            </spacer>
@@ -1572,228 +1533,11 @@ font-size: 20px;</string>
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="labelInterventionBac1">
-              <property name="text">
-               <string>Bac 1 : Panzani Farfalle</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="labelInterventionBac2">
-              <property name="text">
-               <string>Bac 2 : Panzani Macaroni</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="labelInterventionEntretien">
-              <property name="text">
-               <string>Entretien</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
+             <widget class="QTableView" name="tableViewInterventions"/>
             </item>
            </layout>
           </item>
          </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayoutSelection">
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <spacer name="horizontalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBoxBac1">
-            <property name="text">
-             <string>CheckBox</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_10">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBoxBac2">
-            <property name="text">
-             <string>CheckBox</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_11">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBoxEntretien">
-            <property name="text">
-             <string>CheckBox</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_9">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelDistributeurProximite">
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Demande d'intervention sur les distributeurs à proximité</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayoutDistributeurProximite">
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="labelDistibuteurProximite1">
-            <property name="text">
-             <string>Cosy Primeurs Barbentane 13570</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_12">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBoxDistributeurProximite1">
-            <property name="text">
-             <string>CheckBox</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QDialogButtonBox" name="buttonBoxValidation">
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-          </property>
-          <property name="centerButtons">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>

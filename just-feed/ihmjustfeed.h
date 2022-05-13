@@ -11,6 +11,7 @@
  */
 
 #include <QtWidgets>
+#include <QWebEnginePage>
 
 /**
  * @def NOM_APPLICATION
@@ -58,6 +59,8 @@ class IHMJustFeed : public QMainWindow
                         etatsDistributeurs; //!< Les états des stocks des distributeurs
     QStandardItemModel* modeleDistributeur; //!< Modèle pourle QTableView
     int numeroDistributeurSelectionne; //!< l'index du distributeur sélectionné
+    QWebEnginePage* pageLocalisation;
+    int             nbLignesInterventions; //!< nombre de lignes
 
     /**
      * @enum Page
@@ -87,6 +90,7 @@ class IHMJustFeed : public QMainWindow
 
     void initialiser();
     void gererEvenements();
+    void ouvrirBaseDeDonnees();
     int  recupererIndexEtatsDistributeur(QString idDistibuteur);
     int  recupererIndexInterventionDistributeur(QString idDistributeur);
     int  recupererIndexGeolocalisationDistributeur(QString idDistributeur);
@@ -97,7 +101,7 @@ class IHMJustFeed : public QMainWindow
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
     void afficherEtatDistributeur(int indexDistributeur);
-    void afficherInterventionDistributeur(int indexDistributeur);
+    void afficherInterventions();
     void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
     void selectionnerDistributeur(int index);
