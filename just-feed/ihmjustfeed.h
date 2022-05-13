@@ -11,6 +11,7 @@
  */
 
 #include <QtWidgets>
+#include <QWebEnginePage>
 
 /**
  * @def NOM_APPLICATION
@@ -26,12 +27,12 @@
 
 #define VERSION_APPLICATION "1.0"
 
-QT_BEGIN_NAMESPACE
+// QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class IHMJustFeed;
 }
-QT_END_NAMESPACE
+// QT_END_NAMESPACE
 
 class BaseDeDonnees;
 
@@ -50,21 +51,28 @@ class IHMJustFeed : public QMainWindow
 
   private:
     Ui::IHMJustFeed* ui; //!< la fenêtre graphique associée à cette classe
-    BaseDeDonnees* BaseDeDonnees; //!< Instance d'un objet BaseDeDonnees
-    QStringList nomColonnes; //!< Liste de nom des colonnes
-    int nbLignesDistributeurs; //!< nombre de lignes
-    QVector<QStringList> distributeurs; //!< Les distributeurs
+    BaseDeDonnees*   baseDeDonnees; //!< Instance d'un objet BaseDeDonnees
+    QStringList      nomColonnes;   //!< Liste de nom des colonnes
+    int              nbLignesDistributeurs; //!< nombre de lignes
+    QVector<QStringList> distributeurs;     //!< Les distributeurs
+    QVector<QStringList>
+                        etatsDistributeurs; //!< Les états des stocks des distributeurs
     QStandardItemModel* modeleDistributeur; //!< Modèle pourle QTableView
+    int numeroDistributeurSelectionne; //!< l'index du distributeur sélectionné
+    QWebEnginePage* pageLocalisation;
+    int             nbLignesInterventions; //!< nombre de lignes
 
     /**
      * @enum Page
-     * @brief Définit les différentes fenêtres de l'IHM
+     * @brief Définit les différentes pages de l'IHM
      *
      */
     enum Page
     {
-        Page1 = 0,
-        Page2,
+        Accueil = 0,
+        Distributeur,
+        Intervention,
+        Geolocalisation,
         NbPages
     };
 
@@ -74,22 +82,34 @@ class IHMJustFeed : public QMainWindow
      */
     enum ColonneDistributeur
     {
-        COLONNE_DISTRIBUTEUR_NOM //!< Emplacement du nom
+        COLONNE_DISTRIBUTEUR_NOM,        //!< Emplacement du nom
+        COLONNE_DISTRIBUTEUR_VILLE,      //!< Emplacement de la ville
+        COLONNE_DISTRIBUTEUR_CODEPOSTAL, //!< Emplacement du code postal
         NB_COLONNES
     };
 
     void initialiser();
     void gererEvenements();
-    void ajouterMenuAide();
+    void ouvrirBaseDeDonnees();
+    int  recupererIndexEtatsDistributeur(QString idDistibuteur);
+    int  recupererIndexInterventionDistributeur(QString idDistributeur);
+    int  recupererIndexGeolocalisationDistributeur(QString idDistributeur);
+    void afficherNiveauRemplissage(int pourcentage, int numeroBac);
 
   public slots:
     void chargerDistributeurs();
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
+    void afficherEtatDistributeur(int indexDistributeur);
+    void afficherInterventions();
+    void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
-    void afficherPage(IHMJUSTFEED_H::Page page);
-    void afficherPagePrincipale();
-    void afficherAPropos();
+    void selectionnerDistributeur(int index);
+    void afficherPage(Page page);
+    void afficherPageAccueil();
+    void afficherPageEtatDistributeur();
+    void afficherPageInterventionDistributeur();
+    void afficherPageGeolocalisationDistributeur();
 };
 
 #endif // IHMJUSTFEED_H

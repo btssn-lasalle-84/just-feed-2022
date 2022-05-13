@@ -1,19 +1,18 @@
 class IHMJustFeed
-!!!132247.cpp!!!	IHMJustFeed(inout parent : QWidget = nullptr)
+!!!136066.cpp!!!	IHMJustFeed(inout parent : QWidget = nullptr)
     ui->setupUi(this);
     qDebug() << Q_FUNC_INFO;
 
-    baseDeDonnees = BaseDeDonnees::getInstance();
-    baseDeDonnees->ouvrir("just-feed.sqlite");
-
+    ouvrirBaseDeDonnees();
     initialiser();
     gererEvenements();
     chargerDistributeurs();
-!!!132375.cpp!!!	~IHMJustFeed()
+!!!136194.cpp!!!	~IHMJustFeed()
     delete ui;
     BaseDeDonnees::detruireInstance();
     qDebug() << Q_FUNC_INFO;
-!!!139031.cpp!!!	initialiser() : void
+!!!136322.cpp!!!	initialiser() : void
+    pageLocalisation = ui->webEngineViewLocalisation->page();
     ui->labelTitreProjet->setText(QString::fromUtf8(NOM_APPLICATION) + " v" +
                                   QString::fromUtf8(VERSION_APPLICATION));
 
@@ -33,7 +32,7 @@ class IHMJustFeed
     nbLignesDistributeurs = modeleDistributeur->rowCount();
 
     afficherPageAccueil();
-!!!139159.cpp!!!	gererEvenements() : void
+!!!136450.cpp!!!	gererEvenements() : void
     connect(ui->pushButtonRetour,
             SIGNAL(clicked(bool)),
             this,
@@ -58,7 +57,10 @@ class IHMJustFeed
             SIGNAL(clicked(QModelIndex)),
             this,
             SLOT(selectionner(QModelIndex)));
-!!!139287.cpp!!!	recupererIndexEtatsDistributeur(in idDistibuteur : QString) : int
+!!!138754.cpp!!!	ouvrirBaseDeDonnees() : void
+    baseDeDonnees = BaseDeDonnees::getInstance();
+    baseDeDonnees->ouvrir("just-feed.sqlite");
+!!!136578.cpp!!!	recupererIndexEtatsDistributeur(in idDistibuteur : QString) : int
     for(int index = 0; index < etatsDistributeurs.size(); ++index)
     {
         if(etatsDistributeurs.at(index).at(
@@ -67,11 +69,11 @@ class IHMJustFeed
             return index;
     }
     return -1; // pas trouvé
-!!!139415.cpp!!!	recupererIndexInterventionDistributeur(in idDistributeur : QString) : int
+!!!136706.cpp!!!	recupererIndexInterventionDistributeur(in idDistributeur : QString) : int
     return -1; // pas trouvé
-!!!139543.cpp!!!	recupererIndexGeolocalisationDistributeur(in idDistributeur : QString) : int
+!!!136834.cpp!!!	recupererIndexGeolocalisationDistributeur(in idDistributeur : QString) : int
     return -1; // pas trouvé
-!!!147735.cpp!!!	afficherNiveauRemplissage(in pourcentage : int, in numeroBac : int) : void
+!!!136962.cpp!!!	afficherNiveauRemplissage(in pourcentage : int, in numeroBac : int) : void
     QPalette p = palette();
     switch(numeroBac)
     {
@@ -104,7 +106,7 @@ class IHMJustFeed
         default:
             break;
     }
-!!!139671.cpp!!!	chargerDistributeurs() : void
+!!!137090.cpp!!!	chargerDistributeurs() : void
     effacerTableDistributeurs();
 
     // Récupère les données des distributeurs
@@ -144,13 +146,13 @@ class IHMJustFeed
     /**
      * @todo Récupérer les données des interventions
      */
-!!!139799.cpp!!!	effacerTableDistributeurs() : void
+!!!137218.cpp!!!	effacerTableDistributeurs() : void
     qDebug() << Q_FUNC_INFO;
     distributeurs.clear();
     modeleDistributeur->setHorizontalHeaderLabels(nomColonnes);
     ui->tableViewDistributeurs->setModel(modeleDistributeur);
     nbLignesDistributeurs = 0;
-!!!139927.cpp!!!	afficherDistributeurTable(in distributeur : QStringList) : void
+!!!137346.cpp!!!	afficherDistributeurTable(in distributeur : QStringList) : void
     qDebug() << Q_FUNC_INFO << distributeur;
 
     // Crée les items pour les cellules d'une ligne
@@ -206,7 +208,7 @@ class IHMJustFeed
     ui->tableViewDistributeurs->setFixedHeight(
       ui->tableViewDistributeurs->verticalHeader()->length() +
       ui->tableViewDistributeurs->horizontalHeader()->height());
-!!!140055.cpp!!!	afficherEtatDistributeur(in indexDistributeur : int) : void
+!!!137474.cpp!!!	afficherEtatDistributeur(in indexDistributeur : int) : void
     QString idDistributeur =
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
@@ -266,39 +268,19 @@ class IHMJustFeed
               etatsDistributeurs.at(index + i).at(
                 Distributeur::ChampDistributeur::CHAMP_designationProduit));
         }
-
-        ui->progressBarHygrometrieBacs->setValue(
-          etatsDistributeurs.at(indexDistributeur)
-            .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
-            .toInt());
     }
-!!!140183.cpp!!!	afficherInterventionDistributeur(in indexDistributeur : int) : void
-    QString idDistributeur =
+
+    ui->progressBarHygrometrieBacs->setValue(
       distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
-    qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
-    int index = recupererIndexInterventionDistributeur(idDistributeur);
-    qDebug() << Q_FUNC_INFO << index;
-    if(index == -1)
-        return;
+        .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
+        .toInt());
+!!!137602.cpp!!!	afficherInterventions() : void
+    qDebug() << Q_FUNC_INFO;
 
     /**
      * @todo Afficher les données des interventions
      */
-
-    ui->labelNomIntervention->setText(
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_libelle));
-    ui->labelAdresseIntervention->setText(
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_adresse));
-    ui->labelVilleIntervention->setText(
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_codepostal) +
-      QString(" ") +
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_ville));
-!!!140311.cpp!!!	afficherGeolocalisationDistributeur(in indexDistributeur : int) : void
+!!!137730.cpp!!!	afficherGeolocalisationDistributeur(in indexDistributeur : int) : void
     QString idDistributeur =
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
@@ -316,30 +298,60 @@ class IHMJustFeed
       QString(" ") +
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_ville));
+    ui->labelLatitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_latitude));
+    ui->labelLongitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_longitude));
 
     /**
      * @todo Afficher la longitude et la latitude dans le QLabel
      */
-    qDebug() << Q_FUNC_INFO << "longitude"
-             << distributeurs.at(indexDistributeur)
-                  .at(Distributeur::ChampDistributeur::CHAMP_longitude);
     qDebug() << Q_FUNC_INFO << "latitude"
              << distributeurs.at(indexDistributeur)
                   .at(Distributeur::ChampDistributeur::CHAMP_latitude);
-    ui->labelLatitudeLongitudeDistributeur->setText("");
-    /**
-     * @todo Affecter à bbox et marker les valeurs de longitude et latitude
+    qDebug() << Q_FUNC_INFO << "longitude"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_longitude);
+    ui->labelLatitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_latitude));
+    ui->labelLongitude->setText(
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_longitude));
+    /*  Exemple :
+        "https://www.openstreetmap.org/export/embed.html?bbox="
+        "4.81696%2C43.9483,4.81696%2C43.9483&marker=43.9483,4.81696"));
      */
-    ui->webViewLocalisation->load(
-      QUrl("https://www.openstreetmap.org/export/embed.html?bbox="
-           "4.81696%2C43.9483,4.81696%2C43.9483&marker=43.9483,4.81696"));
-!!!140439.cpp!!!	selectionner(in index : QModelIndex) : void
+    QUrl url("https://www.openstreetmap.org/export/embed.html?bbox=" +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_longitude) +
+             QString("%2C") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_latitude) +
+             QString(",") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_longitude) +
+             QString("%2C") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_latitude) +
+             QString("&marker=") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_latitude) +
+             QString(",") +
+             distributeurs.at(indexDistributeur)
+               .at(Distributeur::ChampDistributeur::CHAMP_longitude));
+    qDebug() << Q_FUNC_INFO << url.toString();
+    if(pageLocalisation)
+        pageLocalisation->load(url);
+!!!137858.cpp!!!	selectionner(in index : QModelIndex) : void
     qDebug() << Q_FUNC_INFO << "numéro de distributeur"
              << index.row(); // le numéro de ligne dans la table
     qDebug() << Q_FUNC_INFO << "distributeur" << distributeurs.at(index.row());
 
     ui->comboBoxDistributeurs->setCurrentIndex(index.row() + 1);
-!!!140567.cpp!!!	selectionnerDistributeur(in index : int) : void
+!!!137986.cpp!!!	selectionnerDistributeur(in index : int) : void
     qDebug() << Q_FUNC_INFO << "numéro de distributeur"
              << index; // le numéro dans la liste déroulante
     if(index == 0)
@@ -356,25 +368,25 @@ class IHMJustFeed
         ui->pushButtonIntervention->setEnabled(true);
         ui->pushButtonGeolocalisation->setEnabled(true);
     }
-!!!140695.cpp!!!	afficherPage(in page : IHMJustFeed::Page) : void
+!!!138114.cpp!!!	afficherPage(in page : IHMJustFeed::Page) : void
     qDebug() << Q_FUNC_INFO << "page" << page;
     ui->pages->setCurrentIndex(page);
-!!!140823.cpp!!!	afficherPageAccueil() : void
+!!!138242.cpp!!!	afficherPageAccueil() : void
     ui->pushButtonRetour->hide();
     afficherPage(Page::Accueil);
-!!!140951.cpp!!!	afficherPageEtatDistributeur() : void
+!!!138370.cpp!!!	afficherPageEtatDistributeur() : void
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
     afficherEtatDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Distributeur);
-!!!141079.cpp!!!	afficherPageInterventionDistributeur() : void
+!!!138498.cpp!!!	afficherPageInterventionDistributeur() : void
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
-    afficherInterventionDistributeur(numeroDistributeurSelectionne);
+    afficherInterventions();
     ui->pushButtonRetour->show();
     afficherPage(Page::Intervention);
-!!!141207.cpp!!!	afficherPageGeolocalisationDistributeur() : void
+!!!138626.cpp!!!	afficherPageGeolocalisationDistributeur() : void
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
     afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);

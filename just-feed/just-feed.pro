@@ -1,4 +1,5 @@
 QT       += core gui widgets sql
+QT       += webenginewidgets
 #QT       += mqtt
 
 CONFIG += c++11

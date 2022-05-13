@@ -17,9 +17,9 @@
 int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
-    IHMJustFeed  w;
+    IHMJustFeed  ihmJustFeed;
 
-    w.show();
+    ihmJustFeed.show();
 
     return a.exec();
 }

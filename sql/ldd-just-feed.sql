@@ -46,10 +46,11 @@ CREATE TABLE IF NOT EXISTS Distributeur(
     ville VARCHAR,
     codepostal VARCHAR(5),
     dateMiseEnService DATE NOT NULL,
-    longitude VARCHAR,
     latitude VARCHAR,
+    longitude VARCHAR,
     deviceID VARCHAR NOT NULL,
-    nbRangees INTEGER NOT NULL DEFAULT 2,
+    hygrometrie INTEGER DEFAULT 0,
+    nbBacs INTEGER NOT NULL DEFAULT 2,
     UNIQUE (deviceID),
     CONSTRAINT Distributeur_fk_1 FOREIGN KEY (idServeurTTN) REFERENCES ServeurTTN(idServeurTTN) ON DELETE CASCADE
 );
@@ -74,9 +75,10 @@ CREATE TABLE IF NOT EXISTS StockDistributeur (
   idDistributeur INTEGER NOT NULL,
   idProduit INTEGER NOT NULL,
   idNiveauApprovisionnement INTEGER NOT NULL,
+  quantite INTEGER DEFAULT 0,
   quantiteMax INTEGER DEFAULT 0,
-  rangee INTEGER NOT NULL,
-  CONSTRAINT Unique_Rangee UNIQUE (idDistributeur,rangee),
+  numeroBac INTEGER NOT NULL,
+  CONSTRAINT Unique_Bac UNIQUE (idDistributeur,numeroBac),
   CONSTRAINT Stock_fk_1 FOREIGN KEY (idDistributeur) REFERENCES Distributeur(idDistributeur) ON DELETE CASCADE,
   CONSTRAINT Stock_fk_2 FOREIGN KEY (idProduit) REFERENCES Produit(idProduit) ON DELETE CASCADE
 );
@@ -101,7 +103,7 @@ CREATE TABLE IF NOT EXISTS Approvisionnement(
     idIntervention INTEGER NOT NULL,
     idStockDistributeur INTEGER NOT NULL,
     dateApprovisionnement DATE NOT NULL,
-    effetue INTEGER DEFAULT 0,
+    effectue INTEGER DEFAULT 0,
     CONSTRAINT Approvisionnement_fk_1 FOREIGN KEY (idIntervention) REFERENCES Intervention(idIntervention) ON DELETE CASCADE,
     CONSTRAINT Approvisionnement_fk_2 FOREIGN KEY (idStockDistributeur) REFERENCES StockDistributeur(idStockDistributeur) ON DELETE CASCADE
 );
