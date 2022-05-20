@@ -13,9 +13,9 @@ INSERT INTO Technicien(nom,prenom,identifiant,email) VALUES('BEAUMONT','Jérôme
 
 -- Table Distributeur
 
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,latitude,longitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Grand Frais','Distributeur de céréales','Zone du Coudoulet Rond point du Péage Sud','Orange', '84100','2022-01-08','44.11161','4.84856','distributeur_1',10,2);
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,latitude,longitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Carrefour','Distributeur de pâtes','390 Rue Jean Marie Tjibaou','Avignon', '84000','2022-01-09','43.92844','4.79247','distributeur_2',15,2);
-INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,latitude,longitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Cosy Primeurs','Distributeur de riz','292 Route de Boulbon','Barbentane', '13570','2022-01-10','43.90252','4.75280','distributeur_3',12,2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Grand Frais','Distributeur de céréales','Zone du Coudoulet Rond point du Péage Sud','Orange', '84100','2022-01-08','4.84856','44.11161','distributeur_1',10,2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Carrefour','Distributeur de pâtes','390 Rue Jean Marie Tjibaou','Avignon', '84000','2022-01-09','4.79247','43.92844','distributeur_2',15,2);
+INSERT INTO Distributeur(idServeurTTN,libelle,description,adresse,ville,codepostal,dateMiseEnService,longitude,latitude,deviceID,hygrometrie,nbBacs) VALUES(1,'Cosy Primeurs','Distributeur de riz','292 Route de Boulbon','Barbentane', '13570','2022-01-10','4.75280','43.90252','distributeur_3',12,2);
 
 -- Table Produit
 
