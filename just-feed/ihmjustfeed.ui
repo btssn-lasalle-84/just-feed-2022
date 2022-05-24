@@ -976,7 +976,7 @@
        <string notr="true">background-color: rgb(233, 185, 110);</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageAccueil">
        <property name="styleSheet">
