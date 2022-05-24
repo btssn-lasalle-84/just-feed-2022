@@ -177,34 +177,20 @@ void IHMJustFeed::afficherNiveauRemplissage(int pourcentage, int numeroBac)
     }
 }
 
-/**
- * @brief Charge des données dans le QTableView
- *
- * @fn IHMJustFeed::chargerDistributeurs
- */
-void IHMJustFeed::chargerDistributeurs()
+bool IHMJustFeed::recupererDonneesDistributeurs()
 {
-    effacerTableDistributeurs();
-
-    // Récupère les données des distributeurs
     QString requete = "SELECT * FROM Distributeur";
 
-    baseDeDonnees->recuperer(requete, distributeurs);
+    distributeurs.clear();
+    bool retour = baseDeDonnees->recuperer(requete, distributeurs);
     qDebug() << Q_FUNC_INFO << distributeurs;
-    ui->comboBoxDistributeurs->clear();
-    ui->comboBoxDistributeurs->addItem("");
-    ui->pushButtonEtat->setEnabled(false);
-    ui->pushButtonIntervention->setEnabled(false);
-    ui->pushButtonGeolocalisation->setEnabled(false);
-    for(int i = 0; i < distributeurs.size(); ++i)
-    {
-        ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(
-          Distributeur::ChampDistributeur::CHAMP_libelle));
-        afficherDistributeurTable(distributeurs.at(i));
-    }
 
-    // Récupère les données des stocks des distributeurs
-    requete =
+    return retour;
+}
+
+bool IHMJustFeed::recupererEtatsDistributeurs()
+{
+    QString requete =
       "SELECT "
       "Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS "
       "niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur."
@@ -217,8 +203,37 @@ void IHMJustFeed::chargerDistributeurs()
       "idNiveauApprovisionnement "
       "INNER JOIN ServeurTTN ON "
       "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
-    baseDeDonnees->recuperer(requete, etatsDistributeurs);
+    etatsDistributeurs.clear();
+    bool retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
     qDebug() << Q_FUNC_INFO << etatsDistributeurs;
+
+    return retour;
+}
+
+/**
+ * @brief Charge des données dans le QTableView
+ *
+ * @fn IHMJustFeed::chargerDistributeurs
+ */
+void IHMJustFeed::chargerDistributeurs()
+{
+    effacerTableDistributeurs();
+
+    recupererDonneesDistributeurs();
+
+    ui->comboBoxDistributeurs->clear();
+    ui->comboBoxDistributeurs->addItem("");
+    ui->pushButtonEtat->setEnabled(false);
+    ui->pushButtonIntervention->setEnabled(false);
+    ui->pushButtonGeolocalisation->setEnabled(false);
+    for(int i = 0; i < distributeurs.size(); ++i)
+    {
+        ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(
+          Distributeur::ChampDistributeur::CHAMP_libelle));
+        afficherDistributeurTable(distributeurs.at(i));
+    }
+
+    recupererEtatsDistributeurs();
 
     /**
      * @todo Récupérer les données des interventions
@@ -369,8 +384,8 @@ void IHMJustFeed::afficherEtatDistributeur(int indexDistributeur)
 
     ui->progressBarHygrometrieBacs->setValue(
       distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
-        .toInt());
+        .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie));
+    afficherHydrometrie(distributeurs.at(indexDistributeur)).toInt();
 }
 
 void IHMJustFeed::afficherInterventions()
@@ -531,6 +546,8 @@ void IHMJustFeed::afficherPageEtatDistributeur()
 {
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
+    recupererDonneesDistributeurs(); // pour l'hygrométrie
+    recupererEtatsDistributeurs();   // pour le stock
     afficherEtatDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Distributeur);
