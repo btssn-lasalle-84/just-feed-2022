@@ -105,6 +105,7 @@ class IHMJustFeed : public QMainWindow
     void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
     void selectionnerDistributeur(int index);
+    void effacerSelectionIntervention();
     void afficherPage(Page page);
     void afficherPageAccueil();
     void afficherPageEtatDistributeur();

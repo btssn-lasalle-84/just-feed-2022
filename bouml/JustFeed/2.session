@@ -1,6 +1,8 @@
 window_sizes 1864 1016 449 1409 843 120
 cleanlooks_style
 diagrams
+  usecasediagram_ref 128002 // Diagramme des Cas d'utilisation
+    1127 674 100 A4 0 0
   classdiagram_ref 141058 // classes
     1127 674 70 A0 0 0
   active  sequencediagram_ref 141186 // ds - Lister les distributeurs
@@ -10,10 +12,13 @@ show_stereotypes
 marked
   classrelation_ref 136322 // <dependency>
 end
-selected 
-  package_ref 134530 // just-feed
+selected usecase_ref 128386 // Visualiser l'état d'un distributeur
 open
   usecaseview_ref 128002 // Vue des Cas d'utilisation
-  classview_ref 134530 // just-feed
+  classview_ref 128002 // Vue des Classes
+  class_ref 148098 // BaseDeDonnees
+  class_ref 148482 // ChampDistributeur
+  class_ref 148610 // IHMJustFeed
+  deploymentview_ref 134530 // just-feed
 end
 end

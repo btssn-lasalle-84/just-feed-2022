@@ -98,6 +98,10 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(clicked(bool)),
             this,
             SLOT(afficherPageGeolocalisationDistributeur()));
+    connect(ui->pushButtonAnnuler,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(effacerSelectionIntervention()));
     connect(ui->comboBoxDistributeurs,
             SIGNAL(currentIndexChanged(int)),
             this,
@@ -485,6 +489,18 @@ void IHMJustFeed::selectionnerDistributeur(int index)
         ui->pushButtonIntervention->setEnabled(true);
         ui->pushButtonGeolocalisation->setEnabled(true);
     }
+}
+
+/**
+ * @brief Slot déclenché par le bouton Annuler pour effacer la sélection
+ *
+ * @fn IHMJustFeed::effacerSelectionIntervention
+ */
+void IHMJustFeed::effacerSelectionIntervention()
+{
+    ui->checkBoxBac1->setChecked(false);
+    ui->checkBoxBac2->setChecked(false);
+    ui->checkBoxEntretien->setChecked(false);
 }
 
 /**
