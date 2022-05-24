@@ -2,21 +2,21 @@ format 224
 
 classcanvas 128002 class_ref 148610 // IHMJustFeed
   classdiagramsettings member_max_width 0 end
-  xyz 27.9 19.6 2000
+  xyz 27.9 19 2000
 end
 classcanvas 128130 class_ref 148098 // BaseDeDonnees
   classdiagramsettings member_max_width 0 end
-  xyz 1276.9 137.9 3005
+  xyz 1276.2 137.2 3005
 end
 classcanvas 128898 class_ref 148482 // ChampDistributeur
   classdiagramsettings member_max_width 0 end
-  xyz 84.7 662.2 2000
+  xyz 84.7 662.3 2000
 end
 relationcanvas 128258 relation_ref 135170 // <unidirectional association>
-  from ref 128130 z 3006 to point 1232.6 142.2
-  line 128386 z 3006 to point 1232.6 185.4
+  from ref 128130 z 3006 to point 1232.6 142.6
+  line 128386 z 3006 to point 1232.6 185.3
   line 128514 z 3006 to ref 128130
-  role_a_pos 1151 180 3000 no_role_b
+  role_a_pos 1156 183 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 128642 relation_ref 135426 // <unidirectional association>
