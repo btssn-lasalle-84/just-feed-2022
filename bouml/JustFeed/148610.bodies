@@ -49,6 +49,10 @@ class IHMJustFeed
             SIGNAL(clicked(bool)),
             this,
             SLOT(afficherPageGeolocalisationDistributeur()));
+    connect(ui->pushButtonAnnuler,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(effacerSelectionIntervention()));
     connect(ui->comboBoxDistributeurs,
             SIGNAL(currentIndexChanged(int)),
             this,
@@ -106,28 +110,15 @@ class IHMJustFeed
         default:
             break;
     }
-!!!137090.cpp!!!	chargerDistributeurs() : void
-    effacerTableDistributeurs();
-
-    // Récupère les données des distributeurs
+!!!145282.cpp!!!	recupererDonneesDistributeurs() : bool
     QString requete = "SELECT * FROM Distributeur";
 
-    baseDeDonnees->recuperer(requete, distributeurs);
+    bool retour = baseDeDonnees->recuperer(requete, distributeurs);
     qDebug() << Q_FUNC_INFO << distributeurs;
-    ui->comboBoxDistributeurs->clear();
-    ui->comboBoxDistributeurs->addItem("");
-    ui->pushButtonEtat->setEnabled(false);
-    ui->pushButtonIntervention->setEnabled(false);
-    ui->pushButtonGeolocalisation->setEnabled(false);
-    for(int i = 0; i < distributeurs.size(); ++i)
-    {
-        ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(
-          Distributeur::ChampDistributeur::CHAMP_libelle));
-        afficherDistributeurTable(distributeurs.at(i));
-    }
 
-    // Récupère les données des stocks des distributeurs
-    requete =
+    return retour;
+!!!145410.cpp!!!	recupererEtatsDistributeurs() : bool
+    QString requete =
       "SELECT "
       "Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS "
       "niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur."
@@ -140,8 +131,28 @@ class IHMJustFeed
       "idNiveauApprovisionnement "
       "INNER JOIN ServeurTTN ON "
       "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
-    baseDeDonnees->recuperer(requete, etatsDistributeurs);
+    bool retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
     qDebug() << Q_FUNC_INFO << etatsDistributeurs;
+
+    return retour;
+!!!137090.cpp!!!	chargerDistributeurs() : void
+    effacerTableDistributeurs();
+
+    recupererDonneesDistributeurs();
+
+    ui->comboBoxDistributeurs->clear();
+    ui->comboBoxDistributeurs->addItem("");
+    ui->pushButtonEtat->setEnabled(false);
+    ui->pushButtonIntervention->setEnabled(false);
+    ui->pushButtonGeolocalisation->setEnabled(false);
+    for(int i = 0; i < distributeurs.size(); ++i)
+    {
+        ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(
+          Distributeur::ChampDistributeur::CHAMP_libelle));
+        afficherDistributeurTable(distributeurs.at(i));
+    }
+
+    recupererEtatsDistributeurs();
 
     /**
      * @todo Récupérer les données des interventions
@@ -368,6 +379,10 @@ class IHMJustFeed
         ui->pushButtonIntervention->setEnabled(true);
         ui->pushButtonGeolocalisation->setEnabled(true);
     }
+!!!145538.cpp!!!	effacerSelectionIntervention() : void
+    ui->checkBoxBac1->setChecked(false);
+    ui->checkBoxBac2->setChecked(false);
+    ui->checkBoxEntretien->setChecked(false);
 !!!138114.cpp!!!	afficherPage(in page : IHMJustFeed::Page) : void
     qDebug() << Q_FUNC_INFO << "page" << page;
     ui->pages->setCurrentIndex(page);
