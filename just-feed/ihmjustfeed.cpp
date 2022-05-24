@@ -98,6 +98,10 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(clicked(bool)),
             this,
             SLOT(afficherPageGeolocalisationDistributeur()));
+    /*connect(ui->pushButtonAnnuler,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(()));*/
     connect(ui->comboBoxDistributeurs,
             SIGNAL(currentIndexChanged(int)),
             this,
