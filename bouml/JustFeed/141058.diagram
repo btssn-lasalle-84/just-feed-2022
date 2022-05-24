@@ -1,0 +1,32 @@
+format 224
+
+classcanvas 128002 class_ref 148610 // IHMJustFeed
+  classdiagramsettings member_max_width 0 end
+  xyz 27.9 19 2000
+end
+classcanvas 128130 class_ref 148098 // BaseDeDonnees
+  classdiagramsettings member_max_width 0 end
+  xyz 1276.2 137.2 3005
+end
+classcanvas 128898 class_ref 148482 // ChampDistributeur
+  classdiagramsettings member_max_width 0 end
+  xyz 84.7 662.3 2000
+end
+relationcanvas 128258 relation_ref 135170 // <unidirectional association>
+  from ref 128130 z 3006 to point 1232.6 142.6
+  line 128386 z 3006 to point 1232.6 185.3
+  line 128514 z 3006 to ref 128130
+  role_a_pos 1156 183 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128642 relation_ref 135426 // <unidirectional association>
+  from ref 128002 z 3006 to ref 128130
+  role_a_pos 1152 269 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129410 relation_ref 135682 // <dependency>
+  from ref 128002 z 2001 to ref 128898
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

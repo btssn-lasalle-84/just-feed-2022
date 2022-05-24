@@ -20,7 +20,7 @@ SELECT * FROM ServeurTTN;
 
 SELECT * FROM Distributeur;
 
-|idDistributeur|idServeurTTN|libelle|description|adresse|ville|codepostal|dateMiseEnService|longitude|latitude|deviceID|nbRangees|
+|idDistributeur|idServeurTTN|libelle|description|adresse|ville|codepostal|dateMiseEnService|longitude|latitude|deviceID|nbBacs|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |1|1|CAFE_LASALLE_1|Distributeur de cafés en grains|9 Rue Notre Dame des 7 douleurs|Avignon|84000|2022-01-08|4.8139952|43.9484858|distributeur_1|2|
 |2|1|CAFE_STJO_1|Distributeur de cafés en grains|105 Rue Duplessis|Carpentras|84200|2022-01-09|5.0452813|44.0521754|distributeur_2|2|

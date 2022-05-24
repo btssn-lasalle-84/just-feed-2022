@@ -1,8 +1,7 @@
 format 224
-"just-feed"
-  revision 3
-  modified_by 23 "tv"
-  cpp_root_dir "../../"
+"just-feed.db"
+  revision 1
+  modified_by 2 "morello"
 
 
   
@@ -36,7 +35,7 @@ format 224
    show_infonote yes drawing_language uml show_stereotype_properties no end
   
   class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white generalization_color black 
-  dpi 96
+  dpi 0
   font_size 11
   diagram_format A4
 
@@ -45,7 +44,4 @@ format 224
 
   mark_for_import
   
-  package_ref 128023 // just-feed
-
-  package_ref 128279 // version 0.1
 end

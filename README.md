@@ -2,6 +2,17 @@
 
 Le système doit permettre de surveiller à distance des distributeurs automatiques (fruits secs, pâtes, riz,...) afin d’optimiser le processus de réapprovisionnement.
 
+- [Le projet just-feed 2022](#le-projet-just-feed-2022)
+  - [Expression du besoin](#expression-du-besoin)
+  - [Auteur](#auteur)
+  - [Historique des versions](#historique-des-versions)
+  - [Fonctionnalités](#fonctionnalités)
+  - [TODO](#todo)
+  - [Resources logicielles](#resources-logicielles)
+  - [Base de données](#base-de-données)
+  - [Kanban](#kanban)
+  - [Qt MQTT](#qt-mqtt)
+
 ## Expression du besoin
 
 Système de surveillance à distance de distributeurs automatiques permettant de :
@@ -10,13 +21,34 @@ Système de surveillance à distance de distributeurs automatiques permettant de
 - Signaler la nécessité de mettre en oeuvre des opérations de maintenance prédictive
 - Superviser l’ensemble des distributeurs à partir d’une application
 
+## Auteur
+
+- Laura MORELLO <<lauramorello1604@gmail.com>>
+
+## Historique des versions
+
+- Version 0.2 : 24/05/2022
+- Version 0.1 : 02/04/2022
+
 ## Fonctionnalités
 
-- [ ] Lister les distributeurs
-- [ ] Visualiser l’état d’un distributeur
+- Lister les distributeurs
+
+![](images/capture-liste-distributeurs.png)
+
+- Visualiser l’état d’un distributeur
+
+![](images/capture-etat-distributeur.png)
+
+- Géolocaliser sur une carte un distributeur, afficher ses coordonnées et adresse
+
+![](images/capture-localisation-distributeur.png)
+
+## TODO
+
+- [ ] Communiquer avec les distributeurs
 - [ ] Sélectionner un distributeur pour une intervention
 - [ ] Définir une intervention (type d’intervention, nombre de  distributeurs à visiter, type de produits à réapprovisionner)
-- [ ] Géolocaliser sur une carte un distributeur, afficher ses coordonnées et adresse
 
 ## Resources logicielles
 
@@ -26,13 +58,10 @@ Système de surveillance à distance de distributeurs automatiques permettant de
 | EDI                       | Qt Creator 4.11.0                    |
 | Développement             | Qt 5.12.8 / C++ (GCC 9.3.0, 64 bits) |
 
-## Auteur
+## Base de données
 
-- Laura MORELLO <<lauramorello1604@gmail.com>>
+![](images/bdd-just-feed-v0.2.png)
 
-## Historique des versions
-
-- Version 0.1 : 02/04/2022
 
 ## Kanban
 
