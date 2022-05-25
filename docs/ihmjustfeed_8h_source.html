@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>just-feed:  Fichier source de ihmjustfeed.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="just-feed.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">just-feed
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('ihmjustfeed_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ihmjustfeed.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ihmjustfeed_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef IHMJUSTFEED_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define IHMJUSTFEED_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QtWidgets&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QWebEnginePage&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="ihmjustfeed_8h.html#a75a6df0e4e67539a5599efbd68bae5eb">   21</a></span>&#160;<span class="preprocessor">#define NOM_APPLICATION &quot;JustFeed&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="ihmjustfeed_8h.html#a121d9d72e2cc9cdcf09da6b88fa7859d">   28</a></span>&#160;<span class="preprocessor">#define VERSION_APPLICATION &quot;1.0&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// QT_BEGIN_NAMESPACE</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespace_ui.html">   31</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_ui.html">Ui</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">class </span><a class="code" href="class_i_h_m_just_feed.html">IHMJustFeed</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// QT_END_NAMESPACE</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_de_donnees.html">BaseDeDonnees</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_i_h_m_just_feed.html">IHMJustFeed</a> : <span class="keyword">public</span> <a class="code" href="class_q_main_window.html">QMainWindow</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_i_h_m_just_feed.html#a51be77e4855b0f8cef2b33ebe7af3610">IHMJustFeed</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="class_i_h_m_just_feed.html#a0f2ebe0ba7c02c8f83f503d6aebec917">~IHMJustFeed</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a7d4f58522c576703b29e0a1b0f77b486">   53</a></span>&#160;    Ui::IHMJustFeed* <a class="code" href="class_i_h_m_just_feed.html#a7d4f58522c576703b29e0a1b0f77b486">ui</a>; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a673c0efe11a5b294ccf1f55c5d3f334e">   54</a></span>&#160;    <a class="code" href="class_base_de_donnees.html">BaseDeDonnees</a>*   <a class="code" href="class_i_h_m_just_feed.html#a673c0efe11a5b294ccf1f55c5d3f334e">baseDeDonnees</a>; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a7d974a0601aba56f051fdf07bd1bb466">   55</a></span>&#160;    QStringList      <a class="code" href="class_i_h_m_just_feed.html#a7d974a0601aba56f051fdf07bd1bb466">nomColonnes</a>;   </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a1d5783f025b58d5d7343989a308bf86a">   56</a></span>&#160;    <span class="keywordtype">int</span>              <a class="code" href="class_i_h_m_just_feed.html#a1d5783f025b58d5d7343989a308bf86a">nbLignesDistributeurs</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a73f18ff265ae43a8b24d0bfb50a1e032">   57</a></span>&#160;    QVector&lt;QStringList&gt; <a class="code" href="class_i_h_m_just_feed.html#a73f18ff265ae43a8b24d0bfb50a1e032">distributeurs</a>;     </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    QVector&lt;QStringList&gt;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a97e2617d34dcbabfe17fd3804475d827">   59</a></span>&#160;                        <a class="code" href="class_i_h_m_just_feed.html#a97e2617d34dcbabfe17fd3804475d827">etatsDistributeurs</a>; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#ad895019f02cb0d4bb2d9cb50a523801d">   60</a></span>&#160;    QStandardItemModel* <a class="code" href="class_i_h_m_just_feed.html#ad895019f02cb0d4bb2d9cb50a523801d">modeleDistributeur</a>; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#ac8e34b82db99152afba5122954edd139">   61</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_i_h_m_just_feed.html#ac8e34b82db99152afba5122954edd139">numeroDistributeurSelectionne</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a18cf0a14ac17bd345d6c9c01e085e4c7">   62</a></span>&#160;    QWebEnginePage* <a class="code" href="class_i_h_m_just_feed.html#a18cf0a14ac17bd345d6c9c01e085e4c7">pageLocalisation</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a04a133d98d8f405e6f36b2689fe41139">   63</a></span>&#160;    <span class="keywordtype">int</span>             <a class="code" href="class_i_h_m_just_feed.html#a04a133d98d8f405e6f36b2689fe41139">nbLignesInterventions</a>; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33f">   70</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33f">Page</a></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa06213b471c36eafc7697c6f8e0d3b63a">   72</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa06213b471c36eafc7697c6f8e0d3b63a">Accueil</a> = 0,</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fac41852ad0ad050145ff28206fc4a313f">   73</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fac41852ad0ad050145ff28206fc4a313f">Distributeur</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa4475bdc7e4907c8c366e48c5d36c9aee">   74</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa4475bdc7e4907c8c366e48c5d36c9aee">Intervention</a>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa8f086a39499fb0c0ba148088c1b6753f">   75</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa8f086a39499fb0c0ba148088c1b6753f">Geolocalisation</a>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fae97456cc042d68e1ba1b393d7e4ff93c">   76</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fae97456cc042d68e1ba1b393d7e4ff93c">NbPages</a></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    };</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49d">   83</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49d">ColonneDistributeur</a></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da46f66c670e062d9a95d3d6a5351485dc">   85</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da46f66c670e062d9a95d3d6a5351485dc">COLONNE_DISTRIBUTEUR_NOM</a>,        </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da7933a8633b8fd17b25d8e41dbc6376da">   86</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da7933a8633b8fd17b25d8e41dbc6376da">COLONNE_DISTRIBUTEUR_VILLE</a>,      </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da388fad449a02053b4208893bcfcc910e">   87</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da388fad449a02053b4208893bcfcc910e">COLONNE_DISTRIBUTEUR_CODEPOSTAL</a>, </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da4c00657770b3444711b10140ee83b38a">   88</a></span>&#160;        <a class="code" href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da4c00657770b3444711b10140ee83b38a">NB_COLONNES</a></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    };</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a2bd71fb441ed7498c2be90c303194c7f">initialiser</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a7c14cbc75d1b8303f39f9f462976693f">gererEvenements</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a894c34114f5b38b2a912a87a474a706a">ouvrirBaseDeDonnees</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="class_i_h_m_just_feed.html#ad803e2a7e9ed377e834417a59abd7823">recupererIndexEtatsDistributeur</a>(QString idDistibuteur);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="class_i_h_m_just_feed.html#ad90590e2635dfb67ab1f951b56b22c95">recupererIndexInterventionDistributeur</a>(QString idDistributeur);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="class_i_h_m_just_feed.html#a8ae54d718ee16aa76b930eed139c83d6">recupererIndexGeolocalisationDistributeur</a>(QString idDistributeur);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a06cccad864cb165edb01ebb5ac2f75c8">afficherNiveauRemplissage</a>(<span class="keywordtype">int</span> pourcentage, <span class="keywordtype">int</span> numeroBac);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a4afa7cbde9234191b329fcd83b13a09e">chargerDistributeurs</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a936cc3d5a64c9edd09fec4c3cfaea212">effacerTableDistributeurs</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a5a7062405fd8bf30f37a28f3af8a60a7">afficherDistributeurTable</a>(QStringList distributeur);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a16f151180204b172bf5bb3aff4e81ac5">afficherEtatDistributeur</a>(<span class="keywordtype">int</span> indexDistributeur);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a69888e88dc1c3ea02fcf12c2fac75d9d">afficherInterventions</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a15e6676c7edca60356abf1dc96c129d8">afficherGeolocalisationDistributeur</a>(<span class="keywordtype">int</span> indexDistributeur);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a14f4994c2f7e1b147f51457dc0cbe5c3">selectionner</a>(QModelIndex index);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a38397a9ec97ad102a76c7f6bacf4d439">selectionnerDistributeur</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a841650c82f67dea3bc41b264f4e03aca">effacerSelectionIntervention</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#aba71350c8a2e6d08f12a8e465853b920">afficherPage</a>(<a class="code" href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33f">Page</a> page);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#ab34bb5793a202f17a33eea5055a0e123">afficherPageAccueil</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#ad8d76288ace8cfb1bbe2f3a87a3956e9">afficherPageEtatDistributeur</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a5994c5da578df5a516eee7a1d1e058e2">afficherPageInterventionDistributeur</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_i_h_m_just_feed.html#a682f8f425448deec420e7b552176f9e8">afficherPageGeolocalisationDistributeur</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif // IHMJUSTFEED_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a894c34114f5b38b2a912a87a474a706a"><div class="ttname"><a href="class_i_h_m_just_feed.html#a894c34114f5b38b2a912a87a474a706a">IHMJustFeed::ouvrirBaseDeDonnees</a></div><div class="ttdeci">void ouvrirBaseDeDonnees()</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00115">ihmjustfeed.cpp:115</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a4ba1c55ca75b1a03e7d3f47e2b56c49da4c00657770b3444711b10140ee83b38a"><div class="ttname"><a href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da4c00657770b3444711b10140ee83b38a">IHMJustFeed::NB_COLONNES</a></div><div class="ttdeci">@ NB_COLONNES</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00088">ihmjustfeed.h:88</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a4ba1c55ca75b1a03e7d3f47e2b56c49d"><div class="ttname"><a href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49d">IHMJustFeed::ColonneDistributeur</a></div><div class="ttdeci">ColonneDistributeur</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00083">ihmjustfeed.h:83</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5a7062405fd8bf30f37a28f3af8a60a7"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5a7062405fd8bf30f37a28f3af8a60a7">IHMJustFeed::afficherDistributeurTable</a></div><div class="ttdeci">void afficherDistributeurTable(QStringList distributeur)</div><div class="ttdoc">Affiche un distributeur dans le QTableView.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00248">ihmjustfeed.cpp:248</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a16f151180204b172bf5bb3aff4e81ac5"><div class="ttname"><a href="class_i_h_m_just_feed.html#a16f151180204b172bf5bb3aff4e81ac5">IHMJustFeed::afficherEtatDistributeur</a></div><div class="ttdeci">void afficherEtatDistributeur(int indexDistributeur)</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00307">ihmjustfeed.cpp:307</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a4ba1c55ca75b1a03e7d3f47e2b56c49da46f66c670e062d9a95d3d6a5351485dc"><div class="ttname"><a href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da46f66c670e062d9a95d3d6a5351485dc">IHMJustFeed::COLONNE_DISTRIBUTEUR_NOM</a></div><div class="ttdeci">@ COLONNE_DISTRIBUTEUR_NOM</div><div class="ttdoc">Emplacement du nom.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00085">ihmjustfeed.h:85</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a15e6676c7edca60356abf1dc96c129d8"><div class="ttname"><a href="class_i_h_m_just_feed.html#a15e6676c7edca60356abf1dc96c129d8">IHMJustFeed::afficherGeolocalisationDistributeur</a></div><div class="ttdeci">void afficherGeolocalisationDistributeur(int indexDistributeur)</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00385">ihmjustfeed.cpp:385</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a841650c82f67dea3bc41b264f4e03aca"><div class="ttname"><a href="class_i_h_m_just_feed.html#a841650c82f67dea3bc41b264f4e03aca">IHMJustFeed::effacerSelectionIntervention</a></div><div class="ttdeci">void effacerSelectionIntervention()</div><div class="ttdoc">Slot déclenché par le bouton Annuler pour effacer la sélection.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00499">ihmjustfeed.cpp:499</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a4ba1c55ca75b1a03e7d3f47e2b56c49da7933a8633b8fd17b25d8e41dbc6376da"><div class="ttname"><a href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da7933a8633b8fd17b25d8e41dbc6376da">IHMJustFeed::COLONNE_DISTRIBUTEUR_VILLE</a></div><div class="ttdeci">@ COLONNE_DISTRIBUTEUR_VILLE</div><div class="ttdoc">Emplacement de la ville.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00086">ihmjustfeed.h:86</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_ac8e34b82db99152afba5122954edd139"><div class="ttname"><a href="class_i_h_m_just_feed.html#ac8e34b82db99152afba5122954edd139">IHMJustFeed::numeroDistributeurSelectionne</a></div><div class="ttdeci">int numeroDistributeurSelectionne</div><div class="ttdoc">l'index du distributeur sélectionné</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00061">ihmjustfeed.h:61</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html"><div class="ttname"><a href="class_i_h_m_just_feed.html">IHMJustFeed</a></div><div class="ttdoc">Déclaration de la classe IHMJustFeed.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00044">ihmjustfeed.h:44</a></div></div>
+<div class="ttc" id="aclass_q_main_window_html"><div class="ttname"><a href="class_q_main_window.html">QMainWindow</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a682f8f425448deec420e7b552176f9e8"><div class="ttname"><a href="class_i_h_m_just_feed.html#a682f8f425448deec420e7b552176f9e8">IHMJustFeed::afficherPageGeolocalisationDistributeur</a></div><div class="ttdeci">void afficherPageGeolocalisationDistributeur()</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00548">ihmjustfeed.cpp:548</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_ad895019f02cb0d4bb2d9cb50a523801d"><div class="ttname"><a href="class_i_h_m_just_feed.html#ad895019f02cb0d4bb2d9cb50a523801d">IHMJustFeed::modeleDistributeur</a></div><div class="ttdeci">QStandardItemModel * modeleDistributeur</div><div class="ttdoc">Modèle pourle QTableView.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00060">ihmjustfeed.h:60</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a7c14cbc75d1b8303f39f9f462976693f"><div class="ttname"><a href="class_i_h_m_just_feed.html#a7c14cbc75d1b8303f39f9f462976693f">IHMJustFeed::gererEvenements</a></div><div class="ttdeci">void gererEvenements()</div><div class="ttdoc">Assure la connexion des signaux et slots.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00083">ihmjustfeed.cpp:83</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a0f2ebe0ba7c02c8f83f503d6aebec917"><div class="ttname"><a href="class_i_h_m_just_feed.html#a0f2ebe0ba7c02c8f83f503d6aebec917">IHMJustFeed::~IHMJustFeed</a></div><div class="ttdeci">~IHMJustFeed()</div><div class="ttdoc">Destructeur de la classe IHMJustFeed.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00042">ihmjustfeed.cpp:42</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a06cccad864cb165edb01ebb5ac2f75c8"><div class="ttname"><a href="class_i_h_m_just_feed.html#a06cccad864cb165edb01ebb5ac2f75c8">IHMJustFeed::afficherNiveauRemplissage</a></div><div class="ttdeci">void afficherNiveauRemplissage(int pourcentage, int numeroBac)</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00144">ihmjustfeed.cpp:144</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5eff940aec4a7968704453604d70d33fa4475bdc7e4907c8c366e48c5d36c9aee"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa4475bdc7e4907c8c366e48c5d36c9aee">IHMJustFeed::Intervention</a></div><div class="ttdeci">@ Intervention</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00074">ihmjustfeed.h:74</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a04a133d98d8f405e6f36b2689fe41139"><div class="ttname"><a href="class_i_h_m_just_feed.html#a04a133d98d8f405e6f36b2689fe41139">IHMJustFeed::nbLignesInterventions</a></div><div class="ttdeci">int nbLignesInterventions</div><div class="ttdoc">nombre de lignes</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00063">ihmjustfeed.h:63</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5eff940aec4a7968704453604d70d33fac41852ad0ad050145ff28206fc4a313f"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fac41852ad0ad050145ff28206fc4a313f">IHMJustFeed::Distributeur</a></div><div class="ttdeci">@ Distributeur</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00073">ihmjustfeed.h:73</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a936cc3d5a64c9edd09fec4c3cfaea212"><div class="ttname"><a href="class_i_h_m_just_feed.html#a936cc3d5a64c9edd09fec4c3cfaea212">IHMJustFeed::effacerTableDistributeurs</a></div><div class="ttdeci">void effacerTableDistributeurs()</div><div class="ttdoc">Efface le QTableView.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00233">ihmjustfeed.cpp:233</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a97e2617d34dcbabfe17fd3804475d827"><div class="ttname"><a href="class_i_h_m_just_feed.html#a97e2617d34dcbabfe17fd3804475d827">IHMJustFeed::etatsDistributeurs</a></div><div class="ttdeci">QVector&lt; QStringList &gt; etatsDistributeurs</div><div class="ttdoc">Les états des stocks des distributeurs.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00059">ihmjustfeed.h:59</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5eff940aec4a7968704453604d70d33fa06213b471c36eafc7697c6f8e0d3b63a"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa06213b471c36eafc7697c6f8e0d3b63a">IHMJustFeed::Accueil</a></div><div class="ttdeci">@ Accueil</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00072">ihmjustfeed.h:72</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a38397a9ec97ad102a76c7f6bacf4d439"><div class="ttname"><a href="class_i_h_m_just_feed.html#a38397a9ec97ad102a76c7f6bacf4d439">IHMJustFeed::selectionnerDistributeur</a></div><div class="ttdeci">void selectionnerDistributeur(int index)</div><div class="ttdoc">Sélectionne un distributeur dans la liste.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00474">ihmjustfeed.cpp:474</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5eff940aec4a7968704453604d70d33f"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33f">IHMJustFeed::Page</a></div><div class="ttdeci">Page</div><div class="ttdoc">Définit les différentes pages de l'IHM.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00070">ihmjustfeed.h:70</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_ad90590e2635dfb67ab1f951b56b22c95"><div class="ttname"><a href="class_i_h_m_just_feed.html#ad90590e2635dfb67ab1f951b56b22c95">IHMJustFeed::recupererIndexInterventionDistributeur</a></div><div class="ttdeci">int recupererIndexInterventionDistributeur(QString idDistributeur)</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00133">ihmjustfeed.cpp:133</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_aba71350c8a2e6d08f12a8e465853b920"><div class="ttname"><a href="class_i_h_m_just_feed.html#aba71350c8a2e6d08f12a8e465853b920">IHMJustFeed::afficherPage</a></div><div class="ttdeci">void afficherPage(Page page)</div><div class="ttdoc">Méthode qui permet d'afficher une page de la pile QStackedWidget.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00513">ihmjustfeed.cpp:513</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a18cf0a14ac17bd345d6c9c01e085e4c7"><div class="ttname"><a href="class_i_h_m_just_feed.html#a18cf0a14ac17bd345d6c9c01e085e4c7">IHMJustFeed::pageLocalisation</a></div><div class="ttdeci">QWebEnginePage * pageLocalisation</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00062">ihmjustfeed.h:62</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a7d4f58522c576703b29e0a1b0f77b486"><div class="ttname"><a href="class_i_h_m_just_feed.html#a7d4f58522c576703b29e0a1b0f77b486">IHMJustFeed::ui</a></div><div class="ttdeci">Ui::IHMJustFeed * ui</div><div class="ttdoc">la fenêtre graphique associée à cette classe</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00053">ihmjustfeed.h:53</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a51be77e4855b0f8cef2b33ebe7af3610"><div class="ttname"><a href="class_i_h_m_just_feed.html#a51be77e4855b0f8cef2b33ebe7af3610">IHMJustFeed::IHMJustFeed</a></div><div class="ttdeci">IHMJustFeed(QWidget *parent=nullptr)</div><div class="ttdoc">Constructeur de la classe IHMJustFeed.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00023">ihmjustfeed.cpp:23</a></div></div>
+<div class="ttc" id="anamespace_ui_html"><div class="ttname"><a href="namespace_ui.html">Ui</a></div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00031">ihmjustfeed.h:31</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a2bd71fb441ed7498c2be90c303194c7f"><div class="ttname"><a href="class_i_h_m_just_feed.html#a2bd71fb441ed7498c2be90c303194c7f">IHMJustFeed::initialiser</a></div><div class="ttdeci">void initialiser()</div><div class="ttdoc">Initialise le contenu de la page.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00054">ihmjustfeed.cpp:54</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a7d974a0601aba56f051fdf07bd1bb466"><div class="ttname"><a href="class_i_h_m_just_feed.html#a7d974a0601aba56f051fdf07bd1bb466">IHMJustFeed::nomColonnes</a></div><div class="ttdeci">QStringList nomColonnes</div><div class="ttdoc">Liste de nom des colonnes.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00055">ihmjustfeed.h:55</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a673c0efe11a5b294ccf1f55c5d3f334e"><div class="ttname"><a href="class_i_h_m_just_feed.html#a673c0efe11a5b294ccf1f55c5d3f334e">IHMJustFeed::baseDeDonnees</a></div><div class="ttdeci">BaseDeDonnees * baseDeDonnees</div><div class="ttdoc">Instance d'un objet BaseDeDonnees.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00054">ihmjustfeed.h:54</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_ad8d76288ace8cfb1bbe2f3a87a3956e9"><div class="ttname"><a href="class_i_h_m_just_feed.html#ad8d76288ace8cfb1bbe2f3a87a3956e9">IHMJustFeed::afficherPageEtatDistributeur</a></div><div class="ttdeci">void afficherPageEtatDistributeur()</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00530">ihmjustfeed.cpp:530</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a1d5783f025b58d5d7343989a308bf86a"><div class="ttname"><a href="class_i_h_m_just_feed.html#a1d5783f025b58d5d7343989a308bf86a">IHMJustFeed::nbLignesDistributeurs</a></div><div class="ttdeci">int nbLignesDistributeurs</div><div class="ttdoc">nombre de lignes</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00056">ihmjustfeed.h:56</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_ab34bb5793a202f17a33eea5055a0e123"><div class="ttname"><a href="class_i_h_m_just_feed.html#ab34bb5793a202f17a33eea5055a0e123">IHMJustFeed::afficherPageAccueil</a></div><div class="ttdeci">void afficherPageAccueil()</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00524">ihmjustfeed.cpp:524</a></div></div>
+<div class="ttc" id="aclass_base_de_donnees_html"><div class="ttname"><a href="class_base_de_donnees.html">BaseDeDonnees</a></div><div class="ttdoc">Class permettant de s'interfacer avec la base de données.</div><div class="ttdef"><b>Definition:</b> <a href="basededonnees_8h_source.html#l00021">basededonnees.h:21</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5eff940aec4a7968704453604d70d33fa8f086a39499fb0c0ba148088c1b6753f"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fa8f086a39499fb0c0ba148088c1b6753f">IHMJustFeed::Geolocalisation</a></div><div class="ttdeci">@ Geolocalisation</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00075">ihmjustfeed.h:75</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5994c5da578df5a516eee7a1d1e058e2"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5994c5da578df5a516eee7a1d1e058e2">IHMJustFeed::afficherPageInterventionDistributeur</a></div><div class="ttdeci">void afficherPageInterventionDistributeur()</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00539">ihmjustfeed.cpp:539</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a14f4994c2f7e1b147f51457dc0cbe5c3"><div class="ttname"><a href="class_i_h_m_just_feed.html#a14f4994c2f7e1b147f51457dc0cbe5c3">IHMJustFeed::selectionner</a></div><div class="ttdeci">void selectionner(QModelIndex index)</div><div class="ttdoc">Sélectionne un distributeur dans la table.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00459">ihmjustfeed.cpp:459</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a73f18ff265ae43a8b24d0bfb50a1e032"><div class="ttname"><a href="class_i_h_m_just_feed.html#a73f18ff265ae43a8b24d0bfb50a1e032">IHMJustFeed::distributeurs</a></div><div class="ttdeci">QVector&lt; QStringList &gt; distributeurs</div><div class="ttdoc">Les distributeurs.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00057">ihmjustfeed.h:57</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a8ae54d718ee16aa76b930eed139c83d6"><div class="ttname"><a href="class_i_h_m_just_feed.html#a8ae54d718ee16aa76b930eed139c83d6">IHMJustFeed::recupererIndexGeolocalisationDistributeur</a></div><div class="ttdeci">int recupererIndexGeolocalisationDistributeur(QString idDistributeur)</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00138">ihmjustfeed.cpp:138</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a4afa7cbde9234191b329fcd83b13a09e"><div class="ttname"><a href="class_i_h_m_just_feed.html#a4afa7cbde9234191b329fcd83b13a09e">IHMJustFeed::chargerDistributeurs</a></div><div class="ttdeci">void chargerDistributeurs()</div><div class="ttdoc">Charge des données dans le QTableView.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00185">ihmjustfeed.cpp:185</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a4ba1c55ca75b1a03e7d3f47e2b56c49da388fad449a02053b4208893bcfcc910e"><div class="ttname"><a href="class_i_h_m_just_feed.html#a4ba1c55ca75b1a03e7d3f47e2b56c49da388fad449a02053b4208893bcfcc910e">IHMJustFeed::COLONNE_DISTRIBUTEUR_CODEPOSTAL</a></div><div class="ttdeci">@ COLONNE_DISTRIBUTEUR_CODEPOSTAL</div><div class="ttdoc">Emplacement du code postal.</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00087">ihmjustfeed.h:87</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_ad803e2a7e9ed377e834417a59abd7823"><div class="ttname"><a href="class_i_h_m_just_feed.html#ad803e2a7e9ed377e834417a59abd7823">IHMJustFeed::recupererIndexEtatsDistributeur</a></div><div class="ttdeci">int recupererIndexEtatsDistributeur(QString idDistibuteur)</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00121">ihmjustfeed.cpp:121</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a5eff940aec4a7968704453604d70d33fae97456cc042d68e1ba1b393d7e4ff93c"><div class="ttname"><a href="class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33fae97456cc042d68e1ba1b393d7e4ff93c">IHMJustFeed::NbPages</a></div><div class="ttdeci">@ NbPages</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8h_source.html#l00076">ihmjustfeed.h:76</a></div></div>
+<div class="ttc" id="aclass_i_h_m_just_feed_html_a69888e88dc1c3ea02fcf12c2fac75d9d"><div class="ttname"><a href="class_i_h_m_just_feed.html#a69888e88dc1c3ea02fcf12c2fac75d9d">IHMJustFeed::afficherInterventions</a></div><div class="ttdeci">void afficherInterventions()</div><div class="ttdef"><b>Definition:</b> <a href="ihmjustfeed_8cpp_source.html#l00376">ihmjustfeed.cpp:376</a></div></div>
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c7083f6eb618c797565f2e9b347d811c.html">just-feed</a></li><li class="navelem"><a class="el" href="ihmjustfeed_8h.html">ihmjustfeed.h</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 25 Mai 2022 16:45:11 pour just-feed par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>
