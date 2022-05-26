@@ -9,6 +9,7 @@ Le système doit permettre de surveiller à distance des distributeurs automatiq
   - [Fonctionnalités](#fonctionnalités)
   - [TODO](#todo)
   - [Resources logicielles](#resources-logicielles)
+  - [Documentation du code](#documentation-du-code)
   - [Base de données](#base-de-données)
   - [Kanban](#kanban)
   - [Qt MQTT](#qt-mqtt)
@@ -57,6 +58,10 @@ Système de surveillance à distance de distributeurs automatiques permettant de
 | OS Poste de développement | PC sous GNU/Linux Ubuntu 20.04       |
 | EDI                       | Qt Creator 4.11.0                    |
 | Développement             | Qt 5.12.8 / C++ (GCC 9.3.0, 64 bits) |
+
+## Documentation du code
+
+https://btssn-lasalle-84.github.io/just-feed-2022/
 
 ## Base de données
 

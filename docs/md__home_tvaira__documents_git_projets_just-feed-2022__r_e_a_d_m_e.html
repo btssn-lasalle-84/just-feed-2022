@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>just-feed: Le projet just-feed 2022</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="just-feed.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">just-feed
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('md__home_tvaira__documents_git_projets_just-feed-2022__r_e_a_d_m_e.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Le projet just-feed 2022 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Le système doit permettre de surveiller à distance des distributeurs automatiques (fruits secs, pâtes, riz,...) afin d’optimiser le processus de réapprovisionnement.</p>
+<ul>
+<li><a href="#le-projet-just-feed-2022">Le projet just-feed 2022</a><ul>
+<li><a href="#expression-du-besoin">Expression du besoin</a></li>
+<li><a href="#auteur">Auteur</a></li>
+<li><a href="#historique-des-versions">Historique des versions</a></li>
+<li><a href="#fonctionnalités">Fonctionnalités</a></li>
+<li><a href="#todo">TODO</a></li>
+<li><a href="#resources-logicielles">Resources logicielles</a></li>
+<li><a href="#base-de-données">Base de données</a></li>
+<li><a href="#kanban">Kanban</a></li>
+<li><a href="#qt-mqtt">Qt MQTT</a></li>
+</ul>
+</li>
+</ul>
+<h1>Expression du besoin</h1>
+<p>Système de surveillance à distance de distributeurs automatiques permettant de :</p>
+<ul>
+<li>Envoyer des alertes lorsque le distributeur doit être réapprovisionné</li>
+<li>Signaler la nécessité de mettre en oeuvre des opérations de maintenance prédictive</li>
+<li>Superviser l’ensemble des distributeurs à partir d’une application</li>
+</ul>
+<h1>Auteur</h1>
+<ul>
+<li>Laura MORELLO &lt;<a href="#" onclick="location.href='mai'+'lto:'+'lau'+'ra'+'mor'+'el'+'lo1'+'60'+'4@g'+'ma'+'il.'+'co'+'m'; return false;">laura<span style="display: none;">.nosp@m.</span>more<span style="display: none;">.nosp@m.</span>llo16<span style="display: none;">.nosp@m.</span>04@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a>&gt;</li>
+</ul>
+<h1>Historique des versions</h1>
+<ul>
+<li>Version 0.2 : 24/05/2022</li>
+<li>Version 0.1 : 02/04/2022</li>
+</ul>
+<h1>Fonctionnalités</h1>
+<ul>
+<li>Lister les distributeurs</li>
+</ul>
+<div class="image">
+<img src="capture-liste-distributeurs.png" alt=""/>
+</div>
+   <ul>
+<li>Visualiser l’état d’un distributeur</li>
+</ul>
+<div class="image">
+<img src="capture-etat-distributeur.png" alt=""/>
+</div>
+   <ul>
+<li>Géolocaliser sur une carte un distributeur, afficher ses coordonnées et adresse</li>
+</ul>
+<div class="image">
+<img src="capture-localisation-distributeur.png" alt=""/>
+</div>
+   <h1>TODO</h1>
+<ul>
+<li>[ ] Communiquer avec les distributeurs</li>
+<li>[ ] Sélectionner un distributeur pour une intervention</li>
+<li>[ ] Définir une intervention (type d’intervention, nombre de distributeurs à visiter, type de produits à réapprovisionner)</li>
+</ul>
+<h1>Resources logicielles</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Désignation </th><th class="markdownTableHeadCenter">Caractéristiques  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">OS Poste de développement </td><td class="markdownTableBodyCenter">PC sous GNU/Linux Ubuntu 20.04  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">EDI </td><td class="markdownTableBodyCenter">Qt Creator 4.11.0  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Développement </td><td class="markdownTableBodyCenter">Qt 5.12.8 / C++ (GCC 9.3.0, 64 bits)  </td></tr>
+</table>
+<h1>Base de données</h1>
+<div class="image">
+<img src="bdd-just-feed-v0.2.png" alt=""/>
+</div>
+   <h1>Kanban</h1>
+<p><a href="https://github.com/btssn-lasalle-84/just-feed-2022/projects/1">just-feed-2022</a></p>
+<h1>Qt MQTT</h1>
+<p><a href="https://doc.qt.io/QtMQTT/index.html">Qt MQTT</a> fournit une implémentation conforme à la norme MQTT.</p>
+<p>Qt MQTT fait parti de <a href="http://doc.qt.io/QtForAutomation/qtautomation-overview.html">Qt For Automation</a> et pas directement de Qt. Il faut donc l'installer.</p>
+<ol type="1">
+<li>Identifier la version de Qt :</li>
+</ol>
+<div class="fragment"><div class="line">$ qmake -v</div>
+<div class="line">QMake version 3.1</div>
+<div class="line">Using Qt version 5.12.8 in /usr/lib/x86_64-linux-gnu</div>
+</div><!-- fragment --><p>Ici, la version de Qt est <code>5.12.8</code>.</p>
+<ol type="1">
+<li>Récupérer le code source du module <code>mqtt</code> en clonant le dépôt git</li>
+</ol>
+<div class="fragment"><div class="line">$ sudo git clone https://code.qt.io/qt/qtmqtt.git</div>
+<div class="line">$ cd qtmqtt/</div>
+</div><!-- fragment --><ol type="1">
+<li>Sélectionner la branche qui correspond à la version de Qt utilisée</li>
+</ol>
+<div class="fragment"><div class="line">$ sudo git checkout 5.12.8</div>
+</div><!-- fragment --><ol type="1">
+<li>Installer le paquet fournissant les fichiers d'en-tête de développement indépendants</li>
+</ol>
+<div class="fragment"><div class="line">$ sudo apt install qtbase5-private-dev</div>
+</div><!-- fragment --><ol type="1">
+<li>Fabriquer et installer le module <code>mqtt</code></li>
+</ol>
+<div class="fragment"><div class="line">$ sudo qmake</div>
+<div class="line"> </div>
+<div class="line">$ sudo make</div>
+<div class="line"> </div>
+<div class="line">$ sudo make install</div>
+</div><!-- fragment --><p>Pour accèder aux classes du module Qt MQTT, il faudra ajouter le module <code>mqtt</code> au fichier de projet <code>.pro</code> :</p>
+<div class="fragment"><div class="line">QT += mqtt</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 25 Mai 2022 16:45:11 pour just-feed par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>

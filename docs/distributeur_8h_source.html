@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>just-feed:  Fichier source de distributeur.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="just-feed.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">just-feed
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('distributeur_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">distributeur.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="distributeur_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DISTRIBUTEUR_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define DISTRIBUTEUR_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="distributeur_8h.html#a8b41e3f1edee9d997e96afe74ed22080">    6</a></span>&#160;<span class="preprocessor">#define NB_DISTRIBUTEURS_DEFAUT 3</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="distributeur_8h.html#a926ef3c24a4a109dbdba3d8b9d86b0be">    8</a></span>&#160;<span class="preprocessor">#define SEUIL_REMPLISSAGE_DEFAUT 30</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_distributeur.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_distributeur.html">Distributeur</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="class_distributeur.html#a6ddd62497a6339df8a9c7744d1595df7">Distributeur</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21">   20</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21">ChampDistributeur</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a3f8d4a8ba2f6c77a567d8d4211e6c217">   22</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a3f8d4a8ba2f6c77a567d8d4211e6c217">CHAMP_idDistributeur</a>,</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a24b01923019528b46c8c2780724df198">   23</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a24b01923019528b46c8c2780724df198">CHAMP_idServeurTTN</a>,</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a458ad04a083327a14e69f61dd70db882">   24</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a458ad04a083327a14e69f61dd70db882">CHAMP_libelle</a>,</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a4cef3b60c55534c81ac9829ab8c941ce">   25</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a4cef3b60c55534c81ac9829ab8c941ce">CHAMP_description</a>,</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a3b76f3b4fe40fc5b0dc93a542ce31732">   26</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a3b76f3b4fe40fc5b0dc93a542ce31732">CHAMP_adresse</a>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21adf9caab250947c6737c77bf3c261e214">   27</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21adf9caab250947c6737c77bf3c261e214">CHAMP_ville</a>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a48a6cc4fb52766e3a1bf5abdd093ee83">   28</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a48a6cc4fb52766e3a1bf5abdd093ee83">CHAMP_codepostal</a>,</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21aea4f6194264b6d244ad1d40136716a1e">   29</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21aea4f6194264b6d244ad1d40136716a1e">CHAMP_dateMiseEnService</a>,</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a8bbfe2060f33267aedaa4a3e5643c6d0">   30</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a8bbfe2060f33267aedaa4a3e5643c6d0">CHAMP_longitude</a>,</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a33b083b5f38744fd58048ed2e35c920b">   31</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a33b083b5f38744fd58048ed2e35c920b">CHAMP_latitude</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a8d1bb7cbb4c928552b65a21af65dec94">   32</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a8d1bb7cbb4c928552b65a21af65dec94">CHAMP_deviceID</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21ada2343fe693eef4c428b8ed403693883">   33</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21ada2343fe693eef4c428b8ed403693883">CHAMP_hygrometrie</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a53504efc383b454d2b06b0743064ac82">   34</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a53504efc383b454d2b06b0743064ac82">CHAMP_nbBacs</a>,</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a845a5b37883b56f17bf07816ce21c767">   35</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a845a5b37883b56f17bf07816ce21c767">CHAMP_designationProduit</a>,</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a6e5040169e3d37130f298fbe16029ac9">   36</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a6e5040169e3d37130f298fbe16029ac9">CHAMP_niveauApprovisionnement</a>,</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21afdedc7bd5afd6f752507e4756d9dcb48">   37</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21afdedc7bd5afd6f752507e4756d9dcb48">CHAMP_numeroBac</a>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a91446ef6ce14a1075e902e61692c4a8c">   38</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a91446ef6ce14a1075e902e61692c4a8c">CHAMP_quantite</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21af6bdd940cf7e94e64f6656bd695b9c4d">   39</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21af6bdd940cf7e94e64f6656bd695b9c4d">CHAMP_quantiteMax</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a595a1682188fcfffd7de440d6695e825">   40</a></span>&#160;        <a class="code" href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a595a1682188fcfffd7de440d6695e825">NB_CHAMPS_DISTRIBUTEUR</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif // DISTRIBUTEUR_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21ada2343fe693eef4c428b8ed403693883"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21ada2343fe693eef4c428b8ed403693883">Distributeur::CHAMP_hygrometrie</a></div><div class="ttdeci">@ CHAMP_hygrometrie</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00033">distributeur.h:33</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21">Distributeur::ChampDistributeur</a></div><div class="ttdeci">ChampDistributeur</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00020">distributeur.h:20</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a595a1682188fcfffd7de440d6695e825"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a595a1682188fcfffd7de440d6695e825">Distributeur::NB_CHAMPS_DISTRIBUTEUR</a></div><div class="ttdeci">@ NB_CHAMPS_DISTRIBUTEUR</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00040">distributeur.h:40</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a3f8d4a8ba2f6c77a567d8d4211e6c217"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a3f8d4a8ba2f6c77a567d8d4211e6c217">Distributeur::CHAMP_idDistributeur</a></div><div class="ttdeci">@ CHAMP_idDistributeur</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00022">distributeur.h:22</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21af6bdd940cf7e94e64f6656bd695b9c4d"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21af6bdd940cf7e94e64f6656bd695b9c4d">Distributeur::CHAMP_quantiteMax</a></div><div class="ttdeci">@ CHAMP_quantiteMax</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00039">distributeur.h:39</a></div></div>
+<div class="ttc" id="aclass_distributeur_html"><div class="ttname"><a href="class_distributeur.html">Distributeur</a></div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00010">distributeur.h:10</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21afdedc7bd5afd6f752507e4756d9dcb48"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21afdedc7bd5afd6f752507e4756d9dcb48">Distributeur::CHAMP_numeroBac</a></div><div class="ttdeci">@ CHAMP_numeroBac</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00037">distributeur.h:37</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a8bbfe2060f33267aedaa4a3e5643c6d0"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a8bbfe2060f33267aedaa4a3e5643c6d0">Distributeur::CHAMP_longitude</a></div><div class="ttdeci">@ CHAMP_longitude</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00030">distributeur.h:30</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a33b083b5f38744fd58048ed2e35c920b"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a33b083b5f38744fd58048ed2e35c920b">Distributeur::CHAMP_latitude</a></div><div class="ttdeci">@ CHAMP_latitude</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00031">distributeur.h:31</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21adf9caab250947c6737c77bf3c261e214"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21adf9caab250947c6737c77bf3c261e214">Distributeur::CHAMP_ville</a></div><div class="ttdeci">@ CHAMP_ville</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00027">distributeur.h:27</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a3b76f3b4fe40fc5b0dc93a542ce31732"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a3b76f3b4fe40fc5b0dc93a542ce31732">Distributeur::CHAMP_adresse</a></div><div class="ttdeci">@ CHAMP_adresse</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00026">distributeur.h:26</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21aea4f6194264b6d244ad1d40136716a1e"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21aea4f6194264b6d244ad1d40136716a1e">Distributeur::CHAMP_dateMiseEnService</a></div><div class="ttdeci">@ CHAMP_dateMiseEnService</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00029">distributeur.h:29</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_a6ddd62497a6339df8a9c7744d1595df7"><div class="ttname"><a href="class_distributeur.html#a6ddd62497a6339df8a9c7744d1595df7">Distributeur::Distributeur</a></div><div class="ttdeci">Distributeur()</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8cpp_source.html#l00003">distributeur.cpp:3</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a4cef3b60c55534c81ac9829ab8c941ce"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a4cef3b60c55534c81ac9829ab8c941ce">Distributeur::CHAMP_description</a></div><div class="ttdeci">@ CHAMP_description</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00025">distributeur.h:25</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a53504efc383b454d2b06b0743064ac82"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a53504efc383b454d2b06b0743064ac82">Distributeur::CHAMP_nbBacs</a></div><div class="ttdeci">@ CHAMP_nbBacs</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00034">distributeur.h:34</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a24b01923019528b46c8c2780724df198"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a24b01923019528b46c8c2780724df198">Distributeur::CHAMP_idServeurTTN</a></div><div class="ttdeci">@ CHAMP_idServeurTTN</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00023">distributeur.h:23</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a8d1bb7cbb4c928552b65a21af65dec94"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a8d1bb7cbb4c928552b65a21af65dec94">Distributeur::CHAMP_deviceID</a></div><div class="ttdeci">@ CHAMP_deviceID</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00032">distributeur.h:32</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a6e5040169e3d37130f298fbe16029ac9"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a6e5040169e3d37130f298fbe16029ac9">Distributeur::CHAMP_niveauApprovisionnement</a></div><div class="ttdeci">@ CHAMP_niveauApprovisionnement</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00036">distributeur.h:36</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a845a5b37883b56f17bf07816ce21c767"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a845a5b37883b56f17bf07816ce21c767">Distributeur::CHAMP_designationProduit</a></div><div class="ttdeci">@ CHAMP_designationProduit</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00035">distributeur.h:35</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a48a6cc4fb52766e3a1bf5abdd093ee83"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a48a6cc4fb52766e3a1bf5abdd093ee83">Distributeur::CHAMP_codepostal</a></div><div class="ttdeci">@ CHAMP_codepostal</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00028">distributeur.h:28</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a91446ef6ce14a1075e902e61692c4a8c"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a91446ef6ce14a1075e902e61692c4a8c">Distributeur::CHAMP_quantite</a></div><div class="ttdeci">@ CHAMP_quantite</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00038">distributeur.h:38</a></div></div>
+<div class="ttc" id="aclass_distributeur_html_aab7367409c73e836d8e641a771939a21a458ad04a083327a14e69f61dd70db882"><div class="ttname"><a href="class_distributeur.html#aab7367409c73e836d8e641a771939a21a458ad04a083327a14e69f61dd70db882">Distributeur::CHAMP_libelle</a></div><div class="ttdeci">@ CHAMP_libelle</div><div class="ttdef"><b>Definition:</b> <a href="distributeur_8h_source.html#l00024">distributeur.h:24</a></div></div>
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c7083f6eb618c797565f2e9b347d811c.html">just-feed</a></li><li class="navelem"><a class="el" href="distributeur_8h.html">distributeur.h</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 25 Mai 2022 16:45:11 pour just-feed par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>
