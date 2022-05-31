@@ -6,32 +6,61 @@ classinstance 128130 class_ref 148098 // BaseDeDonnees
   name ""   xyz 587 4 2000 life_line_z 2000
 classinstance 131458 class_ref 128002 // Opérateur
   name ""   xyz 5 4 2000 life_line_z 2000
+note 134146 "Requête SQL permettant de récupérer l'état complet des distributeurs"
+  xyzwh 400 268 2000 195 77
 durationcanvas 131586 classinstance_ref 131458 // :Opérateur
   xyzwh 36 77 2010 11 40
 end
 durationcanvas 131714 classinstance_ref 128002 // :IHMJustFeed
-  xyzwh 253 77 2010 11 515
+  xyzwh 253 77 2010 11 620
   overlappingdurationcanvas 131970
-    xyzwh 259 109 3005 11 477
+    xyzwh 259 109 3005 11 582
     overlappingdurationcanvas 132226
-      xyzwh 265 212 3015 11 34
+      xyzwh 265 380 3015 11 306
+    end
+    overlappingdurationcanvas 132482
+      xyzwh 265 145 3015 11 25
+    end
+    overlappingdurationcanvas 132738
+      xyzwh 265 222 3015 11 86
     end
   end
+end
+durationcanvas 133890 classinstance_ref 128130 // :BaseDeDonnees
+  xyzwh 645 243 2010 11 25
 end
 msg 131842 asynchronous
   from durationcanvas_ref 131586
   to durationcanvas_ref 131714
   yz 77 2015 explicitmsg "clic sur le bouton Etat"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 79 62
+  label_xy 77 61
 reflexivemsg 132098 synchronous
   to durationcanvas_ref 131970
   yz 109 2025 msg operation_ref 138370 // "afficherPageEtatDistributeur() : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 265 94
+  label_xy 267 94
 reflexivemsg 132354 synchronous
   to durationcanvas_ref 132226
-  yz 212 3020 msg operation_ref 137474 // "afficherEtatDistributeur(in indexDistributeur : int) : void"
+  yz 380 3020 msg operation_ref 137474 // "afficherEtatDistributeur(in indexDistributeur : int) : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 274 199
+  label_xy 274 367
+reflexivemsg 132610 synchronous
+  to durationcanvas_ref 132482
+  yz 145 3020 msg operation_ref 145282 // "recupererDonneesDistributeurs() : bool"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 274 128
+reflexivemsg 132866 synchronous
+  to durationcanvas_ref 132738
+  yz 222 3020 msg operation_ref 145410 // "recupererEtatsDistributeurs() : bool"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 273 206
+msg 134018 synchronous
+  from durationcanvas_ref 132738
+  to durationcanvas_ref 133890
+  yz 253 3020 msg operation_ref 135426 // "recuperer(in requete : QString, inout donnees : QString) : bool"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 424 238
+line 134274 -_-_
+  from ref 134146 z 3021 to ref 134018
 end
