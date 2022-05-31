@@ -382,10 +382,18 @@ void IHMJustFeed::afficherEtatDistributeur(int indexDistributeur)
         }
     }
 
+    afficherHygrometrie(indexDistributeur);
+}
+
+void IHMJustFeed::afficherHygrometrie(int indexDistributeur)
+{
+    qDebug() << Q_FUNC_INFO << "hygrometrie"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie);
     ui->progressBarHygrometrieBacs->setValue(
       distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie));
-    afficherHydrometrie(distributeurs.at(indexDistributeur)).toInt();
+        .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
+        .toInt());
 }
 
 void IHMJustFeed::afficherInterventions()

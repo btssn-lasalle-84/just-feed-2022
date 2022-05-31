@@ -103,7 +103,7 @@ class IHMJustFeed : public QMainWindow
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
     void afficherEtatDistributeur(int indexDistributeur);
-    void afficherHydrometrie(int indexDistributeur);
+    void afficherHygrometrie(int indexDistributeur);
     void afficherInterventions();
     void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
