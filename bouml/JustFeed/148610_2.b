@@ -407,3 +407,50 @@ class IHMJustFeed
     afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Geolocalisation);
+!!!145282.cpp!!!	recupererDonneesDistributeurs() : bool
+    QString requete = "SELECT * FROM Distributeur";
+
+    distributeurs.clear();
+    bool retour = baseDeDonnees->recuperer(requete, distributeurs);
+    qDebug() << Q_FUNC_INFO << distributeurs;
+
+    return retour;
+!!!145410.cpp!!!	recupererEtatsDistributeurs() : bool
+    QString requete =
+      "SELECT "
+      "Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS "
+      "niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur."
+      "quantite,StockDistributeur.quantiteMax FROM StockDistributeur "
+      "INNER JOIN Distributeur ON "
+      "Distributeur.idDistributeur=StockDistributeur.idDistributeur "
+      "INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit "
+      "INNER JOIN NiveauApprovisionnement ON "
+      "NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur."
+      "idNiveauApprovisionnement "
+      "INNER JOIN ServeurTTN ON "
+      "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
+    etatsDistributeurs.clear();
+    bool retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
+    qDebug() << Q_FUNC_INFO << etatsDistributeurs;
+
+    return retour;
+!!!152066.cpp!!!	afficherHygrometrie(in indexDistributeur : int) : void
+    QString idDistributeur =
+      distributeurs.at(indexDistributeur)
+        .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
+    qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
+
+    /**
+     * @todo Afficher l'hygrométrie dans le progressBar
+     */
+    qDebug() << Q_FUNC_INFO << "hygrometrie"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie);
+!!!138370.cpp!!!	afficherPageEtatDistributeur() : void
+    qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
+             << numeroDistributeurSelectionne;
+    recupererDonneesDistributeurs(); // pour l'hygrométrie
+    recupererEtatsDistributeurs();   // pour le stock
+    afficherEtatDistributeur(numeroDistributeurSelectionne);
+    ui->pushButtonRetour->show();
+    afficherPage(Page::Distributeur);

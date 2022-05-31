@@ -1,6 +1,6 @@
 format 224
 "just-feed" // just-feed
-  revision 2
+  revision 3
   modified_by 2 "btssn2"
   // class settings
   
@@ -553,7 +553,7 @@ ${items}};
 	  MysqlColumn
 	end
 
-	attribute 159106 "CHAMP_latitude"
+	attribute 159234 "CHAMP_longitude"
 	  public type class_ref 148482 // ChampDistributeur
 	  cpp_decl "  ${name}${value},${comment}"
 	  java_decl ""
@@ -564,7 +564,7 @@ ${items}};
 	  MysqlColumn
 	end
 
-	attribute 159234 "CHAMP_longitude"
+	attribute 159106 "CHAMP_latitude"
 	  public type class_ref 148482 // ChampDistributeur
 	  cpp_decl "  ${name}${value},${comment}"
 	  java_decl ""
@@ -1063,7 +1063,7 @@ ${body}}
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
-  ${body}}
+${body}}
 "
 	
 	
@@ -1125,6 +1125,34 @@ ${body}}
 "
 	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
 ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 145282 "recupererDonneesDistributeurs"
+	preserve_cpp_body_indent private explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 145410 "recupererEtatsDistributeurs"
+	preserve_cpp_body_indent private explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
 "
 	
 	
@@ -1287,6 +1315,25 @@ ${body}}
 	
       end
 
+      operation 145538 "effacerSelectionIntervention"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "//@brief Slot déclenché par le bouton Annuler pour effacer la sélection
+//
+//@fn IHMJustFeed::effacerSelectionIntervention
+//
+
+${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	
+	
+      end
+
       operation 138114 "afficherPage"
 	preserve_cpp_body_indent public explicit_return_type "void"
 	nparams 1
@@ -1370,13 +1417,6 @@ ${body}}
 	
       end
 
-      classrelation 136322 // <dependency>
-	relation 135682 -_->
-	  a public
-	    cpp default "#include in source"
-	    classrelation_ref 136322 // <dependency>
-	  b parent class_ref 148482 // ChampDistributeur
-      end
     end
 
     class 148738 "typedef2"

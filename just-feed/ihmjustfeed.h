@@ -95,12 +95,15 @@ class IHMJustFeed : public QMainWindow
     int  recupererIndexInterventionDistributeur(QString idDistributeur);
     int  recupererIndexGeolocalisationDistributeur(QString idDistributeur);
     void afficherNiveauRemplissage(int pourcentage, int numeroBac);
+    bool recupererDonneesDistributeurs();
+    bool recupererEtatsDistributeurs();
 
   public slots:
     void chargerDistributeurs();
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
     void afficherEtatDistributeur(int indexDistributeur);
+    void afficherHygrometrie(int indexDistributeur);
     void afficherInterventions();
     void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);

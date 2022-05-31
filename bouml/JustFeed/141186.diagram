@@ -1,86 +1,102 @@
 format 224
 
 classinstance 128002 class_ref 148610 // IHMJustFeed
-  name "ihmJustFeed"   xyz 128 4 2000 life_line_z 2000
+  name "ihmJustFeed"   xyz 126 4 2000 life_line_z 2000
 classinstance 129410 class_ref 148098 // BaseDeDonnees
   name ""   xyz 570 4 2000 life_line_z 2000
 note 129794 "SELECT * FROM Distributeur"
-  xyzwh 323 354 2000 261 39
+  xyzwh 307 410 2000 261 39
 fragment 130050 "loop"
-  xyzwh 165 408 3005 499 87
+  xyzwh 165 478 3005 499 87
 end
 textcanvas 130178 "[chaque distributeur]"
-  xyzwh 234 417 2000 133 15
+  xyzwh 234 487 2000 133 15
 note 130818 "Requête SQL permettant de récupérer l'état complet des distributeurs"
-  xyzwh 347 548 2000 209 71
+  xyzwh 333 666 2000 209 71
 note 131074 "Au démarrage de l'application"
   xyzwh 7 118 2000 183 59
 durationcanvas 128130 classinstance_ref 128002 // ihmJustFeed:IHMJustFeed
-  xyzwh 215 70 2010 11 33
+  xyzwh 214 70 2010 11 33
 end
 durationcanvas 128386 classinstance_ref 128002 // ihmJustFeed:IHMJustFeed
-  xyzwh 215 133 2010 11 32
+  xyzwh 214 133 2010 11 32
 end
 durationcanvas 128642 classinstance_ref 128002 // ihmJustFeed:IHMJustFeed
-  xyzwh 215 193 2010 11 30
+  xyzwh 214 193 2010 11 30
 end
 durationcanvas 128898 classinstance_ref 128002 // ihmJustFeed:IHMJustFeed
-  xyzwh 215 264 2010 11 292
+  xyzwh 214 263 2010 11 396
   overlappingdurationcanvas 129154
-    xyzwh 221 296 2020 11 25
+    xyzwh 220 296 2020 11 25
   end
   overlappingdurationcanvas 130306
-    xyzwh 221 458 2020 11 25
+    xyzwh 220 528 2020 11 25
+  end
+  overlappingdurationcanvas 131714
+    xyzwh 220 344 2020 11 59
+  end
+  overlappingdurationcanvas 131970
+    xyzwh 220 598 2020 11 55
   end
 end
 durationcanvas 129538 classinstance_ref 129410 // :BaseDeDonnees
-  xyzwh 628 327 2010 11 25
+  xyzwh 628 387 2010 11 25
 end
 durationcanvas 130562 classinstance_ref 129410 // :BaseDeDonnees
-  xyzwh 628 521 2010 11 25
+  xyzwh 628 636 2010 11 25
 end
 reflexivemsg 128258 synchronous
   to durationcanvas_ref 128130
   yz 70 2015 msg operation_ref 138754 // "ouvrirBaseDeDonnees() : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 226 58
+  label_xy 224 58
 reflexivemsg 128514 synchronous
   to durationcanvas_ref 128386
   yz 133 2015 msg operation_ref 136322 // "initialiser() : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 226 121
+  label_xy 224 121
 reflexivemsg 128770 synchronous
   to durationcanvas_ref 128642
   yz 193 2015 msg operation_ref 136450 // "gererEvenements() : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 226 178
+  label_xy 224 178
 reflexivemsg 129026 synchronous
   to durationcanvas_ref 128898
-  yz 264 2015 msg operation_ref 137090 // "chargerDistributeurs() : void"
+  yz 263 2015 msg operation_ref 137090 // "chargerDistributeurs() : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 226 251
+  label_xy 224 250
 reflexivemsg 129282 synchronous
   to durationcanvas_ref 129154
   yz 296 2025 msg operation_ref 137218 // "effacerTableDistributeurs() : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 233 282
+  label_xy 231 282
 msg 129666 synchronous
   from durationcanvas_ref 128898
   to durationcanvas_ref 129538
-  yz 329 2015 msg operation_ref 135426 // "recuperer(in requete : QString, inout donnees : QString) : bool"
+  yz 388 2015 msg operation_ref 135426 // "recuperer(in requete : QString, inout donnees : QString) : bool"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 391 314
+  label_xy 389 373
 reflexivemsg 130434 synchronous
   to durationcanvas_ref 130306
-  yz 458 2025 msg operation_ref 137346 // "afficherDistributeurTable(in distributeur : QStringList) : void"
+  yz 528 2025 msg operation_ref 137346 // "afficherDistributeurTable(in distributeur : QStringList) : void"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 232 443
+  label_xy 230 513
 msg 130690 synchronous
   from durationcanvas_ref 128898
   to durationcanvas_ref 130562
-  yz 522 2015 msg operation_ref 135426 // "recuperer(in requete : QString, inout donnees : QString) : bool"
+  yz 636 2015 msg operation_ref 135426 // "recuperer(in requete : QString, inout donnees : QString) : bool"
   show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
-  label_xy 391 507
+  label_xy 389 621
+reflexivemsg 131842 synchronous
+  to durationcanvas_ref 131714
+  yz 344 2025 msg operation_ref 145282 // "recupererDonneesDistributeurs() : bool"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 231 330
+reflexivemsg 132098 synchronous
+  to durationcanvas_ref 131970
+  yz 598 2025 msg operation_ref 145410 // "recupererEtatsDistributeurs() : bool"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 230 584
 line 129922 -_-_
   from ref 129794 z 2016 to ref 129666
 line 130946 -_-_

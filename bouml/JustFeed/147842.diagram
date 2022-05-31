@@ -1,0 +1,38 @@
+format 224
+
+classinstance 128002 class_ref 148610 // IHMJustFeed
+  name ""   xyz 271 4 2000 life_line_z 2000
+classinstance 128130 class_ref 148098 // BaseDeDonnees
+  name ""   xyz 576 4 2000 life_line_z 2000
+classinstance 128258 class_ref 128002 // Opérateur
+  name ""   xyz 48 4 2000 life_line_z 2000
+textcanvas 128770 "Clic sur le bouton Géolocalisation"
+  xyzwh 94 62 2020 218 15
+durationcanvas 128386 classinstance_ref 128258 // :Opérateur
+  xyzwh 79 75 2010 11 40
+end
+durationcanvas 128514 classinstance_ref 128002 // :IHMJustFeed
+  xyzwh 317 75 2010 11 507
+  overlappingdurationcanvas 128898
+    xyzwh 323 105 2020 11 464
+    overlappingdurationcanvas 129154
+      xyzwh 329 151 2030 11 25
+    end
+  end
+end
+msg 128642 synchronous
+  from durationcanvas_ref 128386
+  to durationcanvas_ref 128514
+  yz 75 2015 unspecifiedmsg
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+reflexivemsg 129026 synchronous
+  to durationcanvas_ref 128898
+  yz 105 2025 msg operation_ref 138626 // "afficherPageGeolocalisationDistributeur() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 334 90
+reflexivemsg 129282 synchronous
+  to durationcanvas_ref 129154
+  yz 151 2035 msg operation_ref 137730 // "afficherGeolocalisationDistributeur(in indexDistributeur : int) : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 338 135
+end
