@@ -31,7 +31,7 @@ INSERT INTO Produit (marque,code,designation) VALUES('Nestle','CG_87002','Chocap
 
 -- Table NiveauApprovisionnement
 
-INSERT INTO NiveauApprovisionnement(idNiveauApprovisionnement,libelle) VALUES
+INSERT INTO NiveauApprovisionnement(idNiveauApprovisionnement,niveau) VALUES
 (-1,'inconnu'),
 (0,'vide'),
 (1,'presque vide'),
