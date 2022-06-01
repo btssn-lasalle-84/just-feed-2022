@@ -82,9 +82,13 @@ class IHMJustFeed : public QMainWindow
      */
     enum ColonneDistributeur
     {
-        COLONNE_DISTRIBUTEUR_NOM,        //!< Emplacement du nom
-        COLONNE_DISTRIBUTEUR_VILLE,      //!< Emplacement de la ville
-        COLONNE_DISTRIBUTEUR_CODEPOSTAL, //!< Emplacement du code postal
+        COLONNE_DISTRIBUTEUR_NOM,                //!< Emplacement du nom
+        COLONNE_DISTRIBUTEUR_VILLE,              //!< Emplacement de la ville
+        COLONNE_DISTRIBUTEUR_CODEPOSTAL,         //!< Emplacement du code postal
+        COLONNE_DISTRIBUTEUR_DESIGNATIONPRODUIT, //!< Emplacement de la
+                                                 //!< designation
+        COLONNE_DISTRIBUTEUR_NIVEAUAPPROVISIONNEMENT, //!< Emplacement du
+                                                      //!< libelle
         NB_COLONNES
     };
 
@@ -104,7 +108,7 @@ class IHMJustFeed : public QMainWindow
     void afficherDistributeurTable(QStringList distributeur);
     void afficherEtatDistributeur(int indexDistributeur);
     void afficherHygrometrie(int indexDistributeur);
-    void afficherInterventions();
+    void afficherInterventions(QStringList distributeur);
     void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
     void selectionnerDistributeur(int index);

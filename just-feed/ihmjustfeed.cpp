@@ -232,12 +232,6 @@ void IHMJustFeed::chargerDistributeurs()
           Distributeur::ChampDistributeur::CHAMP_libelle));
         afficherDistributeurTable(distributeurs.at(i));
     }
-
-    recupererEtatsDistributeurs();
-
-    /**
-     * @todo Récupérer les données des interventions
-     */
 }
 
 /**
@@ -396,13 +390,80 @@ void IHMJustFeed::afficherHygrometrie(int indexDistributeur)
         .toInt());
 }
 
-void IHMJustFeed::afficherInterventions()
+void IHMJustFeed::afficherInterventions(QStringList distributeur)
 {
-    qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO << distributeur;
+
+    // Crée les items pour les cellules d'une ligne
+    QStandardItem* nom = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    QStandardItem* ville = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
+    QStandardItem* codePostal = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal));
+    QStandardItem* designationProduit      = new QStandardItem(distributeur.at(
+      Distributeur::ChampDistributeur::CHAMP_designationProduit));
+    QStandardItem* niveauApprovisionnement = new QStandardItem(distributeur.at(
+      Distributeur::ChampDistributeur::CHAMP_niveauApprovisionnement));
+
+    // Ajoute les items dans le modèle de données
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_NOM,
+                                nom);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_VILLE,
+                                ville);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_CODEPOSTAL,
+                                codePostal);
+    modeleDistributeur->setItem(
+      nbLignesDistributeurs,
+      IHMJustFeed::COLONNE_DISTRIBUTEUR_DESIGNATIONPRODUIT,
+      designationProduit);
+    modeleDistributeur->setItem(
+      nbLignesDistributeurs,
+      IHMJustFeed::COLONNE_DISTRIBUTEUR_NIVEAUAPPROVISIONNEMENT,
+      niveauApprovisionnement);
 
     /**
      * @todo Afficher les données des interventions
      */
+
+    // Exemple de personnalisation de l'affichage d'une ligne
+    QFont texte;
+    // texte.setPointSize(12);
+    texte.setBold(true);
+    for(int i = 0; i < nomColonnes.size(); ++i)
+    {
+        QStandardItem* item =
+          modeleDistributeur->item(nbLignesDistributeurs, i);
+        item->setBackground(QColor(225, 223, 0));
+        item->setFont(texte);
+    }
+
+    qDebug() << Q_FUNC_INFO << "nbLignesDistributeurs" << nbLignesDistributeurs;
+
+    nbLignesDistributeurs += 1;
+
+    // Configure l'affichage du QTableView
+    ui->tableViewDistributeurs->setSizePolicy(QSizePolicy::Minimum,
+                                              QSizePolicy::Minimum);
+    ui->tableViewDistributeurs->setVerticalScrollBarPolicy(
+      Qt::ScrollBarAlwaysOff);
+    ui->tableViewDistributeurs->setHorizontalScrollBarPolicy(
+      Qt::ScrollBarAlwaysOff);
+    // ui->tableViewDistributeurs->resizeColumnsToContents();
+
+    ui->tableViewDistributeurs->setMinimumWidth(ui->centralwidget->width());
+    // ui->tableViewUtilisateurs->setMinimumHeight(ui->centralwidget->height());
+    /*ui->tableViewUtilisateurs->setFixedSize(
+      ui->tableViewUtilisateurs->horizontalHeader()->length() +
+        ui->tableViewUtilisateurs->verticalHeader()->width(),
+      ui->tableViewUtilisateurs->verticalHeader()->length() +
+        ui->tableViewUtilisateurs->horizontalHeader()->height());*/
+    ui->tableViewDistributeurs->setFixedHeight(
+      ui->tableViewDistributeurs->verticalHeader()->length() +
+      ui->tableViewDistributeurs->horizontalHeader()->height());
 }
 
 void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
@@ -563,9 +624,12 @@ void IHMJustFeed::afficherPageEtatDistributeur()
 
 void IHMJustFeed::afficherPageInterventionDistributeur()
 {
-    qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
+    /*qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
-    afficherInterventions();
+    afficherInterventions(numeroDistributeurSelectionne);
+    ui->pushButtonRetour->show();
+    afficherPage(Page::Intervention);*/
+
     ui->pushButtonRetour->show();
     afficherPage(Page::Intervention);
 }
@@ -574,6 +638,7 @@ void IHMJustFeed::afficherPageGeolocalisationDistributeur()
 {
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
+    recupererDonneesDistributeurs();
     afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Geolocalisation);
