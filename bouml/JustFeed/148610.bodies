@@ -113,6 +113,7 @@ class IHMJustFeed
 !!!145282.cpp!!!	recupererDonneesDistributeurs() : bool
     QString requete = "SELECT * FROM Distributeur";
 
+    distributeurs.clear();
     bool retour = baseDeDonnees->recuperer(requete, distributeurs);
     qDebug() << Q_FUNC_INFO << distributeurs;
 
@@ -131,6 +132,7 @@ class IHMJustFeed
       "idNiveauApprovisionnement "
       "INNER JOIN ServeurTTN ON "
       "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
+    etatsDistributeurs.clear();
     bool retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
     qDebug() << Q_FUNC_INFO << etatsDistributeurs;
 
@@ -281,6 +283,11 @@ class IHMJustFeed
         }
     }
 
+    afficherHygrometrie(indexDistributeur);
+!!!152066.cpp!!!	afficherHygrometrie(in indexDistributeur : int) : void
+    qDebug() << Q_FUNC_INFO << "hygrometrie"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie);
     ui->progressBarHygrometrieBacs->setValue(
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
@@ -392,6 +399,8 @@ class IHMJustFeed
 !!!138370.cpp!!!	afficherPageEtatDistributeur() : void
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
+    recupererDonneesDistributeurs(); // pour l'hygrométrie
+    recupererEtatsDistributeurs();   // pour le stock
     afficherEtatDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Distributeur);

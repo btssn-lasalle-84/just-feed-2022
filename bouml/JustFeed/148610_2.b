@@ -113,6 +113,7 @@ class IHMJustFeed
 !!!145282.cpp!!!	recupererDonneesDistributeurs() : bool
     QString requete = "SELECT * FROM Distributeur";
 
+    distributeurs.clear();
     bool retour = baseDeDonnees->recuperer(requete, distributeurs);
     qDebug() << Q_FUNC_INFO << distributeurs;
 
@@ -131,6 +132,7 @@ class IHMJustFeed
       "idNiveauApprovisionnement "
       "INNER JOIN ServeurTTN ON "
       "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
+    etatsDistributeurs.clear();
     bool retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
     qDebug() << Q_FUNC_INFO << etatsDistributeurs;
 
@@ -281,6 +283,11 @@ class IHMJustFeed
         }
     }
 
+    afficherHygrometrie(indexDistributeur);
+!!!152066.cpp!!!	afficherHygrometrie(in indexDistributeur : int) : void
+    qDebug() << Q_FUNC_INFO << "hygrometrie"
+             << distributeurs.at(indexDistributeur)
+                  .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie);
     ui->progressBarHygrometrieBacs->setValue(
       distributeurs.at(indexDistributeur)
         .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie)
@@ -392,6 +399,8 @@ class IHMJustFeed
 !!!138370.cpp!!!	afficherPageEtatDistributeur() : void
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
+    recupererDonneesDistributeurs(); // pour l'hygrométrie
+    recupererEtatsDistributeurs();   // pour le stock
     afficherEtatDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Distributeur);
@@ -407,50 +416,108 @@ class IHMJustFeed
     afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Geolocalisation);
-!!!145282.cpp!!!	recupererDonneesDistributeurs() : bool
-    QString requete = "SELECT * FROM Distributeur";
+!!!137090.cpp!!!	chargerDistributeurs() : void
+    effacerTableDistributeurs();
 
-    distributeurs.clear();
-    bool retour = baseDeDonnees->recuperer(requete, distributeurs);
-    qDebug() << Q_FUNC_INFO << distributeurs;
+    recupererDonneesDistributeurs();
 
-    return retour;
-!!!145410.cpp!!!	recupererEtatsDistributeurs() : bool
-    QString requete =
-      "SELECT "
-      "Distributeur.*,Produit.designation,NiveauApprovisionnement.libelle AS "
-      "niveauApprovisionnement,StockDistributeur.numeroBac,StockDistributeur."
-      "quantite,StockDistributeur.quantiteMax FROM StockDistributeur "
-      "INNER JOIN Distributeur ON "
-      "Distributeur.idDistributeur=StockDistributeur.idDistributeur "
-      "INNER JOIN Produit ON Produit.idProduit=StockDistributeur.idProduit "
-      "INNER JOIN NiveauApprovisionnement ON "
-      "NiveauApprovisionnement.idNiveauApprovisionnement=StockDistributeur."
-      "idNiveauApprovisionnement "
-      "INNER JOIN ServeurTTN ON "
-      "ServeurTTN.idServeurTTN=Distributeur.idServeurTTN;";
-    etatsDistributeurs.clear();
-    bool retour = baseDeDonnees->recuperer(requete, etatsDistributeurs);
-    qDebug() << Q_FUNC_INFO << etatsDistributeurs;
+    ui->comboBoxDistributeurs->clear();
+    ui->comboBoxDistributeurs->addItem("");
+    ui->pushButtonEtat->setEnabled(false);
+    ui->pushButtonIntervention->setEnabled(false);
+    ui->pushButtonGeolocalisation->setEnabled(false);
+    for(int i = 0; i < distributeurs.size(); ++i)
+    {
+        ui->comboBoxDistributeurs->addItem(distributeurs.at(i).at(
+          Distributeur::ChampDistributeur::CHAMP_libelle));
+        afficherDistributeurTable(distributeurs.at(i));
+    }
+!!!137602.cpp!!!	afficherInterventions(in distributeur : QStringList) : void
+    qDebug() << Q_FUNC_INFO << distributeur;
 
-    return retour;
-!!!152066.cpp!!!	afficherHygrometrie(in indexDistributeur : int) : void
-    QString idDistributeur =
-      distributeurs.at(indexDistributeur)
-        .at(Distributeur::ChampDistributeur::CHAMP_idDistributeur);
-    qDebug() << Q_FUNC_INFO << indexDistributeur << idDistributeur;
+    // Crée les items pour les cellules d'une ligne
+    QStandardItem* nom = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    QStandardItem* ville = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
+    QStandardItem* codePostal = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal));
+    QStandardItem* designationProduit      = new QStandardItem(distributeur.at(
+      Distributeur::ChampDistributeur::CHAMP_designationProduit));
+    QStandardItem* niveauApprovisionnement = new QStandardItem(distributeur.at(
+      Distributeur::ChampDistributeur::CHAMP_niveauApprovisionnement));
+
+    // Ajoute les items dans le modèle de données
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_NOM,
+                                nom);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_VILLE,
+                                ville);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_CODEPOSTAL,
+                                codePostal);
+    modeleDistributeur->setItem(
+      nbLignesDistributeurs,
+      IHMJustFeed::COLONNE_DISTRIBUTEUR_DESIGNATIONPRODUIT,
+      designationProduit);
+    modeleDistributeur->setItem(
+      nbLignesDistributeurs,
+      IHMJustFeed::COLONNE_DISTRIBUTEUR_NIVEAUAPPROVISIONNEMENT,
+      niveauApprovisionnement);
 
     /**
-     * @todo Afficher l'hygrométrie dans le progressBar
+     * @todo Afficher les données des interventions
      */
-    qDebug() << Q_FUNC_INFO << "hygrometrie"
-             << distributeurs.at(indexDistributeur)
-                  .at(Distributeur::ChampDistributeur::CHAMP_hygrometrie);
-!!!138370.cpp!!!	afficherPageEtatDistributeur() : void
+
+    // Exemple de personnalisation de l'affichage d'une ligne
+    QFont texte;
+    // texte.setPointSize(12);
+    texte.setBold(true);
+    for(int i = 0; i < nomColonnes.size(); ++i)
+    {
+        QStandardItem* item =
+          modeleDistributeur->item(nbLignesDistributeurs, i);
+        item->setBackground(QColor(225, 223, 0));
+        item->setFont(texte);
+    }
+
+    qDebug() << Q_FUNC_INFO << "nbLignesDistributeurs" << nbLignesDistributeurs;
+
+    nbLignesDistributeurs += 1;
+
+    // Configure l'affichage du QTableView
+    ui->tableViewDistributeurs->setSizePolicy(QSizePolicy::Minimum,
+                                              QSizePolicy::Minimum);
+    ui->tableViewDistributeurs->setVerticalScrollBarPolicy(
+      Qt::ScrollBarAlwaysOff);
+    ui->tableViewDistributeurs->setHorizontalScrollBarPolicy(
+      Qt::ScrollBarAlwaysOff);
+    // ui->tableViewDistributeurs->resizeColumnsToContents();
+
+    ui->tableViewDistributeurs->setMinimumWidth(ui->centralwidget->width());
+    // ui->tableViewUtilisateurs->setMinimumHeight(ui->centralwidget->height());
+    /*ui->tableViewUtilisateurs->setFixedSize(
+      ui->tableViewUtilisateurs->horizontalHeader()->length() +
+        ui->tableViewUtilisateurs->verticalHeader()->width(),
+      ui->tableViewUtilisateurs->verticalHeader()->length() +
+        ui->tableViewUtilisateurs->horizontalHeader()->height());*/
+    ui->tableViewDistributeurs->setFixedHeight(
+      ui->tableViewDistributeurs->verticalHeader()->length() +
+      ui->tableViewDistributeurs->horizontalHeader()->height());
+!!!138498.cpp!!!	afficherPageInterventionDistributeur() : void
+    /*qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
+             << numeroDistributeurSelectionne;
+    afficherInterventions(numeroDistributeurSelectionne);
+    ui->pushButtonRetour->show();
+    afficherPage(Page::Intervention);*/
+
+    ui->pushButtonRetour->show();
+    afficherPage(Page::Intervention);
+!!!138626.cpp!!!	afficherPageGeolocalisationDistributeur() : void
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
-    recupererDonneesDistributeurs(); // pour l'hygrométrie
-    recupererEtatsDistributeurs();   // pour le stock
-    afficherEtatDistributeur(numeroDistributeurSelectionne);
+    recupererDonneesDistributeurs();
+    afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
-    afficherPage(Page::Distributeur);
+    afficherPage(Page::Geolocalisation);

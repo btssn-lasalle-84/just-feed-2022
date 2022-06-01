@@ -1,11 +1,13 @@
 window_sizes 1864 1016 317 1541 899 64
 cleanlooks_style
 diagrams
-  sequencediagram_ref 141186 // ds - Lister les distributeurs
+  active  sequencediagram_ref 141186 // ds - Lister les distributeurs
     1127 674 100 A0 0 0
-  active  sequencediagram_ref 147714 // ds - Visualiser l'état d'un distributeur
+  sequencediagram_ref 147714 // ds - Visualiser l'état d'un distributeur
     1541 899 100 A4 0 0
   sequencediagram_ref 147842 // ds - Geolocaliser les distributeurs
+    120 106 100 A4 0 0
+  sequencediagram_ref 154370 // ds - Définir une intervention
     120 106 100 A4 0 0
 end
 show_stereotypes
@@ -13,5 +15,7 @@ selected sequencediagram_ref 147714 // ds - Visualiser l'état d'un distributeur
 open
   usecase_ref 128258 // Lister les distributeurs
   usecase_ref 128386 // Visualiser l'état d'un distributeur
+  classview_ref 134530 // just-feed
+  deploymentview_ref 134530 // just-feed
 end
 end
