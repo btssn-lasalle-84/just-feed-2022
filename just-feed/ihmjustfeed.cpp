@@ -110,6 +110,9 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(clicked(QModelIndex)),
             this,
             SLOT(selectionner(QModelIndex)));
+    connect(ui->checkBoxBac1, SIGNAL(clicked(bool)), this, SLOT());
+    connect(ui->checkBoxBac2, SIGNAL(clicked(bool)), this, SLOT());
+    connect(ui->checkBoxEntretien, SIGNAL(clicked(bool)), this, SLOT());
 }
 
 void IHMJustFeed::ouvrirBaseDeDonnees()
@@ -446,24 +449,24 @@ void IHMJustFeed::afficherInterventions(QStringList distributeur)
     nbLignesDistributeurs += 1;
 
     // Configure l'affichage du QTableView
-    ui->tableViewDistributeurs->setSizePolicy(QSizePolicy::Minimum,
+    ui->tableViewInterventions->setSizePolicy(QSizePolicy::Minimum,
                                               QSizePolicy::Minimum);
-    ui->tableViewDistributeurs->setVerticalScrollBarPolicy(
+    ui->tableViewInterventions->setVerticalScrollBarPolicy(
       Qt::ScrollBarAlwaysOff);
-    ui->tableViewDistributeurs->setHorizontalScrollBarPolicy(
+    ui->tableViewInterventions->setHorizontalScrollBarPolicy(
       Qt::ScrollBarAlwaysOff);
     // ui->tableViewDistributeurs->resizeColumnsToContents();
 
-    ui->tableViewDistributeurs->setMinimumWidth(ui->centralwidget->width());
+    ui->tableViewInterventions->setMinimumWidth(ui->centralwidget->width());
     // ui->tableViewUtilisateurs->setMinimumHeight(ui->centralwidget->height());
     /*ui->tableViewUtilisateurs->setFixedSize(
       ui->tableViewUtilisateurs->horizontalHeader()->length() +
         ui->tableViewUtilisateurs->verticalHeader()->width(),
       ui->tableViewUtilisateurs->verticalHeader()->length() +
         ui->tableViewUtilisateurs->horizontalHeader()->height());*/
-    ui->tableViewDistributeurs->setFixedHeight(
-      ui->tableViewDistributeurs->verticalHeader()->length() +
-      ui->tableViewDistributeurs->horizontalHeader()->height());
+    ui->tableViewInterventions->setFixedHeight(
+      ui->tableViewInterventions->verticalHeader()->length() +
+      ui->tableViewInterventions->horizontalHeader()->height());
 }
 
 void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
