@@ -8,12 +8,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     basededonnees.cpp \
+    communication.cpp \
     distributeur.cpp \
     main.cpp \
     ihmjustfeed.cpp
 
 HEADERS += \
     basededonnees.h \
+    communication.h \
     distributeur.h \
     ihmjustfeed.h
 
