@@ -2,6 +2,7 @@
 #include "ui_ihmjustfeed.h"
 #include "distributeur.h"
 #include "basededonnees.h"
+#include "communication.h"
 #include <QDebug>
 
 /**
@@ -21,7 +22,8 @@
  * fenêtre principale de l'application
  */
 IHMJustFeed::IHMJustFeed(QWidget* parent) :
-    QMainWindow(parent), ui(new Ui::IHMJustFeed), nbLignesDistributeurs(0),
+    QMainWindow(parent), ui(new Ui::IHMJustFeed), baseDeDonnees(nullptr),
+    communicationMQTT(nullptr), nbLignesDistributeurs(0),
     numeroDistributeurSelectionne(-1)
 {
     ui->setupUi(this);
@@ -53,6 +55,9 @@ IHMJustFeed::~IHMJustFeed()
  */
 void IHMJustFeed::initialiser()
 {
+    communicationMQTT = new Communication(this);
+    communicationMQTT->connecter();
+
     pageLocalisation = ui->webEngineViewLocalisation->page();
     ui->labelTitreProjet->setText(QString::fromUtf8(NOM_APPLICATION) + " v" +
                                   QString::fromUtf8(VERSION_APPLICATION));
@@ -113,15 +118,19 @@ void IHMJustFeed::gererEvenements()
     connect(ui->checkBoxBac1,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(checkBoxBac1_clicked(bool)));
+            SLOT(selectionnerBac1(bool)));
     connect(ui->checkBoxBac2,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(checkBoxBac2_clicked(bool)));
+            SLOT(selectionnerBac2(bool)));
     connect(ui->checkBoxEntretien,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(checkBoxBacEntretien_clicked(bool)));
+            SLOT(selectionnerEntretien(bool)));
+    connect(communicationMQTT,
+            SIGNAL(ttnConnecte()),
+            this,
+            SLOT(connecterDistributeurs()));
 }
 
 void IHMJustFeed::ouvrirBaseDeDonnees()
@@ -654,4 +663,39 @@ void IHMJustFeed::afficherPageGeolocalisationDistributeur()
     afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Geolocalisation);
+}
+
+void IHMJustFeed::selectionnerBac1(bool etat)
+{
+    qDebug() << Q_FUNC_INFO << etat;
+    /**
+     * @todo Gérer l'intervention correspondante
+     */
+}
+
+void IHMJustFeed::selectionnerBac2(bool etat)
+{
+    qDebug() << Q_FUNC_INFO << etat;
+    /**
+     * @todo Gérer l'intervention correspondante
+     */
+}
+
+void IHMJustFeed::selectionnerEntretien(bool etat)
+{
+    qDebug() << Q_FUNC_INFO << etat;
+    /**
+     * @todo Gérer l'intervention correspondante
+     */
+}
+
+void IHMJustFeed::connecterDistributeurs()
+{
+    qDebug() << Q_FUNC_INFO;
+    /**
+     * @todo Signaler l'état de connexion au serveur TTN sur l'IHM
+     */
+    // Pour les tests
+    communicationMQTT->abonner("distributeur-1-sim");
+    communicationMQTT->abonner("distributeur-2-sim");
 }

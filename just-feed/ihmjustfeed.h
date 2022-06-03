@@ -35,6 +35,7 @@ class IHMJustFeed;
 // QT_END_NAMESPACE
 
 class BaseDeDonnees;
+class Communication;
 
 /**
  * @class IHMJustFeed
@@ -51,10 +52,13 @@ class IHMJustFeed : public QMainWindow
 
   private:
     Ui::IHMJustFeed* ui; //!< la fenêtre graphique associée à cette classe
-    BaseDeDonnees*   baseDeDonnees; //!< Instance d'un objet BaseDeDonnees
-    QStringList      nomColonnes;   //!< Liste de nom des colonnes
-    int              nbLignesDistributeurs; //!< nombre de lignes
-    QVector<QStringList> distributeurs;     //!< Les distributeurs
+    BaseDeDonnees*
+      baseDeDonnees; //!< adresse d'une instance d'un objet BaseDeDonnees
+    Communication*
+                         communicationMQTT; //!< adresse d'une instance d'un objet Communication
+    QStringList          nomColonnes;           //!< Liste de nom des colonnes
+    int                  nbLignesDistributeurs; //!< nombre de lignes
+    QVector<QStringList> distributeurs;         //!< Les distributeurs
     QVector<QStringList>
                         etatsDistributeurs; //!< Les états des stocks des distributeurs
     QStandardItemModel* modeleDistributeur; //!< Modèle pourle QTableView
@@ -118,6 +122,10 @@ class IHMJustFeed : public QMainWindow
     void afficherPageEtatDistributeur();
     void afficherPageInterventionDistributeur();
     void afficherPageGeolocalisationDistributeur();
+    void selectionnerBac1(bool etat);
+    void selectionnerBac2(bool etat);
+    void selectionnerEntretien(bool etat);
+    void connecterDistributeurs();
 };
 
 #endif // IHMJUSTFEED_H

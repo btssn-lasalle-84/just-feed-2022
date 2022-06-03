@@ -10,7 +10,7 @@
 /**
  * @file communication.cpp
  *
- * @brief Définition de la classe communication
+ * @brief Définition de la classe Communication
  * @author Laura Morello <lauramorello1604@gmail.com>
  * @version 1.0
  *
@@ -40,7 +40,6 @@ Communication::~Communication()
     qDebug() << Q_FUNC_INFO;
 }
 
-// Services ==============================================================
 /**
  * @brief Méthode qui retourne une valeur booléene true si le client Mqtt est
  * connecté
@@ -66,13 +65,18 @@ void Communication::connecter()
     {
         qDebug() << Q_FUNC_INFO << hostname << port << username << password;
 
+        /*
+            hostname -> eu1.cloud.thethings.network
+            port -> 1883
+            username -> just-feed-2022@ttn
+            password -> secret (voir console TTN)
+         */
+
         clientMqtt->setHostname(hostname);
         clientMqtt->setPort(port);
         clientMqtt->setUsername(username);
         clientMqtt->setPassword(password);
 
-        QString message = "Connexion " + hostname;
-        emit    messageJournal(message);
         clientMqtt->connectToHost();
 
         connect(clientMqtt,
@@ -99,6 +103,12 @@ void Communication::connecter(QString hostname,
 {
     if(clientMqtt->state() != QMqttClient::Connected)
     {
+        /*
+            hostname -> eu1.cloud.thethings.network
+            port -> 1883
+            username -> just-feed-2022@ttn
+            password -> secret (voir console TTN)
+         */
         this->hostname = hostname;
         this->port     = port;
         this->username = username;
@@ -149,8 +159,6 @@ void Communication::deconnecter()
     if(clientMqtt->state() != QMqttClient::Connected)
         return;
     clientMqtt->disconnectFromHost();
-    QString message = "Déconnexion " + hostname;
-    emit    messageJournal(message);
     disconnect(clientMqtt,
                SIGNAL(messageReceived(QByteArray, QMqttTopicName)),
                this,
@@ -171,23 +179,19 @@ bool Communication::abonner(QString deviceID)
         return false;
 
     // Exemple de deviceID : distributeur-1-sim, distributeur-2-sim
-    // Format de topic TTN : ApplicationID/devices/DeviceID/up
     // Exemple de topic : v3/just-feed-2022@ttn/devices/distributeur-1-sim/up
 
-    QString topic = username + "/devices/" + deviceID + "/up";
+    QString topic =
+      QString("v3/") + username + QString("/devices/") + deviceID + "/up";
     qDebug() << Q_FUNC_INFO << deviceID << topic;
     QMqttTopicFilter topicFilter(topic.toLatin1());
-    abonnementMqtt  = clientMqtt->subscribe(topicFilter);
-    QString message = "Abonnement " + deviceID;
-    emit    messageJournal(message);
+    abonnementMqtt = clientMqtt->subscribe(topicFilter);
 
     if(!abonnementMqtt)
     {
         QMessageBox::critical(0, "Erreur", "Impossible de s'abonner !");
         return false;
     }
-
-    mesure.initialiser();
 
     return true;
 }
@@ -207,13 +211,13 @@ void Communication::desabonner(QString deviceID)
      * stockera tous les messages et les publiera lors de la prochaine
      * reconnexion.
      */
-    QString topic = username + "/devices/" + deviceID + "/up";
+    QString topic =
+      QString("v3/") + username + QString("/devices/") + deviceID + "/up";
     qDebug() << Q_FUNC_INFO << deviceID << topic;
     QMqttTopicFilter topicFilter(topic.toLatin1());
     clientMqtt->unsubscribe(topicFilter);
-    QString message = "Désabonnement " + deviceID;
-    emit    messageJournal(message);
 }
+
 /**
  * @brief Methode qui retourne le nom d'hote
  * @fn Communication::getHostname
@@ -223,6 +227,7 @@ QString Communication::getHostname() const
 {
     return this->hostname;
 }
+
 /**
  * @brief Methode qui retourne le nom d'utilisateur
  * @fn Communication::getUsername
@@ -232,6 +237,7 @@ QString Communication::getUsername() const
 {
     return this->username;
 }
+
 /**
  * @brief Methode qui retourne le mot de passe
  * @fn Communication::getPassword
@@ -260,7 +266,7 @@ void Communication::configurer()
     password = settings.value("Password").toString();
     settings.endGroup();
     settings.sync();
-    // qDebug() << Q_FUNC_INFO << hostname << port <<  username << password;
+    qDebug() << Q_FUNC_INFO << hostname << port << username << password;
 
     connect(clientMqtt,
             SIGNAL(stateChanged(ClientState)),
@@ -304,8 +310,6 @@ void Communication::changerEtat()
         case QMqttClient::Disconnected:
             qDebug() << Q_FUNC_INFO << "Déconnecté";
             emit ttnDeconnecte();
-            message = "Déconnecté " + hostname;
-            emit messageJournal(message);
             break;
         case QMqttClient::Connecting:
             qDebug() << Q_FUNC_INFO << "En cours de connexion";
@@ -314,8 +318,6 @@ void Communication::changerEtat()
             qDebug() << Q_FUNC_INFO << "Connecté";
             emit ttnConnecte();
             sauvegarder();
-            message = "Connecté " + hostname;
-            emit messageJournal(message);
             break;
         default:
             break;
@@ -344,6 +346,7 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
     qDebug() << Q_FUNC_INFO << "DeviceID " << deviceID;
     // qDebug() << Q_FUNC_INFO << "message" << messageRecu;
     qDebug() << Q_FUNC_INFO << "port" << port;
-
-    // Journalisation
+    /**
+     * @todo extraire les données en fonction du numéro de port
+     */
 }

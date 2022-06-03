@@ -1,13 +1,23 @@
 #ifndef COMMUNICATION_H
 #define COMMUNICATION_H
 
+/**
+ * @file communication.h
+ *
+ * @brief Déclaration de la classe Communication
+ * @author Laura Morello <lauramorello1604@gmail.com>
+ * @version 1.0
+ *
+ */
+
 #include <QObject>
 #include <QtMqtt/QtMqtt>
 #include <QtMqtt/QMqttClient>
 #include "distributeur.h"
 
-#define PORT_TTN_POIDS         1
-#define PORT_TTN_ENVIRONNEMENT 2
+#define PORT_BACS          1
+#define PORT_ENVIRONNEMENT 2
+#define PORT_MAINTENANCE   3
 
 class Communication : public QObject
 {
@@ -53,7 +63,6 @@ class Communication : public QObject
   signals:
     void ttnConnecte();
     void ttnDeconnecte();
-    void messageJournal(QString message);
 };
 
 #endif // COMMUNICATION_H
