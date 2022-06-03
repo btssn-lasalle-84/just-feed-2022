@@ -174,7 +174,7 @@ bool Communication::abonner(QString deviceID)
     // Format de topic TTN : ApplicationID/devices/DeviceID/up
     // Exemple de topic : v3/just-feed-2022@ttn/devices/distributeur-1-sim/up
 
-    QString topic = username + "/devices/" + deviceID + "/up";
+    QString topic = "v3/" + username + "/devices/" + deviceID + "/up";
     qDebug() << Q_FUNC_INFO << deviceID << topic;
     QMqttTopicFilter topicFilter(topic.toLatin1());
     abonnementMqtt  = clientMqtt->subscribe(topicFilter);
@@ -207,7 +207,7 @@ void Communication::desabonner(QString deviceID)
      * stockera tous les messages et les publiera lors de la prochaine
      * reconnexion.
      */
-    QString topic = username + "/devices/" + deviceID + "/up";
+    QString topic = "v3/" + username + "/devices/" + deviceID + "/up";
     qDebug() << Q_FUNC_INFO << deviceID << topic;
     QMqttTopicFilter topicFilter(topic.toLatin1());
     clientMqtt->unsubscribe(topicFilter);
