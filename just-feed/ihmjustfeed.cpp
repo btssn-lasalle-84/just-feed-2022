@@ -110,9 +110,18 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(clicked(QModelIndex)),
             this,
             SLOT(selectionner(QModelIndex)));
-    connect(ui->checkBoxBac1, SIGNAL(clicked(bool)), this, SLOT());
-    connect(ui->checkBoxBac2, SIGNAL(clicked(bool)), this, SLOT());
-    connect(ui->checkBoxEntretien, SIGNAL(clicked(bool)), this, SLOT());
+    connect(ui->checkBoxBac1,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(checkBoxBac1_clicked(bool)));
+    connect(ui->checkBoxBac2,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(checkBoxBac2_clicked(bool)));
+    connect(ui->checkBoxEntretien,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(checkBoxBacEntretien_clicked(bool)));
 }
 
 void IHMJustFeed::ouvrirBaseDeDonnees()
