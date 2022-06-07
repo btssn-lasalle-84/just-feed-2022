@@ -360,8 +360,8 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
     switch(port)
     {
         case PORT_BACS:
-            bac1 = uplink_message.value(QString("bac1")).toInt();
-            bac2 = uplink_message.value(QString("bac2")).toInt();
+            bac1 = messageDonnees.value(QString("bac1")).toInt();
+            bac2 = messageDonnees.value(QString("bac2")).toInt();
             qDebug() << Q_FUNC_INFO << "bacs" << bac1 << bac2;
 
             emit nouvellesDonneesPortBacs(deviceID, bac1, bac2);
