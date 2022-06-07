@@ -339,65 +339,44 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
     QJsonObject   objetJSON    = documentJSON.object();
 
     qDebug() << Q_FUNC_INFO << "topic" << topic;
-    qDebug() << Q_FUNC_INFO << "message" << messageRecu;
-    qDebug() << Q_FUNC_INFO << "objetJSON" << objetJSON;
+    // qDebug() << Q_FUNC_INFO << "message" << messageRecu;
+    // qDebug() << Q_FUNC_INFO << "objetJSON" << objetJSON;
 
     // Extraction du deviceID et du port
     QJsonObject end_device_ids =
       objetJSON.value(QString("end_device_ids")).toObject();
-    qDebug() << Q_FUNC_INFO << "end_device_ids" << end_device_ids;
+    // qDebug() << Q_FUNC_INFO << "end_device_ids" << end_device_ids;
     QString deviceID = end_device_ids.value(QString("device_id")).toString();
     qDebug() << Q_FUNC_INFO << "deviceID" << deviceID;
 
     QJsonObject uplink_message =
       objetJSON.value(QString("uplink_message")).toObject();
-    qDebug() << Q_FUNC_INFO << "uplink_message" << uplink_message;
+    // qDebug() << Q_FUNC_INFO << "uplink_message" << uplink_message;
     int port = uplink_message.value(QString("f_port")).toInt();
     qDebug() << Q_FUNC_INFO << "port" << port;
-    /**
-     * @todo extraire les données en fonction du numéro de port
-     */
+    QJsonObject messageDonnees =
+      uplink_message.value(QString("decoded_payload")).toObject();
+    int bac1, bac2;
     switch(port)
     {
         case PORT_BACS:
-            valeurBac1 = messageDonnees.value(QString("bac1")).toDouble();
-            valeurBac2 = messageDonnees.value(QString("bac2")).toDouble();
+            bac1 = uplink_message.value(QString("bac1")).toInt();
+            bac2 = uplink_message.value(QString("bac2")).toInt();
+            qDebug() << Q_FUNC_INFO << "bacs" << bac1 << bac2;
 
-            donnee.setBac1(valeurBac1.toDouble());
-            donnee.setBac2(valeurBac2.toDouble());
-
-            emit nouvellesDonnees(donnee);
+            emit nouvellesDonneesPortBacs(deviceID, bac1, bac2);
             break;
         case PORT_ENVIRONNEMENT:
-            valeurHumidite =
-              messageDonnees.value(QString("humidite")).toDouble();
-
-            donnee.setHumidite(valeurHumidite.toDouble());
-            // qDebug() << Q_FUNC_INFO << "donnee" << donnee.getHumidite();
-
-            emit nouvellesDonnees(donnee);
+            /**
+             * @todo extraire les données en fonction du numéro de port
+             */
             break;
         case PORT_MAINTENANCE:
-            valeurErreurs = messageDonnees.value(QString("erreurs")).toDouble();
-            valeurMaintenance =
-              messageDonnees.value(QString("maintenance")).toDouble();
-            valeurTotal = messageDonnees.value(QString("total")).toDouble();
-
-            donnee.setErreurs(valeurErreurs.toDouble());
-            donnee.setMaintenance(valeurMaintenance.toDouble());
-            donnee.setTotal(valeurTotal.toDouble());
-
-            emit nouvellesDonnees(donnee);
+            /**
+             * @todo extraire les données en fonction du numéro de port
+             */
             break;
         default:
             break;
     }
-
-    QJsonObject messageDonnees =
-      uplink_message.value(QString("decoded_payload")).toObject();
-
-    int bac1 = uplink_message.value(QString("bac1")).toInt();
-    int bac2 = uplink_message.value(QString("bac2")).toInt();
-
-    emit nouvellesDonneesPortBacs(deviceID, bac1, bac2);
 }

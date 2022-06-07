@@ -51,7 +51,6 @@ class Communication : public QObject
     int                port;
     QString            username;
     QString            password;
-    DonneeJustFeed     donnee;
 
     void configurer();
     void sauvegarder();
@@ -64,7 +63,7 @@ class Communication : public QObject
   signals:
     void ttnConnecte();
     void ttnDeconnecte();
-    void nouvellesDonnees(DonneeJustFeed donnee);
+    void nouvellesDonneesPortBacs(QString deviceID, int bac1, int bac2);
 };
 
 #endif // COMMUNICATION_H
