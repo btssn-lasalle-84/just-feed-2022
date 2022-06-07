@@ -169,27 +169,27 @@ void IHMJustFeed::afficherNiveauRemplissage(int pourcentage, int numeroBac)
     {
         case 1:
             ui->progressBarRemplissageBac1->setValue(pourcentage);
-            p.setColor(QPalette::Base, QColor(233, 185, 110)); // Background
+            p.setColor(QPalette::Base, QColor(209, 215, 215)); // Background
             if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
             {
-                p.setColor(QPalette::Highlight, Qt::green);
+                p.setColor(QPalette::Highlight, QColor(128, 217, 44));
             }
             else
             {
-                p.setColor(QPalette::Highlight, Qt::red);
+                p.setColor(QPalette::Highlight, QColor(245, 38, 38));
             }
             ui->progressBarRemplissageBac1->setPalette(p);
             break;
         case 2:
             ui->progressBarRemplissageBac2->setValue(pourcentage);
-            p.setColor(QPalette::Base, QColor(233, 185, 110)); // Background
+            p.setColor(QPalette::Base, QColor(209, 215, 215)); // Background
             if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
             {
-                p.setColor(QPalette::Highlight, Qt::green);
+                p.setColor(QPalette::Highlight, QColor(128, 217, 44));
             }
             else
             {
-                p.setColor(QPalette::Highlight, Qt::red);
+                p.setColor(QPalette::Highlight, QColor(245, 38, 38));
             }
             ui->progressBarRemplissageBac2->setPalette(p);
             break;
@@ -305,7 +305,7 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
     {
         QStandardItem* item =
           modeleDistributeur->item(nbLignesDistributeurs, i);
-        item->setBackground(QColor(225, 223, 0));
+        item->setBackground(QColor(128, 217, 44));
         item->setFont(texte);
     }
 

@@ -357,7 +357,7 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
     /**
      * @todo extraire les données en fonction du numéro de port
      */
-    switch(port)
+    /**switch(port)
     {
         case PORT_BACS:
             valeurBac1 = messageDonnees.value(QString("bac1")).toDouble();
@@ -391,5 +391,5 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
             break;
         default:
             break;
-    }
+    }**/
 }
