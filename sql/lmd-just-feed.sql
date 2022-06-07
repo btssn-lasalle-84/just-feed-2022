@@ -31,7 +31,7 @@ INSERT INTO Produit (marque,code,designation) VALUES('Nestle','CG_87002','Chocap
 
 -- Table NiveauApprovisionnement
 
-INSERT INTO NiveauApprovisionnement(idNiveauApprovisionnement,niveau) VALUES
+INSERT INTO NiveauApprovisionnement(idNiveauApprovisionnement,libelle) VALUES
 (-1,'inconnu'),
 (0,'vide'),
 (1,'presque vide'),
@@ -39,12 +39,12 @@ INSERT INTO NiveauApprovisionnement(idNiveauApprovisionnement,niveau) VALUES
 
 -- Table StockDistributeur
 
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(1,8,2,2000,2000,1);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(1,7,1,200,2000,2);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(2,1,2,2900,3000,1);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(2,2,2,2500,3000,2);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(3,4,1,100,2500,1);
-INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(3,6,1,500,2500,2);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(1,8,2,2000,2550,1);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(1,7,1,200,2550,2);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(2,1,2,2150,2550,1);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(2,2,2,2500,2550,2);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(3,4,1,100,2550,1);
+INSERT INTO StockDistributeur (idDistributeur,idProduit,idNiveauApprovisionnement,quantite,quantiteMax,numeroBac) VALUES(3,6,1,500,2550,2);
 
 -- Table Intervention
 

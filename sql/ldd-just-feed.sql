@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS Produit (
 
 -- Structure de la table NiveauApprovisionnement
 
-CREATE TABLE IF NOT EXISTS NiveauApprovisionnement(idNiveauApprovisionnement INTEGER PRIMARY KEY, niveau VARCHAR);
+CREATE TABLE IF NOT EXISTS NiveauApprovisionnement(idNiveauApprovisionnement INTEGER PRIMARY KEY, libelle VARCHAR);
 
 -- Structure de la table StockDistributeur
 
