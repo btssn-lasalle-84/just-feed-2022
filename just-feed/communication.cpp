@@ -338,15 +338,58 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
     QJsonDocument documentJSON = QJsonDocument::fromJson(messageRecu);
     QJsonObject   objetJSON    = documentJSON.object();
 
-    // Extraction du deviceID et du port
-    QString deviceID = objetJSON.value(QString("dev_id")).toString();
-    int     port     = objetJSON.value(QString("port")).toInt();
-
     qDebug() << Q_FUNC_INFO << "topic" << topic;
-    qDebug() << Q_FUNC_INFO << "DeviceID " << deviceID;
-    // qDebug() << Q_FUNC_INFO << "message" << messageRecu;
+    qDebug() << Q_FUNC_INFO << "message" << messageRecu;
+    qDebug() << Q_FUNC_INFO << "objetJSON" << objetJSON;
+
+    // Extraction du deviceID et du port
+    QJsonObject end_device_ids =
+      objetJSON.value(QString("end_device_ids")).toObject();
+    qDebug() << Q_FUNC_INFO << "end_device_ids" << end_device_ids;
+    QString deviceID = end_device_ids.value(QString("device_id")).toString();
+    qDebug() << Q_FUNC_INFO << "deviceID" << deviceID;
+
+    QJsonObject uplink_message =
+      objetJSON.value(QString("uplink_message")).toObject();
+    qDebug() << Q_FUNC_INFO << "uplink_message" << uplink_message;
+    int port = uplink_message.value(QString("f_port")).toInt();
     qDebug() << Q_FUNC_INFO << "port" << port;
     /**
      * @todo extraire les données en fonction du numéro de port
      */
+    switch(port)
+    {
+        case PORT_BACS:
+            valeurBac1 = messageDonnees.value(QString("bac1")).toDouble();
+            valeurBac2 = messageDonnees.value(QString("bac2")).toDouble();
+
+            donnee.setBac1(valeurBac1.toDouble());
+            donnee.setBac2(valeurBac2.toDouble());
+
+            emit nouvellesDonnees(donnee);
+            break;
+        case PORT_ENVIRONNEMENT:
+            valeurHumidite =
+              messageDonnees.value(QString("humidite")).toDouble();
+
+            donnee.setHumidite(valeurHumidite.toDouble());
+            // qDebug() << Q_FUNC_INFO << "donnee" << donnee.getHumidite();
+
+            emit nouvellesDonnees(donnee);
+            break;
+        case PORT_MAINTENANCE:
+            valeurErreurs = messageDonnees.value(QString("erreurs")).toDouble();
+            valeurMaintenance =
+              messageDonnees.value(QString("maintenance")).toDouble();
+            valeurTotal = messageDonnees.value(QString("total")).toDouble();
+
+            donnee.setErreurs(valeurErreurs.toDouble());
+            donnee.setMaintenance(valeurMaintenance.toDouble());
+            donnee.setTotal(valeurTotal.toDouble());
+
+            emit nouvellesDonnees(donnee);
+            break;
+        default:
+            break;
+    }
 }
