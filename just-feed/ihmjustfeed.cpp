@@ -172,7 +172,7 @@ void IHMJustFeed::afficherNiveauRemplissage(int pourcentage, int numeroBac)
             p.setColor(QPalette::Base, QColor(209, 215, 215)); // Background
             if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
             {
-                p.setColor(QPalette::Highlight, QColor(128, 217, 44));
+                p.setColor(QPalette::Highlight, QColor(40, 221, 56));
             }
             else
             {
@@ -185,7 +185,7 @@ void IHMJustFeed::afficherNiveauRemplissage(int pourcentage, int numeroBac)
             p.setColor(QPalette::Base, QColor(209, 215, 215)); // Background
             if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
             {
-                p.setColor(QPalette::Highlight, QColor(128, 217, 44));
+                p.setColor(QPalette::Highlight, QColor(40, 221, 56));
             }
             else
             {
