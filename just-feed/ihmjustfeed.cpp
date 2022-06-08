@@ -131,6 +131,10 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(ttnConnecte()),
             this,
             SLOT(connecterDistributeurs()));
+    connect(communicationMQTT,
+            SIGNAL(nouvellesDonneesPortBacs(QString, int, int)),
+            this,
+            SLOT(recupererDonneesPortBacs(QString, int, int)));
 }
 
 void IHMJustFeed::ouvrirBaseDeDonnees()
@@ -695,7 +699,56 @@ void IHMJustFeed::connecterDistributeurs()
     /**
      * @todo Signaler l'état de connexion au serveur TTN sur l'IHM
      */
+
     // Pour les tests
     communicationMQTT->abonner("distributeur-1-sim");
     communicationMQTT->abonner("distributeur-2-sim");
+}
+
+void IHMJustFeed::recupererDonneesPortBacs(QString deviceID, int bac1, int bac2)
+{
+    qDebug() << Q_FUNC_INFO << deviceID << bac1 << bac2;
+
+    QString idDistributeur = recupererIdDistributeur(deviceID);
+    qDebug() << Q_FUNC_INFO << idDistributeur;
+    /**
+     * @todo Effectuer une requête SQL UPDATE pour chaque bac
+     */
+    QString requete =
+      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=1 AND "
+      "numeroBac=1;"; // QString::number(bac1) distributeur 1
+    /*QString requete =
+      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=1 AND "
+      "numeroBac=2;"; // QString::number(bac2) distributeur 1
+    QString requete =
+      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=2 AND "
+      "numeroBac=1;"; // QString::number(bac1) distributeur 2
+    QString requete =
+      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=2 AND "
+      "numeroBac=2;"; // QString::number(bac2) distributeur 2*/
+
+    bool retour = baseDeDonnees->executer(requete);
+    qDebug() << Q_FUNC_INFO << retour;
+}
+/**
+ * @todo Appeler recupererEtatsDistributeurs()
+ */
+void IHMJustFeed::recupererEtatsDistributeurs()
+{
+}
+
+/**
+ * @todo Afficher ...
+ */
+
+QString IHMJustFeed::recupererIdDistributeur(QString deviceID)
+{
+    for(int i = 0; i < distributeurs.size(); ++i)
+    {
+        if(distributeurs.at(i).at(
+             Distributeur::ChampDistributeur::CHAMP_deviceID) == deviceID)
+            return distributeurs.at(i).at(
+              Distributeur::ChampDistributeur::CHAMP_idDistributeur);
+    }
+    return QString(); // pas trouvé
 }

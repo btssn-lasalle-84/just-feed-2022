@@ -96,15 +96,16 @@ class IHMJustFeed : public QMainWindow
         NB_COLONNES
     };
 
-    void initialiser();
-    void gererEvenements();
-    void ouvrirBaseDeDonnees();
-    int  recupererIndexEtatsDistributeur(QString idDistibuteur);
-    int  recupererIndexInterventionDistributeur(QString idDistributeur);
-    int  recupererIndexGeolocalisationDistributeur(QString idDistributeur);
-    void afficherNiveauRemplissage(int pourcentage, int numeroBac);
-    bool recupererDonneesDistributeurs();
-    bool recupererEtatsDistributeurs();
+    void    initialiser();
+    void    gererEvenements();
+    void    ouvrirBaseDeDonnees();
+    int     recupererIndexEtatsDistributeur(QString idDistibuteur);
+    int     recupererIndexInterventionDistributeur(QString idDistributeur);
+    int     recupererIndexGeolocalisationDistributeur(QString idDistributeur);
+    void    afficherNiveauRemplissage(int pourcentage, int numeroBac);
+    bool    recupererDonneesDistributeurs();
+    bool    recupererEtatsDistributeurs();
+    QString recupererIdDistributeur(QString deviceID);
 
   public slots:
     void chargerDistributeurs();
@@ -126,6 +127,7 @@ class IHMJustFeed : public QMainWindow
     void selectionnerBac2(bool etat);
     void selectionnerEntretien(bool etat);
     void connecterDistributeurs();
+    void recupererDonneesPortBacs(QString deviceID, int bac1, int bac2);
 };
 
 #endif // IHMJUSTFEED_H
