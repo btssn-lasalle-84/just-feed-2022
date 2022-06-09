@@ -2,6 +2,7 @@
 #include "ui_ihmjustfeed.h"
 #include "distributeur.h"
 #include "basededonnees.h"
+#include "communication.h"
 #include <QDebug>
 
 /**
@@ -21,7 +22,8 @@
  * fenêtre principale de l'application
  */
 IHMJustFeed::IHMJustFeed(QWidget* parent) :
-    QMainWindow(parent), ui(new Ui::IHMJustFeed), nbLignesDistributeurs(0),
+    QMainWindow(parent), ui(new Ui::IHMJustFeed), baseDeDonnees(nullptr),
+    communicationMQTT(nullptr), nbLignesDistributeurs(0),
     numeroDistributeurSelectionne(-1)
 {
     ui->setupUi(this);
@@ -53,6 +55,9 @@ IHMJustFeed::~IHMJustFeed()
  */
 void IHMJustFeed::initialiser()
 {
+    communicationMQTT = new Communication(this);
+    communicationMQTT->connecter();
+
     pageLocalisation = ui->webEngineViewLocalisation->page();
     ui->labelTitreProjet->setText(QString::fromUtf8(NOM_APPLICATION) + " v" +
                                   QString::fromUtf8(VERSION_APPLICATION));
@@ -110,6 +115,30 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(clicked(QModelIndex)),
             this,
             SLOT(selectionner(QModelIndex)));
+    connect(ui->checkBoxBac1,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(selectionnerBac1(bool)));
+    connect(ui->checkBoxBac2,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(selectionnerBac2(bool)));
+    connect(ui->checkBoxEntretien,
+            SIGNAL(clicked(bool)),
+            this,
+            SLOT(selectionnerEntretien(bool)));
+    connect(communicationMQTT,
+            SIGNAL(ttnConnecte()),
+            this,
+            SLOT(connecterDistributeurs()));
+    connect(communicationMQTT,
+            SIGNAL(nouvellesDonneesPortBacs(QString, int, int)),
+            this,
+            SLOT(recupererDonneesPortBacs(QString, int, int)));
+    connect(communicationMQTT,
+            SIGNAL(nouvellesDonneesPortEnvironnement(QString, int)),
+            this,
+            SLOT(recupererDonneesPortEnvironnement(QString, int)));
 }
 
 void IHMJustFeed::ouvrirBaseDeDonnees()
@@ -148,27 +177,27 @@ void IHMJustFeed::afficherNiveauRemplissage(int pourcentage, int numeroBac)
     {
         case 1:
             ui->progressBarRemplissageBac1->setValue(pourcentage);
-            p.setColor(QPalette::Base, QColor(233, 185, 110)); // Background
+            p.setColor(QPalette::Base, QColor(209, 215, 215)); // Background
             if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
             {
-                p.setColor(QPalette::Highlight, Qt::green);
+                p.setColor(QPalette::Highlight, QColor(40, 221, 56));
             }
             else
             {
-                p.setColor(QPalette::Highlight, Qt::red);
+                p.setColor(QPalette::Highlight, QColor(245, 38, 38));
             }
             ui->progressBarRemplissageBac1->setPalette(p);
             break;
         case 2:
             ui->progressBarRemplissageBac2->setValue(pourcentage);
-            p.setColor(QPalette::Base, QColor(233, 185, 110)); // Background
+            p.setColor(QPalette::Base, QColor(209, 215, 215)); // Background
             if(pourcentage > SEUIL_REMPLISSAGE_DEFAUT)
             {
-                p.setColor(QPalette::Highlight, Qt::green);
+                p.setColor(QPalette::Highlight, QColor(40, 221, 56));
             }
             else
             {
-                p.setColor(QPalette::Highlight, Qt::red);
+                p.setColor(QPalette::Highlight, QColor(245, 38, 38));
             }
             ui->progressBarRemplissageBac2->setPalette(p);
             break;
@@ -232,12 +261,6 @@ void IHMJustFeed::chargerDistributeurs()
           Distributeur::ChampDistributeur::CHAMP_libelle));
         afficherDistributeurTable(distributeurs.at(i));
     }
-
-    recupererEtatsDistributeurs();
-
-    /**
-     * @todo Récupérer les données des interventions
-     */
 }
 
 /**
@@ -290,7 +313,7 @@ void IHMJustFeed::afficherDistributeurTable(QStringList distributeur)
     {
         QStandardItem* item =
           modeleDistributeur->item(nbLignesDistributeurs, i);
-        item->setBackground(QColor(225, 223, 0));
+        item->setBackground(QColor(128, 217, 44));
         item->setFont(texte);
     }
 
@@ -396,13 +419,80 @@ void IHMJustFeed::afficherHygrometrie(int indexDistributeur)
         .toInt());
 }
 
-void IHMJustFeed::afficherInterventions()
+void IHMJustFeed::afficherInterventions(QStringList distributeur)
 {
-    qDebug() << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO << distributeur;
+
+    // Crée les items pour les cellules d'une ligne
+    QStandardItem* nom = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_libelle));
+    QStandardItem* ville = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_ville));
+    QStandardItem* codePostal = new QStandardItem(
+      distributeur.at(Distributeur::ChampDistributeur::CHAMP_codepostal));
+    QStandardItem* designationProduit      = new QStandardItem(distributeur.at(
+      Distributeur::ChampDistributeur::CHAMP_designationProduit));
+    QStandardItem* niveauApprovisionnement = new QStandardItem(distributeur.at(
+      Distributeur::ChampDistributeur::CHAMP_niveauApprovisionnement));
+
+    // Ajoute les items dans le modèle de données
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_NOM,
+                                nom);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_VILLE,
+                                ville);
+    modeleDistributeur->setItem(nbLignesDistributeurs,
+                                IHMJustFeed::COLONNE_DISTRIBUTEUR_CODEPOSTAL,
+                                codePostal);
+    modeleDistributeur->setItem(
+      nbLignesDistributeurs,
+      IHMJustFeed::COLONNE_DISTRIBUTEUR_DESIGNATIONPRODUIT,
+      designationProduit);
+    modeleDistributeur->setItem(
+      nbLignesDistributeurs,
+      IHMJustFeed::COLONNE_DISTRIBUTEUR_NIVEAUAPPROVISIONNEMENT,
+      niveauApprovisionnement);
 
     /**
      * @todo Afficher les données des interventions
      */
+
+    // Exemple de personnalisation de l'affichage d'une ligne
+    QFont texte;
+    // texte.setPointSize(12);
+    texte.setBold(true);
+    for(int i = 0; i < nomColonnes.size(); ++i)
+    {
+        QStandardItem* item =
+          modeleDistributeur->item(nbLignesDistributeurs, i);
+        item->setBackground(QColor(225, 223, 0));
+        item->setFont(texte);
+    }
+
+    qDebug() << Q_FUNC_INFO << "nbLignesDistributeurs" << nbLignesDistributeurs;
+
+    nbLignesDistributeurs += 1;
+
+    // Configure l'affichage du QTableView
+    ui->tableViewInterventions->setSizePolicy(QSizePolicy::Minimum,
+                                              QSizePolicy::Minimum);
+    ui->tableViewInterventions->setVerticalScrollBarPolicy(
+      Qt::ScrollBarAlwaysOff);
+    ui->tableViewInterventions->setHorizontalScrollBarPolicy(
+      Qt::ScrollBarAlwaysOff);
+    // ui->tableViewDistributeurs->resizeColumnsToContents();
+
+    ui->tableViewInterventions->setMinimumWidth(ui->centralwidget->width());
+    // ui->tableViewUtilisateurs->setMinimumHeight(ui->centralwidget->height());
+    /*ui->tableViewUtilisateurs->setFixedSize(
+      ui->tableViewUtilisateurs->horizontalHeader()->length() +
+        ui->tableViewUtilisateurs->verticalHeader()->width(),
+      ui->tableViewUtilisateurs->verticalHeader()->length() +
+        ui->tableViewUtilisateurs->horizontalHeader()->height());*/
+    ui->tableViewInterventions->setFixedHeight(
+      ui->tableViewInterventions->verticalHeader()->length() +
+      ui->tableViewInterventions->horizontalHeader()->height());
 }
 
 void IHMJustFeed::afficherGeolocalisationDistributeur(int indexDistributeur)
@@ -563,9 +653,12 @@ void IHMJustFeed::afficherPageEtatDistributeur()
 
 void IHMJustFeed::afficherPageInterventionDistributeur()
 {
-    qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
+    /*qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
-    afficherInterventions();
+    afficherInterventions(numeroDistributeurSelectionne);
+    ui->pushButtonRetour->show();
+    afficherPage(Page::Intervention);*/
+
     ui->pushButtonRetour->show();
     afficherPage(Page::Intervention);
 }
@@ -574,7 +667,110 @@ void IHMJustFeed::afficherPageGeolocalisationDistributeur()
 {
     qDebug() << Q_FUNC_INFO << "numeroDistributeurSelectionne"
              << numeroDistributeurSelectionne;
+    recupererDonneesDistributeurs();
     afficherGeolocalisationDistributeur(numeroDistributeurSelectionne);
     ui->pushButtonRetour->show();
     afficherPage(Page::Geolocalisation);
+}
+
+void IHMJustFeed::selectionnerBac1(bool etat)
+{
+    qDebug() << Q_FUNC_INFO << etat;
+    /**
+     * @todo Gérer l'intervention correspondante
+     */
+}
+
+void IHMJustFeed::selectionnerBac2(bool etat)
+{
+    qDebug() << Q_FUNC_INFO << etat;
+    /**
+     * @todo Gérer l'intervention correspondante
+     */
+}
+
+void IHMJustFeed::selectionnerEntretien(bool etat)
+{
+    qDebug() << Q_FUNC_INFO << etat;
+    /**
+     * @todo Gérer l'intervention correspondante
+     */
+}
+
+void IHMJustFeed::connecterDistributeurs()
+{
+    qDebug() << Q_FUNC_INFO;
+    /**
+     * @todo Signaler l'état de connexion au serveur TTN sur l'IHM
+     */
+
+    // Pour les tests
+    communicationMQTT->abonner("distributeur-1-sim");
+    communicationMQTT->abonner("distributeur-2-sim");
+}
+
+void IHMJustFeed::recupererDonneesPortBacs(QString deviceID, int bac1, int bac2)
+{
+    qDebug() << Q_FUNC_INFO << deviceID << bac1 * 10 << bac2 * 10;
+
+    QString idDistributeur = recupererIdDistributeur(deviceID);
+    qDebug() << Q_FUNC_INFO << idDistributeur;
+
+    QString requete;
+    bool    retour;
+
+    requete =
+      "UPDATE StockDistributeur SET quantite=" + QString::number(bac1 * 10) +
+      " WHERE idDistributeur=" + idDistributeur + " AND numeroBac=1;";
+    retour = baseDeDonnees->executer(requete);
+
+    requete =
+      "UPDATE StockDistributeur SET quantite=" + QString::number(bac2 * 10) +
+      " WHERE idDistributeur=" + idDistributeur + " AND numeroBac=2;";
+    retour = baseDeDonnees->executer(requete);
+    qDebug() << Q_FUNC_INFO << retour;
+
+    if(retour)
+    {
+        recupererEtatsDistributeurs();
+        if(ui->pages->currentIndex() == Page::Distributeur)
+            afficherEtatDistributeur(numeroDistributeurSelectionne);
+    }
+}
+
+void IHMJustFeed::recupererDonneesPortEnvironnement(QString deviceID,
+                                                    int     hygrometrie)
+{
+    qDebug() << Q_FUNC_INFO << deviceID << hygrometrie;
+
+    QString idDistributeur = recupererIdDistributeur(deviceID);
+    qDebug() << Q_FUNC_INFO << idDistributeur;
+
+    QString requete;
+    bool    retour;
+
+    requete =
+      "UPDATE Distributeur SET hygrometrie=" + QString::number(hygrometrie) +
+      " WHERE idDistributeur=" + idDistributeur;
+    retour = baseDeDonnees->executer(requete);
+    qDebug() << Q_FUNC_INFO << retour;
+
+    if(retour)
+    {
+        recupererDonneesDistributeurs();
+        if(ui->pages->currentIndex() == Page::Distributeur)
+            afficherHygrometrie(numeroDistributeurSelectionne);
+    }
+}
+
+QString IHMJustFeed::recupererIdDistributeur(QString deviceID)
+{
+    for(int i = 0; i < distributeurs.size(); ++i)
+    {
+        if(distributeurs.at(i).at(
+             Distributeur::ChampDistributeur::CHAMP_deviceID) == deviceID)
+            return distributeurs.at(i).at(
+              Distributeur::ChampDistributeur::CHAMP_idDistributeur);
+    }
+    return QString(); // pas trouvé
 }

@@ -1,6 +1,6 @@
 format 224
 "JustFeed"
-  revision 15
+  revision 17
   modified_by 2 "btssn2"
   cpp_root_dir "../../just-feed/"
 
@@ -206,7 +206,7 @@ format 224
       end
     end
 
-    sequencediagram 141186 "ds - Lister les distributeurs"
+    sequencediagram 141186 "ds - Initialiser application"
       sequencediagramsettings end
       overlapping_bars size A0
     end
@@ -219,6 +219,16 @@ format 224
     sequencediagram 147842 "ds - Geolocaliser les distributeurs"
       sequencediagramsettings end
       overlapping_bars size A4
+    end
+
+    sequencediagram 154370 "ds - Planifier une intervention"
+      sequencediagramsettings end
+      overlapping_bars size A4
+    end
+
+    sequencediagram 160898 "ds - Lister les distributeurs"
+      sequencediagramsettings end
+      overlapping_bars size A0
     end
   end
 

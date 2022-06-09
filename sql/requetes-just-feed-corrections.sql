@@ -80,7 +80,7 @@ WHERE StockDistributeur.idDistributeur='1';
 
 -- Une intervention
 
-SELECT Intervention.dateIntervention,Technicien.nom,Technicien.prenom,Distributeur.libelle,Distributeur.ville,Distributeur.deviceID,Produit.designation,NiveauApprovisionnement.libelle FROM Intervention
+SELECT Intervention.dateIntervention,Technicien.nom,Technicien.prenom,Distributeur.libelle,Distributeur.ville, Distributeur.codepostal,Distributeur.deviceID,Produit.designation,NiveauApprovisionnement.libelle FROM Intervention
 INNER JOIN Technicien ON Technicien.idTechnicien=Intervention.idTechnicien
 INNER JOIN Approvisionnement ON Approvisionnement.idIntervention=Intervention.idIntervention
 INNER JOIN StockDistributeur ON StockDistributeur.idStockDistributeur=Approvisionnement.idStockDistributeur

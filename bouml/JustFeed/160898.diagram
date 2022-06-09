@@ -1,0 +1,61 @@
+format 224
+
+classinstance 128002 class_ref 148610 // IHMJustFeed
+  name "ihmJustFeed"   xyz 126 4 2000 life_line_z 2000
+classinstance 129410 class_ref 148098 // BaseDeDonnees
+  name ""   xyz 570 4 2000 life_line_z 2000
+note 129794 "SELECT * FROM Distributeur"
+  xyzwh 307 318 2000 261 39
+fragment 130050 "loop"
+  xyzwh 165 386 3005 499 87
+end
+textcanvas 130178 "[chaque distributeur]"
+  xyzwh 234 395 2000 133 15
+fragment 131970 "ref"
+  refer sequencediagram_ref 141186 // ds - Initialiser application
+  xyzwh 266 65 2000 303 57
+end
+durationcanvas 128898 classinstance_ref 128002 // ihmJustFeed:IHMJustFeed
+  xyzwh 214 160 2010 11 339
+  overlappingdurationcanvas 129154
+    xyzwh 220 204 2020 11 25
+  end
+  overlappingdurationcanvas 130306
+    xyzwh 220 436 2020 11 25
+  end
+  overlappingdurationcanvas 131714
+    xyzwh 220 252 2020 11 59
+  end
+end
+durationcanvas 129538 classinstance_ref 129410 // :BaseDeDonnees
+  xyzwh 628 295 2010 11 25
+end
+reflexivemsg 129026 synchronous
+  to durationcanvas_ref 128898
+  yz 160 2015 msg operation_ref 137090 // "chargerDistributeurs() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 224 147
+reflexivemsg 129282 synchronous
+  to durationcanvas_ref 129154
+  yz 204 2025 msg operation_ref 137218 // "effacerTableDistributeurs() : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 231 190
+msg 129666 synchronous
+  from durationcanvas_ref 128898
+  to durationcanvas_ref 129538
+  yz 295 2015 msg operation_ref 135426 // "recuperer(in requete : QString, inout donnees : QString) : bool"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 389 280
+reflexivemsg 130434 synchronous
+  to durationcanvas_ref 130306
+  yz 436 2025 msg operation_ref 137346 // "afficherDistributeurTable(in distributeur : QStringList) : void"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 230 421
+reflexivemsg 131842 synchronous
+  to durationcanvas_ref 131714
+  yz 252 2025 msg operation_ref 145282 // "recupererDonneesDistributeurs() : bool"
+  show_full_operations_definition default show_class_of_operation default drawing_language default show_context_mode default
+  label_xy 231 238
+line 129922 -_-_
+  from ref 129794 z 2016 to ref 129666
+end
