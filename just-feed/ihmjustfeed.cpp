@@ -135,6 +135,10 @@ void IHMJustFeed::gererEvenements()
             SIGNAL(nouvellesDonneesPortBacs(QString, int, int)),
             this,
             SLOT(recupererDonneesPortBacs(QString, int, int)));
+    connect(communicationMQTT,
+            SIGNAL(nouvellesDonneesPortEnvironnement(QString, int)),
+            this,
+            SLOT(recupererDonneesPortEnvironnement(QString, int)));
 }
 
 void IHMJustFeed::ouvrirBaseDeDonnees()
@@ -707,39 +711,57 @@ void IHMJustFeed::connecterDistributeurs()
 
 void IHMJustFeed::recupererDonneesPortBacs(QString deviceID, int bac1, int bac2)
 {
-    qDebug() << Q_FUNC_INFO << deviceID << bac1 << bac2;
+    qDebug() << Q_FUNC_INFO << deviceID << bac1 * 10 << bac2 * 10;
 
     QString idDistributeur = recupererIdDistributeur(deviceID);
     qDebug() << Q_FUNC_INFO << idDistributeur;
-    /**
-     * @todo Effectuer une requête SQL UPDATE pour chaque bac
-     */
-    QString requete =
-      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=1 AND "
-      "numeroBac=1;"; // QString::number(bac1) distributeur 1
-    /*QString requete =
-      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=1 AND "
-      "numeroBac=2;"; // QString::number(bac2) distributeur 1
-    QString requete =
-      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=2 AND "
-      "numeroBac=1;"; // QString::number(bac1) distributeur 2
-    QString requete =
-      "UPDATE StockDistributeur SET quantite=2000 WHERE idDistributeur=2 AND "
-      "numeroBac=2;"; // QString::number(bac2) distributeur 2*/
 
-    bool retour = baseDeDonnees->executer(requete);
+    QString requete;
+    bool    retour;
+
+    requete =
+      "UPDATE StockDistributeur SET quantite=" + QString::number(bac1 * 10) +
+      " WHERE idDistributeur=" + idDistributeur + " AND numeroBac=1;";
+    retour = baseDeDonnees->executer(requete);
+
+    requete =
+      "UPDATE StockDistributeur SET quantite=" + QString::number(bac2 * 10) +
+      " WHERE idDistributeur=" + idDistributeur + " AND numeroBac=2;";
+    retour = baseDeDonnees->executer(requete);
     qDebug() << Q_FUNC_INFO << retour;
-}
-/**
- * @todo Appeler recupererEtatsDistributeurs()
- */
-void IHMJustFeed::recupererEtatsDistributeurs()
-{
+
+    if(retour)
+    {
+        recupererEtatsDistributeurs();
+        if(ui->pages->currentIndex() == Page::Distributeur)
+            afficherEtatDistributeur(numeroDistributeurSelectionne);
+    }
 }
 
-/**
- * @todo Afficher ...
- */
+void IHMJustFeed::recupererDonneesPortEnvironnement(QString deviceID,
+                                                    int     hygrometrie)
+{
+    qDebug() << Q_FUNC_INFO << deviceID << hygrometrie;
+
+    QString idDistributeur = recupererIdDistributeur(deviceID);
+    qDebug() << Q_FUNC_INFO << idDistributeur;
+
+    QString requete;
+    bool    retour;
+
+    requete =
+      "UPDATE Distributeur SET hygrometrie=" + QString::number(hygrometrie) +
+      " WHERE idDistributeur=" + idDistributeur;
+    retour = baseDeDonnees->executer(requete);
+    qDebug() << Q_FUNC_INFO << retour;
+
+    if(retour)
+    {
+        recupererDonneesDistributeurs();
+        if(ui->pages->currentIndex() == Page::Distributeur)
+            afficherHygrometrie(numeroDistributeurSelectionne);
+    }
+}
 
 QString IHMJustFeed::recupererIdDistributeur(QString deviceID)
 {

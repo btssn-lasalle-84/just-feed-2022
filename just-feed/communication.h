@@ -64,7 +64,7 @@ class Communication : public QObject
     void ttnConnecte();
     void ttnDeconnecte();
     void nouvellesDonneesPortBacs(QString deviceID, int bac1, int bac2);
-    void nouvellesDonneesPortEnvironnement(QString deviceID, int humidite);
+    void nouvellesDonneesPortEnvironnement(QString deviceID, int hygrometrie);
     void nouvellesDonneesPortMaintenance(QString deviceID,
                                          int     erreurs,
                                          int     maintenance,

@@ -356,7 +356,7 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
     qDebug() << Q_FUNC_INFO << "port" << port;
     QJsonObject messageDonnees =
       uplink_message.value(QString("decoded_payload")).toObject();
-    int bac1, bac2, humidite, erreurs, maintenance, total;
+    int bac1, bac2, hygrometrie, erreurs, maintenance, total;
     switch(port)
     {
         case PORT_BACS:
@@ -367,18 +367,12 @@ void Communication::recevoirMessage(const QByteArray&     messageRecu,
             emit nouvellesDonneesPortBacs(deviceID, bac1, bac2);
             break;
         case PORT_ENVIRONNEMENT:
-            /**
-             * @todo extraire les données en fonction du numéro de port
-             */
-            humidite = messageDonnees.value(QString("humidite")).toInt();
-            qDebug() << Q_FUNC_INFO << "environnement" << humidite;
+            hygrometrie = messageDonnees.value(QString("hygrometrie")).toInt();
+            qDebug() << Q_FUNC_INFO << "environnement" << hygrometrie;
 
-            emit nouvellesDonneesPortEnvironnement(deviceID, humidite);
+            emit nouvellesDonneesPortEnvironnement(deviceID, hygrometrie);
             break;
         case PORT_MAINTENANCE:
-            /**
-             * @todo extraire les données en fonction du numéro de port
-             */
             erreurs     = messageDonnees.value(QString("erreurs")).toInt();
             maintenance = messageDonnees.value(QString("maintenance")).toInt();
             total       = messageDonnees.value(QString("total")).toInt();

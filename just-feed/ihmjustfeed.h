@@ -128,6 +128,7 @@ class IHMJustFeed : public QMainWindow
     void selectionnerEntretien(bool etat);
     void connecterDistributeurs();
     void recupererDonneesPortBacs(QString deviceID, int bac1, int bac2);
+    void recupererDonneesPortEnvironnement(QString deviceID, int hygrometrie);
 };
 
 #endif // IHMJUSTFEED_H
