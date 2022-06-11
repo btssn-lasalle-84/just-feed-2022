@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['db_146',['db',['../class_base_de_donnees.html#a3e738dcf443370c46a541677ab619f06',1,'BaseDeDonnees']]],
-  ['distributeurs_147',['distributeurs',['../class_i_h_m_just_feed.html#a73f18ff265ae43a8b24d0bfb50a1e032',1,'IHMJustFeed']]]
+  ['basededonnees_223',['baseDeDonnees',['../class_base_de_donnees.html#a822ba0b7cf85b1e48ced8efd3d65e266',1,'BaseDeDonnees::baseDeDonnees()'],['../class_i_h_m_just_feed.html#a673c0efe11a5b294ccf1f55c5d3f334e',1,'IHMJustFeed::baseDeDonnees()']]]
 ];
