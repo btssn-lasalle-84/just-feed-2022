@@ -4,6 +4,8 @@ var files_dup =
     [ "basededonnees.h", "basededonnees_8h.html", [
       [ "BaseDeDonnees", "class_base_de_donnees.html", "class_base_de_donnees" ]
     ] ],
+    [ "communication.cpp", "communication_8cpp.html", null ],
+    [ "communication.h", "communication_8h.html", "communication_8h" ],
     [ "distributeur.cpp", "distributeur_8cpp.html", null ],
     [ "distributeur.h", "distributeur_8h.html", "distributeur_8h" ],
     [ "ihmjustfeed.cpp", "ihmjustfeed_8cpp.html", null ],

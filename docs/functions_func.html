@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="just-feed.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">just-feed
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.1</span>
    </div>
    <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
   </td>
@@ -87,6 +87,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 &#160;
 
 <h3><a id="index_a"></a>- a -</h3><ul>
+<li>abonner()
+: <a class="el" href="class_communication.html#aecf593178068f76b7f9018dd8b627ab3">Communication</a>
+</li>
 <li>afficherDistributeurTable()
 : <a class="el" href="class_i_h_m_just_feed.html#a5a7062405fd8bf30f37a28f3af8a60a7">IHMJustFeed</a>
 </li>
@@ -96,8 +99,11 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>afficherGeolocalisationDistributeur()
 : <a class="el" href="class_i_h_m_just_feed.html#a15e6676c7edca60356abf1dc96c129d8">IHMJustFeed</a>
 </li>
+<li>afficherHygrometrie()
+: <a class="el" href="class_i_h_m_just_feed.html#ab5d7ebdd1017a7818df53566da486fc4">IHMJustFeed</a>
+</li>
 <li>afficherInterventions()
-: <a class="el" href="class_i_h_m_just_feed.html#a69888e88dc1c3ea02fcf12c2fac75d9d">IHMJustFeed</a>
+: <a class="el" href="class_i_h_m_just_feed.html#ad87fa0595ea8b02ba49757e01b225be1">IHMJustFeed</a>
 </li>
 <li>afficherNiveauRemplissage()
 : <a class="el" href="class_i_h_m_just_feed.html#a06cccad864cb165edb01ebb5ac2f75c8">IHMJustFeed</a>
@@ -128,13 +134,34 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>changerEtat()
+: <a class="el" href="class_communication.html#a7160969a03fbc762254b0251c8277565">Communication</a>
+</li>
 <li>chargerDistributeurs()
 : <a class="el" href="class_i_h_m_just_feed.html#a4afa7cbde9234191b329fcd83b13a09e">IHMJustFeed</a>
+</li>
+<li>Communication()
+: <a class="el" href="class_communication.html#a56cf4b262e592bcae1d987c3dd00487f">Communication</a>
+</li>
+<li>configurer()
+: <a class="el" href="class_communication.html#a63c4c07d74036604d99239f9e3850141">Communication</a>
+</li>
+<li>connecter()
+: <a class="el" href="class_communication.html#aa2a9c07349e8a765aad260b3c497f400">Communication</a>
+</li>
+<li>connecterDistributeurs()
+: <a class="el" href="class_i_h_m_just_feed.html#a0a57f083d6798d2ed02e02f2ee24bf70">IHMJustFeed</a>
 </li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
+<li>deconnecter()
+: <a class="el" href="class_communication.html#a30fc4cf3f0d2c7ee32e2daab097ebb1a">Communication</a>
+</li>
+<li>desabonner()
+: <a class="el" href="class_communication.html#abca839032bc159bd53398f96fd881a78">Communication</a>
+</li>
 <li>detruireInstance()
 : <a class="el" href="class_base_de_donnees.html#a457401c0816b888c77ce915997545f4e">BaseDeDonnees</a>
 </li>
@@ -151,6 +178,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>effacerTableDistributeurs()
 : <a class="el" href="class_i_h_m_just_feed.html#a936cc3d5a64c9edd09fec4c3cfaea212">IHMJustFeed</a>
 </li>
+<li>estConnecte()
+: <a class="el" href="class_communication.html#af3ae011aedc8bcc4098a881b7dec41bf">Communication</a>
+</li>
 <li>estOuvert()
 : <a class="el" href="class_base_de_donnees.html#af9ac332082ffd0dd35e412cefabe5e9c">BaseDeDonnees</a>
 </li>
@@ -164,8 +194,17 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>gererEvenements()
 : <a class="el" href="class_i_h_m_just_feed.html#a7c14cbc75d1b8303f39f9f462976693f">IHMJustFeed</a>
 </li>
+<li>getHostname()
+: <a class="el" href="class_communication.html#a7fc51209a7b0c9b29226386d83d9c557">Communication</a>
+</li>
 <li>getInstance()
 : <a class="el" href="class_base_de_donnees.html#a58beb2f702f75b257e2e55e25d9f979b">BaseDeDonnees</a>
+</li>
+<li>getPassword()
+: <a class="el" href="class_communication.html#a2a661cac8203caf311d25ff7046a1092">Communication</a>
+</li>
+<li>getUsername()
+: <a class="el" href="class_communication.html#ac3176112aa1beedde48a0255414db85b">Communication</a>
 </li>
 </ul>
 
@@ -176,6 +215,19 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>initialiser()
 : <a class="el" href="class_i_h_m_just_feed.html#a2bd71fb441ed7498c2be90c303194c7f">IHMJustFeed</a>
+</li>
+</ul>
+
+
+<h3><a id="index_n"></a>- n -</h3><ul>
+<li>nouvellesDonneesPortBacs()
+: <a class="el" href="class_communication.html#a515e7f9fa76157c02dc11dfe44c19021">Communication</a>
+</li>
+<li>nouvellesDonneesPortEnvironnement()
+: <a class="el" href="class_communication.html#aca3e71b56b2178c48542eed333b59a2a">Communication</a>
+</li>
+<li>nouvellesDonneesPortMaintenance()
+: <a class="el" href="class_communication.html#aa5f589c7fe408d72fb9cc1ee74d55cf1">Communication</a>
 </li>
 </ul>
 
@@ -191,8 +243,29 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>recevoirMessage()
+: <a class="el" href="class_communication.html#acb8c31b1a0267bf60132cece3f5632f1">Communication</a>
+</li>
+<li>reconnecter()
+: <a class="el" href="class_communication.html#a8de2c3fd2dd92259b16ea27896df5f9f">Communication</a>
+</li>
 <li>recuperer()
 : <a class="el" href="class_base_de_donnees.html#a77539baad389f5acf754cd2cd452403e">BaseDeDonnees</a>
+</li>
+<li>recupererDonneesDistributeurs()
+: <a class="el" href="class_i_h_m_just_feed.html#a821e61e88abb24fae43d7d3cb1b536f2">IHMJustFeed</a>
+</li>
+<li>recupererDonneesPortBacs()
+: <a class="el" href="class_i_h_m_just_feed.html#a4d1ce75444ed3ef7f5f2bd3646786799">IHMJustFeed</a>
+</li>
+<li>recupererDonneesPortEnvironnement()
+: <a class="el" href="class_i_h_m_just_feed.html#a60f070db7e0b882a120f4ab3cc7d4ec8">IHMJustFeed</a>
+</li>
+<li>recupererEtatsDistributeurs()
+: <a class="el" href="class_i_h_m_just_feed.html#a2b2e1991c2d5bdb4f6d1b869ec2d82f7">IHMJustFeed</a>
+</li>
+<li>recupererIdDistributeur()
+: <a class="el" href="class_i_h_m_just_feed.html#a446bd306e98c023565c08d6745e3c2bf">IHMJustFeed</a>
 </li>
 <li>recupererIndexEtatsDistributeur()
 : <a class="el" href="class_i_h_m_just_feed.html#ad803e2a7e9ed377e834417a59abd7823">IHMJustFeed</a>
@@ -207,11 +280,33 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>sauvegarder()
+: <a class="el" href="class_communication.html#ad5da93ee04963390f96eb8c5d3d14b79">Communication</a>
+</li>
 <li>selectionner()
 : <a class="el" href="class_i_h_m_just_feed.html#a14f4994c2f7e1b147f51457dc0cbe5c3">IHMJustFeed</a>
 </li>
+<li>selectionnerBac1()
+: <a class="el" href="class_i_h_m_just_feed.html#ab617920052e67deefe6143286d8fd39d">IHMJustFeed</a>
+</li>
+<li>selectionnerBac2()
+: <a class="el" href="class_i_h_m_just_feed.html#a9d3212be62ee16121e387c199add89b0">IHMJustFeed</a>
+</li>
 <li>selectionnerDistributeur()
 : <a class="el" href="class_i_h_m_just_feed.html#a38397a9ec97ad102a76c7f6bacf4d439">IHMJustFeed</a>
+</li>
+<li>selectionnerEntretien()
+: <a class="el" href="class_i_h_m_just_feed.html#a6b6c9ed6f676d90c82691de330fdab9e">IHMJustFeed</a>
+</li>
+</ul>
+
+
+<h3><a id="index_t"></a>- t -</h3><ul>
+<li>ttnConnecte()
+: <a class="el" href="class_communication.html#ab175f1b65402fcfbd12c7fbd948be90c">Communication</a>
+</li>
+<li>ttnDeconnecte()
+: <a class="el" href="class_communication.html#af1a4c6ccbb3bdc469bb981841fc10916">Communication</a>
 </li>
 </ul>
 
@@ -219,6 +314,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <h3><a id="index__7E"></a>- ~ -</h3><ul>
 <li>~BaseDeDonnees()
 : <a class="el" href="class_base_de_donnees.html#a5dc474cdbe003644fb0ca7b8f2ec6b93">BaseDeDonnees</a>
+</li>
+<li>~Communication()
+: <a class="el" href="class_communication.html#a75ba08ce908d45251e28e4c1db94e6f4">Communication</a>
 </li>
 <li>~IHMJustFeed()
 : <a class="el" href="class_i_h_m_just_feed.html#a0f2ebe0ba7c02c8f83f503d6aebec917">IHMJustFeed</a>
@@ -230,7 +328,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Mercredi 25 Mai 2022 16:45:11 pour just-feed par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Samedi 11 Juin 2022 07:08:23 pour just-feed par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
   </ul>
 </div>
 </body>

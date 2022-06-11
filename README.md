@@ -22,32 +22,32 @@ Système de surveillance à distance de distributeurs automatiques permettant de
 - Signaler la nécessité de mettre en oeuvre des opérations de maintenance prédictive
 - Superviser l’ensemble des distributeurs à partir d’une application
 
+![](images/synoptique.png)
+
 ## Auteur
 
 - Laura MORELLO <<lauramorello1604@gmail.com>>
 
 ## Historique des versions
 
-- Version 0.2 : 24/05/2022
-- Version 0.1 : 02/04/2022
+- [Version 1.1](https://github.com/btssn-lasalle-84/just-feed-2022/releases/tag/1.1) : 24/05/2022
+- [Version 1.0](https://github.com/btssn-lasalle-84/just-feed-2022/releases/tag/1.0) : 27/05/2022
+- [Version 0.2](https://github.com/btssn-lasalle-84/just-feed-2022/releases/tag/0.2) : 24/05/2022
+- [Version 0.1](https://github.com/btssn-lasalle-84/just-feed-2022/releases/tag/0.1) : 02/04/2022
+
+![](images/jira-versions-just-feed.png)
 
 ## Fonctionnalités
 
 - Lister les distributeurs
-
-![](images/capture-liste-distributeurs.png)
-
+- Communiquer avec les distributeurs en MQTT
 - Visualiser l’état d’un distributeur
-
-![](images/capture-etat-distributeur.png)
-
 - Géolocaliser sur une carte un distributeur, afficher ses coordonnées et adresse
 
-![](images/capture-localisation-distributeur.png)
+![](images/just-feed.gif)
 
 ## TODO
 
-- [ ] Communiquer avec les distributeurs
 - [ ] Sélectionner un distributeur pour une intervention
 - [ ] Définir une intervention (type d’intervention, nombre de  distributeurs à visiter, type de produits à réapprovisionner)
 
@@ -66,7 +66,6 @@ https://btssn-lasalle-84.github.io/just-feed-2022/
 ## Base de données
 
 ![](images/bdd-just-feed-v0.2.png)
-
 
 ## Kanban
 
@@ -122,3 +121,5 @@ Pour accèder aux classes du module Qt MQTT, il faudra ajouter le module `mqtt` 
 ```
 QT += mqtt
 ```
+
+©️ LaSalle Avignon 2022

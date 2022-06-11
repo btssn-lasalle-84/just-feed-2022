@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7ebasededonnees_95',['~BaseDeDonnees',['../class_base_de_donnees.html#a5dc474cdbe003644fb0ca7b8f2ec6b93',1,'BaseDeDonnees']]],
-  ['_7eihmjustfeed_96',['~IHMJustFeed',['../class_i_h_m_just_feed.html#a0f2ebe0ba7c02c8f83f503d6aebec917',1,'IHMJustFeed']]]
+  ['version_5fapplication_137',['VERSION_APPLICATION',['../ihmjustfeed_8h.html#a121d9d72e2cc9cdcf09da6b88fa7859d',1,'ihmjustfeed.h']]]
 ];

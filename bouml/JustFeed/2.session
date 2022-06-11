@@ -1,24 +1,28 @@
-window_sizes 1864 1016 449 1409 843 120
+window_sizes 1864 1016 473 1385 899 64
 cleanlooks_style
 diagrams
-  usecasediagram_ref 128002 // Diagramme des Cas d'utilisation
-    1127 674 100 A4 0 0
+  active  sequencediagram_ref 147714 // ds - Visualiser l'état d'un distributeur
+    1385 899 100 A4 0 0
+  sequencediagram_ref 154370 // ds - Planifier une intervention
+    120 106 100 A4 0 0
+  sequencediagram_ref 160898 // ds - Lister les distributeurs
+    120 106 100 A0 0 0
+  sequencediagram_ref 141186 // ds - Initialiser application
+    120 106 100 A0 0 0
+  classdiagram_ref 134530 // Diagramme de Classes
+    120 106 100 A0 0 0
   classdiagram_ref 141058 // classes
-    1127 674 70 A0 0 0
-  active  sequencediagram_ref 141186 // ds - Lister les distributeurs
-    1409 843 100 A0 0 0
+    1232 719 100 A0 0 0
+  usecasediagram_ref 128002 // Diagramme des Cas d'utilisation
+    1232 719 100 A4 0 0
 end
 show_stereotypes
-marked
-  classrelation_ref 136322 // <dependency>
-end
-selected usecase_ref 128386 // Visualiser l'état d'un distributeur
+selected sequencediagram_ref 147842 // ds - Geolocaliser les distributeurs
 open
-  usecaseview_ref 128002 // Vue des Cas d'utilisation
-  classview_ref 128002 // Vue des Classes
-  class_ref 148098 // BaseDeDonnees
-  class_ref 148482 // ChampDistributeur
-  class_ref 148610 // IHMJustFeed
+  usecase_ref 128258 // Lister les distributeurs
+  usecase_ref 128386 // Visualiser l'état d'un distributeur
+  class_ref 141570 // Intervention
+  classview_ref 134530 // just-feed
   deploymentview_ref 134530 // just-feed
 end
 end

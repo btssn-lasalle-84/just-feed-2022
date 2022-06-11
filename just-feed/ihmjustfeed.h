@@ -35,6 +35,7 @@ class IHMJustFeed;
 // QT_END_NAMESPACE
 
 class BaseDeDonnees;
+class Communication;
 
 /**
  * @class IHMJustFeed
@@ -51,10 +52,13 @@ class IHMJustFeed : public QMainWindow
 
   private:
     Ui::IHMJustFeed* ui; //!< la fenêtre graphique associée à cette classe
-    BaseDeDonnees*   baseDeDonnees; //!< Instance d'un objet BaseDeDonnees
-    QStringList      nomColonnes;   //!< Liste de nom des colonnes
-    int              nbLignesDistributeurs; //!< nombre de lignes
-    QVector<QStringList> distributeurs;     //!< Les distributeurs
+    BaseDeDonnees*
+      baseDeDonnees; //!< adresse d'une instance d'un objet BaseDeDonnees
+    Communication*
+                         communicationMQTT; //!< adresse d'une instance d'un objet Communication
+    QStringList          nomColonnes;           //!< Liste de nom des colonnes
+    int                  nbLignesDistributeurs; //!< nombre de lignes
+    QVector<QStringList> distributeurs;         //!< Les distributeurs
     QVector<QStringList>
                         etatsDistributeurs; //!< Les états des stocks des distributeurs
     QStandardItemModel* modeleDistributeur; //!< Modèle pourle QTableView
@@ -82,26 +86,34 @@ class IHMJustFeed : public QMainWindow
      */
     enum ColonneDistributeur
     {
-        COLONNE_DISTRIBUTEUR_NOM,        //!< Emplacement du nom
-        COLONNE_DISTRIBUTEUR_VILLE,      //!< Emplacement de la ville
-        COLONNE_DISTRIBUTEUR_CODEPOSTAL, //!< Emplacement du code postal
+        COLONNE_DISTRIBUTEUR_NOM,                //!< Emplacement du nom
+        COLONNE_DISTRIBUTEUR_VILLE,              //!< Emplacement de la ville
+        COLONNE_DISTRIBUTEUR_CODEPOSTAL,         //!< Emplacement du code postal
+        COLONNE_DISTRIBUTEUR_DESIGNATIONPRODUIT, //!< Emplacement de la
+                                                 //!< designation
+        COLONNE_DISTRIBUTEUR_NIVEAUAPPROVISIONNEMENT, //!< Emplacement du
+                                                      //!< libelle
         NB_COLONNES
     };
 
-    void initialiser();
-    void gererEvenements();
-    void ouvrirBaseDeDonnees();
-    int  recupererIndexEtatsDistributeur(QString idDistibuteur);
-    int  recupererIndexInterventionDistributeur(QString idDistributeur);
-    int  recupererIndexGeolocalisationDistributeur(QString idDistributeur);
-    void afficherNiveauRemplissage(int pourcentage, int numeroBac);
+    void    initialiser();
+    void    gererEvenements();
+    void    ouvrirBaseDeDonnees();
+    int     recupererIndexEtatsDistributeur(QString idDistibuteur);
+    int     recupererIndexInterventionDistributeur(QString idDistributeur);
+    int     recupererIndexGeolocalisationDistributeur(QString idDistributeur);
+    void    afficherNiveauRemplissage(int pourcentage, int numeroBac);
+    bool    recupererDonneesDistributeurs();
+    bool    recupererEtatsDistributeurs();
+    QString recupererIdDistributeur(QString deviceID);
 
   public slots:
     void chargerDistributeurs();
     void effacerTableDistributeurs();
     void afficherDistributeurTable(QStringList distributeur);
     void afficherEtatDistributeur(int indexDistributeur);
-    void afficherInterventions();
+    void afficherHygrometrie(int indexDistributeur);
+    void afficherInterventions(QStringList distributeur);
     void afficherGeolocalisationDistributeur(int indexDistributeur);
     void selectionner(QModelIndex index);
     void selectionnerDistributeur(int index);
@@ -111,6 +123,12 @@ class IHMJustFeed : public QMainWindow
     void afficherPageEtatDistributeur();
     void afficherPageInterventionDistributeur();
     void afficherPageGeolocalisationDistributeur();
+    void selectionnerBac1(bool etat);
+    void selectionnerBac2(bool etat);
+    void selectionnerEntretien(bool etat);
+    void connecterDistributeurs();
+    void recupererDonneesPortBacs(QString deviceID, int bac1, int bac2);
+    void recupererDonneesPortEnvironnement(QString deviceID, int hygrometrie);
 };
 
 #endif // IHMJUSTFEED_H
