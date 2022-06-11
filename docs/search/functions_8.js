@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['ouvrir_135',['ouvrir',['../class_base_de_donnees.html#a7f6a5510b08017b0d99115a84252f186',1,'BaseDeDonnees']]],
-  ['ouvrirbasededonnees_136',['ouvrirBaseDeDonnees',['../class_i_h_m_just_feed.html#a894c34114f5b38b2a912a87a474a706a',1,'IHMJustFeed']]]
+  ['nouvellesdonneesportbacs_195',['nouvellesDonneesPortBacs',['../class_communication.html#a515e7f9fa76157c02dc11dfe44c19021',1,'Communication']]],
+  ['nouvellesdonneesportenvironnement_196',['nouvellesDonneesPortEnvironnement',['../class_communication.html#aca3e71b56b2178c48542eed333b59a2a',1,'Communication']]],
+  ['nouvellesdonneesportmaintenance_197',['nouvellesDonneesPortMaintenance',['../class_communication.html#aa5f589c7fe408d72fb9cc1ee74d55cf1',1,'Communication']]]
 ];

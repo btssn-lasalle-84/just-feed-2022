@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['page_79',['Page',['../class_i_h_m_just_feed.html#a5eff940aec4a7968704453604d70d33f',1,'IHMJustFeed']]],
-  ['pagelocalisation_80',['pageLocalisation',['../class_i_h_m_just_feed.html#a18cf0a14ac17bd345d6c9c01e085e4c7',1,'IHMJustFeed']]]
+  ['ouvrir_101',['ouvrir',['../class_base_de_donnees.html#a7f6a5510b08017b0d99115a84252f186',1,'BaseDeDonnees']]],
+  ['ouvrirbasededonnees_102',['ouvrirBaseDeDonnees',['../class_i_h_m_just_feed.html#a894c34114f5b38b2a912a87a474a706a',1,'IHMJustFeed']]]
 ];

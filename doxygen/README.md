@@ -11,7 +11,7 @@
 
 \author Laura MORELLO <<lauramorello1604@gmail.com>>
 \date 2022
-\version 1.0
+\version 1.1
 \see https://github.com/btssn-lasalle-84/just-feed-2022
 
 
@@ -29,7 +29,7 @@ Système de surveillance à distance de distributeurs automatiques permettant de
 
 \author Laura MORELLO <<lauramorello1604@gmail.com>>
 \date 2022
-\version 1.0
+\version 1.1
 \see https://github.com/btssn-lasalle-84/just-feed-2022
 
 
@@ -37,7 +37,7 @@ Système de surveillance à distance de distributeurs automatiques permettant de
 
 \author Laura MORELLO <<lauramorello1604@gmail.com>>
 \date 2022
-\version 1.0
+\version 1.1
 \see https://github.com/btssn-lasalle-84/just-feed-2022
 
 

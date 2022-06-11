@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['main_63',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_64',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['modeledistributeur_65',['modeleDistributeur',['../class_i_h_m_just_feed.html#ad895019f02cb0d4bb2d9cb50a523801d',1,'IHMJustFeed']]],
-  ['mutex_66',['mutex',['../class_base_de_donnees.html#aa1b4696fac87a740f914aa73739086f2',1,'BaseDeDonnees']]]
+  ['le_20projet_20just_2dfeed_202022_81',['Le projet just-feed 2022',['../md__home_tv__documents_git_projets-2022_just-feed-2022__r_e_a_d_m_e.html',1,'']]],
+  ['licence_20gpl_82',['Licence GPL',['../page_licence.html',1,'']]],
+  ['liste_20des_20choses_20à_20faire_83',['Liste des choses à faire',['../todo.html',1,'']]]
 ];

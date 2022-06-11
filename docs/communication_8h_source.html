@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>just-feed:  Fichier source de communication.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="just-feed.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">just-feed
+   &#160;<span id="projectnumber">1.1</span>
+   </div>
+   <div id="projectbrief">BTS SNIR LaSalle Avignon 2022</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('communication_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">communication.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="communication_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef COMMUNICATION_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define COMMUNICATION_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QtMqtt/QtMqtt&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;QtMqtt/QMqttClient&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="distributeur_8h.html">distributeur.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="communication_8h.html#ad26125f09c0df26f79592a74010f8e0b">   18</a></span>&#160;<span class="preprocessor">#define PORT_BACS          1</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="communication_8h.html#a61ac2bc19670bfac5ef1796ef7e8b171">   19</a></span>&#160;<span class="preprocessor">#define PORT_ENVIRONNEMENT 2</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="communication_8h.html#aedf038a1ba33303e71b15f88db3c0e36">   20</a></span>&#160;<span class="preprocessor">#define PORT_MAINTENANCE   3</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_communication.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_communication.html">Communication</a> : <span class="keyword">public</span> <a class="code" href="class_q_object.html">QObject</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_communication.html#a56cf4b262e592bcae1d987c3dd00487f">Communication</a>(<a class="code" href="class_q_object.html">QObject</a>* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_communication.html#a75ba08ce908d45251e28e4c1db94e6f4">~Communication</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span>    <a class="code" href="class_communication.html#af3ae011aedc8bcc4098a881b7dec41bf">estConnecte</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span>    <a class="code" href="class_communication.html#aa2a9c07349e8a765aad260b3c497f400">connecter</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span>    <a class="code" href="class_communication.html#aa2a9c07349e8a765aad260b3c497f400">connecter</a>(QString <a class="code" href="class_communication.html#a92c0bd6351cbf2bc7d728dad7515f83e">hostname</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                      <span class="keywordtype">int</span>     <a class="code" href="class_communication.html#ab61ffbcd6cd3b69dc43af68217f81cf0">port</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                      QString <a class="code" href="class_communication.html#a87a089d4be9602c08480d0694d09ae14">username</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                      QString <a class="code" href="class_communication.html#a460054952fb27cda2e3666084fd868f0">password</a>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span>    <a class="code" href="class_communication.html#a8de2c3fd2dd92259b16ea27896df5f9f">reconnecter</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span>    <a class="code" href="class_communication.html#a8de2c3fd2dd92259b16ea27896df5f9f">reconnecter</a>(QString <a class="code" href="class_communication.html#a92c0bd6351cbf2bc7d728dad7515f83e">hostname</a>,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        <span class="keywordtype">int</span>     <a class="code" href="class_communication.html#ab61ffbcd6cd3b69dc43af68217f81cf0">port</a>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        QString <a class="code" href="class_communication.html#a87a089d4be9602c08480d0694d09ae14">username</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        QString <a class="code" href="class_communication.html#a460054952fb27cda2e3666084fd868f0">password</a>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span>    <a class="code" href="class_communication.html#a30fc4cf3f0d2c7ee32e2daab097ebb1a">deconnecter</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span>    <a class="code" href="class_communication.html#aecf593178068f76b7f9018dd8b627ab3">abonner</a>(QString deviceID);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span>    <a class="code" href="class_communication.html#abca839032bc159bd53398f96fd881a78">desabonner</a>(QString deviceID);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    QString <a class="code" href="class_communication.html#a7fc51209a7b0c9b29226386d83d9c557">getHostname</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    QString <a class="code" href="class_communication.html#ac3176112aa1beedde48a0255414db85b">getUsername</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    QString <a class="code" href="class_communication.html#a2a661cac8203caf311d25ff7046a1092">getPassword</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_communication.html#abe6716a6de476ebb0685000a58598795">   48</a></span>&#160;    QMqttClient*       <a class="code" href="class_communication.html#abe6716a6de476ebb0685000a58598795">clientMqtt</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_communication.html#a1a83bcd7835380017c810ecdad56d4c0">   49</a></span>&#160;    QMqttSubscription* <a class="code" href="class_communication.html#a1a83bcd7835380017c810ecdad56d4c0">abonnementMqtt</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_communication.html#a92c0bd6351cbf2bc7d728dad7515f83e">   50</a></span>&#160;    QString            <a class="code" href="class_communication.html#a92c0bd6351cbf2bc7d728dad7515f83e">hostname</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_communication.html#ab61ffbcd6cd3b69dc43af68217f81cf0">   51</a></span>&#160;    <span class="keywordtype">int</span>                <a class="code" href="class_communication.html#ab61ffbcd6cd3b69dc43af68217f81cf0">port</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_communication.html#a87a089d4be9602c08480d0694d09ae14">   52</a></span>&#160;    QString            <a class="code" href="class_communication.html#a87a089d4be9602c08480d0694d09ae14">username</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_communication.html#a460054952fb27cda2e3666084fd868f0">   53</a></span>&#160;    QString            <a class="code" href="class_communication.html#a460054952fb27cda2e3666084fd868f0">password</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#a63c4c07d74036604d99239f9e3850141">configurer</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#ad5da93ee04963390f96eb8c5d3d14b79">sauvegarder</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#a7160969a03fbc762254b0251c8277565">changerEtat</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#acb8c31b1a0267bf60132cece3f5632f1">recevoirMessage</a>(<span class="keyword">const</span> QByteArray&amp;     message,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                         <span class="keyword">const</span> QMqttTopicName&amp; topic);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  signals:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#ab175f1b65402fcfbd12c7fbd948be90c">ttnConnecte</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#af1a4c6ccbb3bdc469bb981841fc10916">ttnDeconnecte</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#a515e7f9fa76157c02dc11dfe44c19021">nouvellesDonneesPortBacs</a>(QString deviceID, <span class="keywordtype">int</span> bac1, <span class="keywordtype">int</span> bac2);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#aca3e71b56b2178c48542eed333b59a2a">nouvellesDonneesPortEnvironnement</a>(QString deviceID, <span class="keywordtype">int</span> hygrometrie);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_communication.html#aa5f589c7fe408d72fb9cc1ee74d55cf1">nouvellesDonneesPortMaintenance</a>(QString deviceID,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                         <span class="keywordtype">int</span>     erreurs,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                         <span class="keywordtype">int</span>     maintenance,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                         <span class="keywordtype">int</span>     total);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif // COMMUNICATION_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_communication_html_ad5da93ee04963390f96eb8c5d3d14b79"><div class="ttname"><a href="class_communication.html#ad5da93ee04963390f96eb8c5d3d14b79">Communication::sauvegarder</a></div><div class="ttdeci">void sauvegarder()</div><div class="ttdoc">Méthode qui sauvegarde la configuration du client Mqtt , dans le fichier justfeed....</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00283">communication.cpp:283</a></div></div>
+<div class="ttc" id="aclass_communication_html_a75ba08ce908d45251e28e4c1db94e6f4"><div class="ttname"><a href="class_communication.html#a75ba08ce908d45251e28e4c1db94e6f4">Communication::~Communication</a></div><div class="ttdeci">~Communication()</div><div class="ttdoc">Destructeur de la classe Communication.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00036">communication.cpp:36</a></div></div>
+<div class="ttc" id="aclass_communication_html_aca3e71b56b2178c48542eed333b59a2a"><div class="ttname"><a href="class_communication.html#aca3e71b56b2178c48542eed333b59a2a">Communication::nouvellesDonneesPortEnvironnement</a></div><div class="ttdeci">void nouvellesDonneesPortEnvironnement(QString deviceID, int hygrometrie)</div></div>
+<div class="ttc" id="aclass_communication_html_a515e7f9fa76157c02dc11dfe44c19021"><div class="ttname"><a href="class_communication.html#a515e7f9fa76157c02dc11dfe44c19021">Communication::nouvellesDonneesPortBacs</a></div><div class="ttdeci">void nouvellesDonneesPortBacs(QString deviceID, int bac1, int bac2)</div></div>
+<div class="ttc" id="aclass_communication_html_a7fc51209a7b0c9b29226386d83d9c557"><div class="ttname"><a href="class_communication.html#a7fc51209a7b0c9b29226386d83d9c557">Communication::getHostname</a></div><div class="ttdeci">QString getHostname() const</div><div class="ttdoc">Methode qui retourne le nom d'hote.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00226">communication.cpp:226</a></div></div>
+<div class="ttc" id="aclass_communication_html_a2a661cac8203caf311d25ff7046a1092"><div class="ttname"><a href="class_communication.html#a2a661cac8203caf311d25ff7046a1092">Communication::getPassword</a></div><div class="ttdeci">QString getPassword() const</div><div class="ttdoc">Methode qui retourne le mot de passe.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00246">communication.cpp:246</a></div></div>
+<div class="ttc" id="aclass_communication_html"><div class="ttname"><a href="class_communication.html">Communication</a></div><div class="ttdef"><b>Definition:</b> <a href="communication_8h_source.html#l00022">communication.h:22</a></div></div>
+<div class="ttc" id="aclass_communication_html_af1a4c6ccbb3bdc469bb981841fc10916"><div class="ttname"><a href="class_communication.html#af1a4c6ccbb3bdc469bb981841fc10916">Communication::ttnDeconnecte</a></div><div class="ttdeci">void ttnDeconnecte()</div></div>
+<div class="ttc" id="adistributeur_8h_html"><div class="ttname"><a href="distributeur_8h.html">distributeur.h</a></div></div>
+<div class="ttc" id="aclass_communication_html_a8de2c3fd2dd92259b16ea27896df5f9f"><div class="ttname"><a href="class_communication.html#a8de2c3fd2dd92259b16ea27896df5f9f">Communication::reconnecter</a></div><div class="ttdeci">void reconnecter()</div><div class="ttdoc">Méthode qui déconnecte puis connecte le client Mqtt.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00126">communication.cpp:126</a></div></div>
+<div class="ttc" id="aclass_communication_html_aa5f589c7fe408d72fb9cc1ee74d55cf1"><div class="ttname"><a href="class_communication.html#aa5f589c7fe408d72fb9cc1ee74d55cf1">Communication::nouvellesDonneesPortMaintenance</a></div><div class="ttdeci">void nouvellesDonneesPortMaintenance(QString deviceID, int erreurs, int maintenance, int total)</div></div>
+<div class="ttc" id="aclass_communication_html_ab175f1b65402fcfbd12c7fbd948be90c"><div class="ttname"><a href="class_communication.html#ab175f1b65402fcfbd12c7fbd948be90c">Communication::ttnConnecte</a></div><div class="ttdeci">void ttnConnecte()</div></div>
+<div class="ttc" id="aclass_communication_html_a7160969a03fbc762254b0251c8277565"><div class="ttname"><a href="class_communication.html#a7160969a03fbc762254b0251c8277565">Communication::changerEtat</a></div><div class="ttdeci">void changerEtat()</div><div class="ttdoc">Méthode qui signal l'état du client Mqtt à l'IHM.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00304">communication.cpp:304</a></div></div>
+<div class="ttc" id="aclass_communication_html_a30fc4cf3f0d2c7ee32e2daab097ebb1a"><div class="ttname"><a href="class_communication.html#a30fc4cf3f0d2c7ee32e2daab097ebb1a">Communication::deconnecter</a></div><div class="ttdeci">void deconnecter()</div><div class="ttdoc">Méthode qui déconnecte le client Mqtt.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00157">communication.cpp:157</a></div></div>
+<div class="ttc" id="aclass_communication_html_a1a83bcd7835380017c810ecdad56d4c0"><div class="ttname"><a href="class_communication.html#a1a83bcd7835380017c810ecdad56d4c0">Communication::abonnementMqtt</a></div><div class="ttdeci">QMqttSubscription * abonnementMqtt</div><div class="ttdef"><b>Definition:</b> <a href="communication_8h_source.html#l00049">communication.h:49</a></div></div>
+<div class="ttc" id="aclass_communication_html_af3ae011aedc8bcc4098a881b7dec41bf"><div class="ttname"><a href="class_communication.html#af3ae011aedc8bcc4098a881b7dec41bf">Communication::estConnecte</a></div><div class="ttdeci">bool estConnecte() const</div><div class="ttdoc">Méthode qui retourne une valeur booléene true si le client Mqtt est connecté</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00049">communication.cpp:49</a></div></div>
+<div class="ttc" id="aclass_communication_html_a63c4c07d74036604d99239f9e3850141"><div class="ttname"><a href="class_communication.html#a63c4c07d74036604d99239f9e3850141">Communication::configurer</a></div><div class="ttdeci">void configurer()</div><div class="ttdoc">Méthode qui configure le client Mqtt , à partir du fichier justfeed.ini.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00257">communication.cpp:257</a></div></div>
+<div class="ttc" id="aclass_communication_html_a460054952fb27cda2e3666084fd868f0"><div class="ttname"><a href="class_communication.html#a460054952fb27cda2e3666084fd868f0">Communication::password</a></div><div class="ttdeci">QString password</div><div class="ttdef"><b>Definition:</b> <a href="communication_8h_source.html#l00053">communication.h:53</a></div></div>
+<div class="ttc" id="aclass_communication_html_acb8c31b1a0267bf60132cece3f5632f1"><div class="ttname"><a href="class_communication.html#acb8c31b1a0267bf60132cece3f5632f1">Communication::recevoirMessage</a></div><div class="ttdeci">void recevoirMessage(const QByteArray &amp;message, const QMqttTopicName &amp;topic)</div><div class="ttdoc">Méthode qui reçoit et traite le message du topic, et signal les nouvelles mesures à l'IHM.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00335">communication.cpp:335</a></div></div>
+<div class="ttc" id="aclass_communication_html_abca839032bc159bd53398f96fd881a78"><div class="ttname"><a href="class_communication.html#abca839032bc159bd53398f96fd881a78">Communication::desabonner</a></div><div class="ttdeci">void desabonner(QString deviceID)</div><div class="ttdoc">Méthode qui désabonne le client Mqtt , à partir du deviceID.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00205">communication.cpp:205</a></div></div>
+<div class="ttc" id="aclass_communication_html_aecf593178068f76b7f9018dd8b627ab3"><div class="ttname"><a href="class_communication.html#aecf593178068f76b7f9018dd8b627ab3">Communication::abonner</a></div><div class="ttdeci">bool abonner(QString deviceID)</div><div class="ttdoc">Méthode qui abonne le client Mqtt à un topic , à partir du deviceID.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00176">communication.cpp:176</a></div></div>
+<div class="ttc" id="aclass_communication_html_aa2a9c07349e8a765aad260b3c497f400"><div class="ttname"><a href="class_communication.html#aa2a9c07349e8a765aad260b3c497f400">Communication::connecter</a></div><div class="ttdeci">void connecter()</div><div class="ttdoc">Méthode qui connecte le client Mqtt (par défaut) et permet la récupération du message (à l'aide de la...</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00062">communication.cpp:62</a></div></div>
+<div class="ttc" id="aclass_communication_html_ac3176112aa1beedde48a0255414db85b"><div class="ttname"><a href="class_communication.html#ac3176112aa1beedde48a0255414db85b">Communication::getUsername</a></div><div class="ttdeci">QString getUsername() const</div><div class="ttdoc">Methode qui retourne le nom d'utilisateur.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00236">communication.cpp:236</a></div></div>
+<div class="ttc" id="aclass_communication_html_abe6716a6de476ebb0685000a58598795"><div class="ttname"><a href="class_communication.html#abe6716a6de476ebb0685000a58598795">Communication::clientMqtt</a></div><div class="ttdeci">QMqttClient * clientMqtt</div><div class="ttdef"><b>Definition:</b> <a href="communication_8h_source.html#l00048">communication.h:48</a></div></div>
+<div class="ttc" id="aclass_communication_html_a56cf4b262e592bcae1d987c3dd00487f"><div class="ttname"><a href="class_communication.html#a56cf4b262e592bcae1d987c3dd00487f">Communication::Communication</a></div><div class="ttdeci">Communication(QObject *parent=nullptr)</div><div class="ttdoc">Constructeur de la classe Communication.</div><div class="ttdef"><b>Definition:</b> <a href="communication_8cpp_source.html#l00024">communication.cpp:24</a></div></div>
+<div class="ttc" id="aclass_q_object_html"><div class="ttname"><a href="class_q_object.html">QObject</a></div></div>
+<div class="ttc" id="aclass_communication_html_ab61ffbcd6cd3b69dc43af68217f81cf0"><div class="ttname"><a href="class_communication.html#ab61ffbcd6cd3b69dc43af68217f81cf0">Communication::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition:</b> <a href="communication_8h_source.html#l00051">communication.h:51</a></div></div>
+<div class="ttc" id="aclass_communication_html_a92c0bd6351cbf2bc7d728dad7515f83e"><div class="ttname"><a href="class_communication.html#a92c0bd6351cbf2bc7d728dad7515f83e">Communication::hostname</a></div><div class="ttdeci">QString hostname</div><div class="ttdef"><b>Definition:</b> <a href="communication_8h_source.html#l00050">communication.h:50</a></div></div>
+<div class="ttc" id="aclass_communication_html_a87a089d4be9602c08480d0694d09ae14"><div class="ttname"><a href="class_communication.html#a87a089d4be9602c08480d0694d09ae14">Communication::username</a></div><div class="ttdeci">QString username</div><div class="ttdef"><b>Definition:</b> <a href="communication_8h_source.html#l00052">communication.h:52</a></div></div>
+<!-- HTML footer for doxygen 1.9.1-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_c7083f6eb618c797565f2e9b347d811c.html">just-feed</a></li><li class="navelem"><a class="el" href="communication_8h.html">communication.h</a></li>
+    <li class="footer"><img class="footer" src="lasalle-logo.png" height="31" alt="La Salle Avignon"/>&nbsp;<b>Campus La Salle Avignon</b>&nbsp;-&nbsp;9 Rue Notre Dame des 7 douleurs&nbsp;-&nbsp;BP 50165&nbsp;-&nbsp;84008 Avignon&nbsp;-&nbsp;Généré le Samedi 11 Juin 2022 07:08:23 pour just-feed par&nbsp;<a href="https://www.doxygen.org/index.html">doxygen</a>&nbsp;1.8.17&nbsp;</li>
+  </ul>
+</div>
+</body>
+</html>
