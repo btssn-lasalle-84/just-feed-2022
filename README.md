@@ -11,6 +11,7 @@ Le système doit permettre de surveiller à distance des distributeurs automatiq
   - [Resources logicielles](#resources-logicielles)
   - [Documentation du code](#documentation-du-code)
   - [Base de données](#base-de-données)
+  - [Diaporama](#diaporama)
   - [Kanban](#kanban)
   - [Qt MQTT](#qt-mqtt)
 
@@ -66,6 +67,10 @@ https://btssn-lasalle-84.github.io/just-feed-2022/
 ## Base de données
 
 ![](images/bdd-just-feed-v0.2.png)
+
+## Diaporama
+
+- [Revue finale Projet Just Feed -Laura MORELLO.pptx](docs/Revue%20finale%20Projet%20Just%20Feed%20-%20Laura%20MORELLO.pptx)
 
 ## Kanban
 
