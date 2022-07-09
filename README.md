@@ -5,6 +5,7 @@ Le système doit permettre de surveiller à distance des distributeurs automatiq
 - [Le projet just-feed 2022](#le-projet-just-feed-2022)
   - [Expression du besoin](#expression-du-besoin)
   - [Auteur](#auteur)
+  - [Vidéo](#vidéo)
   - [Historique des versions](#historique-des-versions)
   - [Fonctionnalités](#fonctionnalités)
   - [TODO](#todo)
@@ -28,6 +29,10 @@ Système de surveillance à distance de distributeurs automatiques permettant de
 ## Auteur
 
 - Laura MORELLO <<lauramorello1604@gmail.com>>
+
+## Vidéo
+
+[<img src="https://img.youtube.com/vi/jmQ_y893Sb8/maxresdefault.jpg" width="50%">](https://youtu.be/jmQ_y893Sb8)
 
 ## Historique des versions
 
