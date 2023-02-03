@@ -1,3 +1,5 @@
+![C++ Badge](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus&logoColor=fff&style=plastic) ![](https://badgen.net/badge/Qt/5.12.8/green)
+
 # Le projet just-feed 2022
 
 Le système doit permettre de surveiller à distance des distributeurs automatiques (fruits secs, pâtes, riz,...) afin d’optimiser le processus de réapprovisionnement.
